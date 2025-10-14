@@ -54,58 +54,51 @@ export default function Pricing() {
   ]
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
-      {/* Subtle background decoration */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-300/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-            <span className="text-sm font-semibold text-primary">PRICING</span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-foreground">
-            Simple, Transparent Pricing to Fuel Your Growth
+    <section id="pricing" className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <p className="text-sm font-bold text-primary-orange uppercase tracking-wide mb-3">Pricing</p>
+          <h2 className="text-3xl sm:text-4xl font-black mb-3 text-charcoal leading-tight">
+            Simple, transparent pricing
           </h2>
+          <p className="text-base text-gray-600">Choose the plan that fits your business needs</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`rounded-2xl p-8 border-2 transition-all duration-300 relative ${
+              className={`rounded-xl p-6 border-2 transition-all duration-300 relative bg-white ${
                 plan.highlighted 
-                  ? 'border-primary shadow-premium-xl bg-card scale-105 lg:scale-110' 
-                  : 'border-border shadow-premium bg-card hover:shadow-premium-lg hover:border-primary/50'
+                  ? 'border-primary-orange shadow-2xl scale-105' 
+                  : 'border-gray-200 shadow-lg hover:shadow-xl hover:border-primary-orange/50'
               }`}
             >
               {/* Most Popular Badge */}
               {plan.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-primary text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <div className="bg-primary-orange text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
                     {plan.badge}
                   </div>
                 </div>
               )}
 
               {/* Plan Header */}
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
-                <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-charcoal mb-1">{plan.name}</h3>
+                <p className="text-xs text-gray-600 mb-4">{plan.description}</p>
                 <div className="flex items-end justify-center gap-1">
-                  <span className="text-5xl font-bold text-foreground">{plan.price}</span>
-                  {plan.period && <span className="text-muted-foreground mb-2">{plan.period}</span>}
+                  <span className="text-4xl font-black text-charcoal">{plan.price}</span>
+                  {plan.period && <span className="text-gray-500 mb-1 text-base">{plan.period}</span>}
                 </div>
               </div>
 
               {/* CTA Button */}
               <Button 
-                className={`w-full mb-8 py-6 text-base font-semibold rounded-xl transition-all duration-300 ${
+                className={`w-full mb-6 py-5 text-sm font-bold rounded-lg transition-all duration-300 ${
                   plan.highlighted 
-                    ? 'bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl hover:scale-105' 
-                    : 'bg-secondary hover:bg-primary hover:text-white'
+                    ? 'bg-primary-orange hover:bg-primary-orange-dark text-white shadow-lg hover:shadow-xl hover:scale-105' 
+                    : 'bg-gray-100 hover:bg-primary-orange hover:text-white text-charcoal'
                 }`}
               >
                 {plan.cta}
@@ -113,15 +106,15 @@ export default function Pricing() {
               </Button>
 
               {/* Features List */}
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                      plan.highlighted ? 'bg-primary' : 'bg-primary/10'
+                  <li key={i} className="flex items-start gap-2">
+                    <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                      plan.highlighted ? 'bg-primary-orange' : 'bg-primary-orange/10'
                     }`}>
-                      <Check className={`h-3 w-3 ${plan.highlighted ? 'text-white' : 'text-primary'}`} />
+                      <Check className={`h-2.5 w-2.5 ${plan.highlighted ? 'text-white' : 'text-primary-orange'}`} />
                     </div>
-                    <span className="text-sm text-muted-foreground">{feature}</span>
+                    <span className="text-xs text-gray-700 font-medium">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -130,9 +123,9 @@ export default function Pricing() {
         </div>
 
         {/* Trust Signal Below Pricing */}
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground text-sm">
-            All plans include: ✓ No contracts ✓ No setup fees ✓ Cancel anytime
+        <div className="text-center mt-8">
+          <p className="text-gray-600 text-xs font-medium">
+            All plans include: <span className="text-green-600 font-bold">✓</span> No contracts <span className="text-green-600 font-bold">✓</span> No setup fees <span className="text-green-600 font-bold">✓</span> Cancel anytime
           </p>
         </div>
       </div>

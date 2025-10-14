@@ -63,22 +63,15 @@ export default function ProcessFlow() {
   ]
 
   return (
-    <section id="process" className="py-24 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={sectionRef}>
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6 animate-pulse-soft">
-            <span className="text-sm font-semibold text-primary">HOW IT WORKS</span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            Launch Your Lead Machine in{' '}
-            <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">72 Hours</span>
+    <section id="process" className="py-16 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <p className="text-sm font-bold text-primary-orange uppercase tracking-wide mb-3">How It Works</p>
+          <h2 className="text-3xl sm:text-4xl font-black mb-3 text-charcoal leading-tight">
+            Go from consultation to qualified leads in <span className="text-primary-orange">72 hours</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Getting started is simple, fast, and designed to get you results immediately. Here's how we make it happen.
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            Getting started is simple, fast, and designed to get you results immediately
           </p>
         </div>
 
@@ -93,36 +86,35 @@ export default function ProcessFlow() {
                     : 'opacity-0 translate-y-8'
                 }`}
               >
-                <div className="bg-card rounded-2xl p-8 border-2 border-border shadow-premium hover:shadow-premium-xl hover:-translate-y-2 transition-all duration-300 h-full relative overflow-hidden group">
-                  {/* Gradient Overlay on Hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                <div className="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border-2 border-orange-100 shadow-lg hover:shadow-xl hover:border-primary-orange hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
+                  {/* Background Pattern */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-orange/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                   
-                  {/* Step Number Badge */}
-                  <div className={`w-14 h-14 bg-gradient-to-br ${step.color} rounded-xl flex items-center justify-center text-white text-xl font-bold mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    {step.number}
+                  <div className="relative z-10">
+                    {/* Step Number Badge */}
+                    <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-orange to-orange-600 rounded-xl text-white text-2xl font-black mb-6 shadow-lg">
+                      {step.number}
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 shadow-md">
+                      <step.icon className="h-6 w-6 text-primary-orange" />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold mb-3 text-charcoal">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed text-sm">
+                      {step.description}
+                    </p>
                   </div>
-
-                  {/* Icon */}
-                  <div className={`w-16 h-16 ${step.bgColor} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <step.icon className={`h-8 w-8 ${step.iconColor}`} />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors duration-300">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
                 </div>
 
-                {/* Connector Arrow (except last) */}
+                {/* Connector Arrow */}
                 {index < steps.length - 1 && (
                   <div className="hidden md:flex absolute top-1/2 -right-4 z-10 items-center justify-center">
-                    <div className={`w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center transition-all duration-500 ${
-                      visibleSteps.includes(index) ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-                    }`}>
-                      <ArrowRight className="h-5 w-5 text-primary" />
+                    <div className="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center border-2 border-primary-orange">
+                      <ArrowRight className="h-4 w-4 text-primary-orange" />
                     </div>
                   </div>
                 )}
@@ -134,13 +126,13 @@ export default function ProcessFlow() {
           <div className="mt-16 text-center">
             <Button 
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-premium-lg hover:shadow-premium-xl hover:scale-105 transition-all duration-300 group"
+              className="bg-primary-orange hover:bg-primary-orange-dark text-white px-10 py-6 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
             >
-              Start Your 72-Hour Launch
+              Get Started Today
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
-            <p className="text-sm text-muted-foreground mt-4">
-              No credit card required • Free strategy call • Cancel anytime
+            <p className="text-sm text-gray-600 mt-4 font-medium">
+              Free consultation • No commitment required • Fast setup
             </p>
           </div>
         </div>

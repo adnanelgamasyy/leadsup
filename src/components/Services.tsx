@@ -26,14 +26,12 @@ export default function Services() {
   ]
 
   return (
-    <section id="services" className="py-20 bg-accent/30">
+    <section id="services" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-            <span className="text-sm font-semibold text-primary">OUR SERVICES</span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-foreground">
-            The Tools You Need for Market Domination
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <p className="text-sm font-bold text-primary-orange uppercase tracking-wide mb-3">Our Services</p>
+          <h2 className="text-3xl sm:text-4xl font-black mb-3 text-charcoal leading-tight">
+            The tools you need for market domination
           </h2>
         </div>
 
@@ -41,7 +39,7 @@ export default function Services() {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="bg-card rounded-2xl overflow-hidden border border-border shadow-premium hover:shadow-premium-xl hover:-translate-y-2 transition-all duration-300 group"
+              className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Image */}
@@ -51,30 +49,27 @@ export default function Services() {
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                
+                {/* Icon Overlay */}
                 <div className="absolute bottom-4 left-4">
-                  <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
-                    <service.icon className="h-6 w-6 text-white" />
-                  </div>
+                  <service.icon className="h-10 w-10 text-white drop-shadow-lg" />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-3 text-foreground">
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-charcoal">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed text-sm">
                   {service.description}
                 </p>
 
-                <Button 
-                  variant="ghost" 
-                  className="text-primary hover:text-primary hover:bg-primary/10 font-semibold group/btn p-0 h-auto"
-                >
+                <button className="text-primary-orange hover:text-primary-orange-dark font-bold group/btn flex items-center gap-2 transition-colors">
                   Learn More
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
+                  <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                </button>
               </div>
             </div>
           ))}
