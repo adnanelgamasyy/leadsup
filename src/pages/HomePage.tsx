@@ -5,10 +5,13 @@ import Hero from '@/components/Hero'
 import ProofBar from '@/components/ProofBar'
 import ProblemSolution from '@/components/ProblemSolution'
 import ProcessFlow from '@/components/ProcessFlow'
-import Services from '@/components/Services'
+import WhoWeHelp from '@/components/WhoWeHelp'
 import AudioSamples from '@/components/AudioSamples'
 import Pricing from '@/components/Pricing'
+import CustomizationSection from '@/components/CustomizationSection'
 import Testimonials from '@/components/Testimonials'
+import FreeStrategySection from '@/components/FreeStrategySection'
+import FAQSection from '@/components/FAQSection'
 import BlogSection from '@/components/BlogSection'
 import ContactCTA from '@/components/ContactCTA'
 import Footer from '@/components/Footer'
@@ -21,12 +24,15 @@ export default function HomePage() {
       <ProofBar />
       <ProblemSolution />
       <ProcessFlow />
-      <Services />
+      <WhoWeHelp />
       <AudioSamples />
-      <Pricing />
       <Testimonials />
-      <ContactCTA />
+      <Pricing />
+      <CustomizationSection />
+      <FreeStrategySection />
+      <FAQSection />
       <BlogSection />
+      <ContactCTA />
       <Footer />
     </div>
   );

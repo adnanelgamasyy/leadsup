@@ -1,124 +1,154 @@
 "use client"
 
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
+
+const quickLinks = {
+  services: [
+    { name: 'Cold calling specialists', href: '#pricing' },
+    { name: 'Skip tracing & data', href: '#pricing' },
+    { name: 'Acquisitions managed', href: '#process' },
+    { name: 'Industries we support', href: '#industries' }
+  ],
+  company: [
+    { name: 'About LeadsUp', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+    { name: 'Pricing', href: '#pricing' },
+    { name: 'Playbook', href: '/blog' }
+  ]
+}
 
 export default function Footer() {
-  const services = [
-    { name: "Cold Calling VAs", href: "#" },
-    { name: "Skip Tracing & Data", href: "#" },
-    { name: "Acquisition Services", href: "#" },
-    { name: "Disposition Services", href: "#" }
-  ]
-
-  const company = [
-    { name: "About Us", href: "#" },
-    { name: "Contact", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Blog", href: "#" }
-  ]
-
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Column 1: Logo & Mission */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="bg-primary rounded-lg p-2">
-                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-                </svg>
+    <footer className="relative overflow-hidden bg-gradient-to-br from-[#030712] via-[#081126] to-[#050a18] py-20">
+      <div className="absolute inset-0">
+        <div className="absolute left-[12%] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-action-blue/18 blur-[180px]" />
+        <div className="absolute right-[10%] top-[35%] h-[22rem] w-[22rem] rounded-full bg-energetic-pink/18 blur-[150px]" />
+        <div className="absolute left-1/2 bottom-[-7rem] h-[20rem] w-[20rem] -translate-x-1/2 rounded-full bg-vibrant-green/12 blur-[150px]" />
+      </div>
+
+      <div className="page-shell relative mx-auto max-w-[1200px] space-y-16">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr,0.9fr,0.9fr]">
+          <div className="space-y-6">
+            <div className="flex flex-col gap-3">
+              <div className="inline-flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-action-blue via-energetic-pink to-vibrant-green shadow-[0_12px_30px_rgba(61,130,247,0.45)]">
+                  <svg className="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-plus-jakarta-sans text-lg font-semibold tracking-tight text-slate-50">LeadsUp</span>
+                  <span className="text-[0.6rem] uppercase tracking-[0.4em] text-slate-300/60">
+                    We don&apos;t do cold calls, we make cash calls.
+                  </span>
+                </div>
               </div>
-              <span className="text-xl font-bold text-foreground">The Leads Up</span>
+              <p className="max-w-sm font-inter text-sm text-slate-200/80">
+                The dedicated acquisitions engine for investors and operators. Elite callers, precision data, and battle-tested playbooks on tap.
+              </p>
             </div>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              Your on-demand real estate acquisitions team. Elite cold callers and hyper-targeted data for consistent deal flow.
-            </p>
-            <div className="flex gap-3">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+
+            <div className="flex flex-wrap gap-3">
+              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
                 <a
-                  key={i}
+                  key={index}
                   href="#"
-                  className="w-10 h-10 rounded-lg bg-accent hover:bg-primary hover:text-white transition-colors duration-200 flex items-center justify-center"
+                  className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-action-blue hover:text-action-blue"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
+
+            <a
+              href="https://cal.com/leadsup/strategy-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex max-w-xs items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 font-inter text-xs uppercase tracking-[0.35em] text-slate-100 transition hover:border-action-blue hover:text-action-blue"
+            >
+              Book a 15-min strategy call
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
 
-          {/* Column 2: Services */}
-          <div>
-            <h3 className="font-bold text-foreground mb-4">Services</h3>
-            <ul className="space-y-3">
-              {services.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="grid gap-6 text-sm font-inter text-slate-200/80 sm:grid-cols-2 lg:grid-cols-1">
+            <div>
+              <h3 className="font-plus-jakarta-sans text-sm font-semibold uppercase tracking-[0.3em] text-slate-100">
+                Services
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {quickLinks.services.map((item) => (
+                  <li key={item.name}>
+                    <a className="transition hover:text-action-blue" href={item.href}>
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-plus-jakarta-sans text-sm font-semibold uppercase tracking-[0.3em] text-slate-100">
+                Company
+              </h3>
+              <ul className="mt-5 space-y-3">
+                {quickLinks.company.map((item) => (
+                  <li key={item.name}>
+                    <a className="transition hover:text-action-blue" href={item.href}>
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Column 3: Company */}
-          <div>
-            <h3 className="font-bold text-foreground mb-4">Company</h3>
-            <ul className="space-y-3">
-              {company.map((item) => (
-                <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Contact */}
-          <div>
-            <h3 className="font-bold text-foreground mb-4">Contact Info</h3>
-            <ul className="space-y-4">
+          <div className="space-y-6">
+            <h3 className="font-plus-jakarta-sans text-sm font-semibold uppercase tracking-[0.3em] text-slate-100">
+              Contact
+            </h3>
+            <ul className="space-y-4 font-inter text-sm text-slate-200/80">
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">123 Business St, Suite 100<br />Miami, FL 33131</span>
+                <MapPin className="mt-1 h-5 w-5 text-action-blue" />
+                <span>123 Business St, Suite 100<br />Miami, FL 33131</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                  (123) 456-7890
+                <Phone className="h-5 w-5 text-energetic-pink" />
+                <a className="transition hover:text-action-blue" href="tel:+18885551234">
+                  (888) 555-1234
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
-                <a href="mailto:hello@theleadsup.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <Mail className="h-5 w-5 text-vibrant-green" />
+                <a className="transition hover:text-action-blue" href="mailto:hello@theleadsup.com">
                   hello@theleadsup.com
                 </a>
               </li>
             </ul>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-xs text-slate-200/70">
+              <p className="font-plus-jakarta-sans text-sm font-semibold text-slate-50">
+                Support hours
+              </p>
+              <p className="mt-1">Monday – Friday · 9am – 6pm EST</p>
+              <p className="mt-2">
+                24/7 campaign monitoring with real-time alerts for escalated opportunities.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm">
-              © 2024 The Leads Up. All Rights Reserved.
-            </p>
-            <div className="flex gap-6">
-              <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors">
-                Terms of Service
-              </a>
-            </div>
+        <div className="flex flex-col gap-4 border-t border-white/10 pt-8 font-inter text-xs text-slate-200/60 sm:flex-row sm:items-center sm:justify-between">
+          <p> 2024 LeadsUp Call Center. All rights reserved.</p>
+          <div className="flex flex-wrap gap-4">
+            <a className="transition hover:text-action-blue" href="#">
+              Privacy Policy
+            </a>
+            <a className="transition hover:text-action-blue" href="#">
+              Terms of Service
+            </a>
+            <a className="transition hover:text-action-blue" href="/blog">
+              Latest insights
+            </a>
           </div>
         </div>
       </div>

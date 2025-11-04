@@ -1,129 +1,135 @@
 "use client"
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Star } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeInUp, fadeInStagger, buttonHover, iconHover } from '@/lib/motion'
+
+const actionWords = ['Dial.', 'Deal.', 'Deposit.'] as const
+
+const promiseBullets = [
+  'Elite acquisitions callers obsessed with conversions',
+  'Precision life-event data that surfaces motivated sellers',
+  'Conversations routed live to your phone or calendar'
+]
 
 export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up')
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section ref={sectionRef} className="relative pt-24 pb-12 overflow-hidden opacity-0 transition-all duration-700 bg-gradient-to-b from-orange-50/30 via-white to-white">
-      {/* Background Image with low opacity */}
-      <div 
-        className="absolute inset-0 opacity-5 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/3184432/pexels-photo-3184432.jpeg?auto=compress&cs=tinysrgb&w=1600)'
-        }}
-      />
-      
-      {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Left Column - Text Content */}
-            <div className="text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 rounded-full mb-6">
-                <div className="w-2 h-2 bg-primary-orange rounded-full" />
-                <span className="text-xs font-semibold text-primary-orange uppercase tracking-wide">Trusted by Real Estate Investors</span>
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 leading-[1.1] text-charcoal">
-                Your reliable<br />calling partner<br />for <span className="text-primary-orange">pipeline<br />results</span>
+    <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#1A1F3B] to-slate-900 pt-32 pb-24">
+      {/* Glow overlays */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-action-blue/30 blur-3xl" />
+        <div className="absolute top-40 -right-24 h-80 w-80 rounded-full bg-energetic-pink/25 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-96 w-[28rem] -translate-x-1/2 rounded-[999px] bg-gradient-to-t from-slate-900 via-transparent to-transparent blur-3xl" />
+      </div>
+
+      <div className="page-shell relative mx-auto max-w-[1400px]">
+        <motion.div
+          variants={fadeInStagger}
+          initial="hidden"
+          animate="show"
+          className="grid items-center gap-12 lg:grid-cols-[1.1fr,0.9fr]"
+        >
+          {/* Left column */}
+          <motion.div variants={fadeInUp} className="relative z-10 space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.35em] text-slate-200 backdrop-blur-md">
+              LeadsUp Call Center
+            </div>
+
+            <div className="space-y-4">
+              <h1 className="font-plus-jakarta-sans text-4xl leading-tight text-slate-50 sm:text-5xl lg:text-[3.75rem] lg:leading-[1.05]">
+                The Outbound Engine for Real Estate Investors
               </h1>
-              
-              <p className="text-base text-body-text mb-6 leading-relaxed max-w-xl">
-                Elite, pre-trained cold callers and hyper-targeted data to fill your pipeline with motivated sellers. Stop prospecting. Start closing.
+              <p className="max-w-2xl font-inter text-base text-slate-200/80 sm:text-lg">
+                Built by investors, for investors. Our elite callers, armed with precision data, turn conversations into cash-producing opportunities so you can focus on negotiating and closing deals.
               </p>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <Button 
-                  size="lg" 
-                  className="bg-primary-orange hover:bg-primary-orange-dark text-white px-8 py-4 text-base font-bold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <motion.div whileHover={buttonHover}>
+                <Button
+                  size="lg"
+                  className="flex items-center gap-2 rounded-xl bg-action-blue px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_30px_80px_rgba(61,130,247,0.5)] transition-all hover:bg-action-blue/90"
                 >
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  Get LeadsUp Today
+                  <motion.span whileHover={iconHover}>
+                    <ArrowRight className="h-5 w-5" />
+                  </motion.span>
                 </Button>
-                <button className="px-8 py-4 text-base font-semibold text-charcoal hover:text-primary-orange transition-colors">
-                  View Demo →
-                </button>
-              </div>
+              </motion.div>
 
-              {/* Trust Signals */}
-              <div className="flex flex-wrap items-center gap-6 pt-2">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-orange-400 text-orange-400" />
-                  ))}
-                </div>
-                <div className="text-sm text-body-text">
-                  <span className="font-bold text-charcoal">4.9/5</span> from 120+ investors
-                </div>
-              </div>
+              <motion.a
+                whileHover={buttonHover}
+                href="#contact"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/20 px-8 py-4 font-inter text-base font-semibold text-slate-100 transition-all hover:border-action-blue hover:text-action-blue"
+              >
+                Contact Us
+                <motion.span whileHover={iconHover}>
+                  <ArrowRight className="h-5 w-5" />
+                </motion.span>
+              </motion.a>
             </div>
 
-            {/* Right Column - Stats Card */}
-            <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wide">Cold calling results</p>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gradient-to-br from-orange-50 to-white rounded-xl p-4 border border-orange-100">
-                        <div className="text-4xl font-black text-primary-orange mb-1">92%</div>
-                        <div className="text-xs text-gray-600 font-medium">Connection rate</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-teal-50 to-white rounded-xl p-4 border border-teal-100">
-                        <div className="text-4xl font-black text-vibrant-teal mb-1">85%</div>
-                        <div className="text-xs text-gray-600 font-medium">Lead quality</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-orange-50 to-white rounded-xl p-4 border border-orange-100">
-                        <div className="text-4xl font-black text-primary-orange mb-1">3.2x</div>
-                        <div className="text-xs text-gray-600 font-medium">ROI increase</div>
-                      </div>
-                      <div className="bg-gradient-to-br from-teal-50 to-white rounded-xl p-4 border border-teal-100">
-                        <div className="text-4xl font-black text-vibrant-teal mb-1">30%</div>
-                        <div className="text-xs text-gray-600 font-medium">More deals</div>
-                      </div>
-                    </div>
-                  </div>
+            <ul className="grid gap-3 font-inter text-sm text-slate-200/80 sm:max-w-xl">
+              {promiseBullets.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full border border-action-blue/40 bg-action-blue/10 text-action-blue">
+                    ✓
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
 
-                  <div className="pt-4 border-t border-gray-200">
-                    <div className="space-y-3">
-                      {['No setup fees required', 'Cancel anytime', '24/7 support included'].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                          <svg className="h-5 w-5 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="text-sm text-gray-700 font-medium">{item}</span>
-                        </div>
-                      ))}
-                    </div>
+          {/* Right column */}
+          <motion.div variants={fadeInUp} className="relative">
+            <div className="absolute -inset-4 rounded-[32px] bg-gradient-to-br from-white/10 via-white/5 to-transparent blur-2xl" />
+            <motion.div className="relative overflow-hidden rounded-[28px] border border-white/20 bg-white/10 p-8 shadow-[0_40px_120px_rgba(61,130,247,0.25)] backdrop-blur-2xl" whileHover={{ scale: 1.01 }}>
+              <div className="flex items-center justify-between gap-6">
+                <div className="space-y-2">
+                  <p className="font-inter text-xs uppercase tracking-[0.3em] text-slate-200/70">Outbound mantra</p>
+                  <div className="flex flex-col gap-2 text-left">
+                    {actionWords.map((word, index) => (
+                      <motion.span
+                        key={word}
+                        initial={{ opacity: 0, x: 12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.15, duration: 0.45, ease: 'easeOut' }}
+                        className="block font-plus-jakarta-sans text-4xl font-bold text-slate-50"
+                      >
+                        {word}
+                      </motion.span>
+                    ))}
                   </div>
                 </div>
+                <div className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-gradient-to-br from-action-blue via-energetic-pink to-vibrant-green">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.6),_transparent_70%)]" />
+                  <span className="font-plus-jakarta-sans text-sm font-semibold uppercase tracking-[0.4em] text-slate-50">3D</span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {[
+                  { label: 'Qualified opportunities sourced', value: '100K+' },
+                  { label: 'Years refining outbound playbooks', value: '7+' },
+                  { label: 'Active client campaigns', value: '120+' },
+                  { label: 'Client satisfaction rating', value: '4.9/5' }
+                ].map((stat) => (
+                  <motion.div
+                    key={stat.label}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                    whileHover={{ translateY: -6 }}
+                    transition={{ duration: 0.3, ease: [0.215, 0.61, 0.355, 1] }}
+                  >
+                    <p className="font-plus-jakarta-sans text-2xl font-semibold text-slate-50">{stat.value}</p>
+                    <p className="mt-1 font-inter text-xs uppercase tracking-[0.3em] text-slate-200/60">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

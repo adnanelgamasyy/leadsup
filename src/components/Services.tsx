@@ -1,79 +1,114 @@
 "use client"
 
-import { Button } from '@/components/ui/button'
 import { Phone, Database, Briefcase, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeInStagger, fadeInUp, hoverLift, iconHover, viewportOnce } from '@/lib/motion'
+
+const services = [
+  {
+    icon: Phone,
+    title: 'Elite cold-calling specialists',
+    description:
+      'Fully trained agents embedded into your brand voice with scripts, QA, and live coaching to convert more motivated sellers.',
+    badge: 'People + craft',
+    accent: 'from-action-blue/60 via-energetic-pink/30 to-vibrant-green/20',
+    glow: 'from-action-blue/30 via-energetic-pink/20 to-transparent'
+  },
+  {
+    icon: Database,
+    title: 'Premium skip tracing intelligence',
+    description:
+      'Multi-source data enrichment, dynamic list scoring, and automated refresh cycles keep your pipeline fed with accurate contacts.',
+    badge: 'Data + signals',
+    accent: 'from-vibrant-green/60 via-action-blue/30 to-bright-amber/20',
+    glow: 'from-vibrant-green/25 via-action-blue/20 to-transparent'
+  },
+  {
+    icon: Briefcase,
+    title: 'Full-cycle acquisition ops',
+    description:
+      'Outbound, nurture, and dispo handled end-to-end—including follow-up cadences, CRM sync, and buyer matching for every deal.',
+    badge: 'Revenue ops',
+    accent: 'from-energetic-pink/60 via-bright-amber/30 to-action-blue/20',
+    glow: 'from-energetic-pink/30 via-bright-amber/20 to-transparent'
+  }
+]
 
 export default function Services() {
-  const services = [
-    {
-      icon: Phone,
-      title: "Expert Cold Calling VAs",
-      description: "Specialists trained in real estate conversation, objection handling, and rapport-building who act as a professional front-line for your brand.",
-      image: "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800"
-    },
-    {
-      icon: Database,
-      title: "Premium Skip Tracing & Data",
-      description: "Our multi-layered process finds the most accurate phone numbers and emails, uncovering hidden opportunities your competitors miss.",
-      image: "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
-    },
-    {
-      icon: Briefcase,
-      title: "Full-Service Acquisition",
-      description: "For a truly hands-off experience. We'll manage the entire deal lifecycle, from initial contact and negotiation to finding a cash buyer.",
-      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-    }
-  ]
-
   return (
-    <section id="services" className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-sm font-bold text-primary-orange uppercase tracking-wide mb-3">Our Services</p>
-          <h2 className="text-3xl sm:text-4xl font-black mb-3 text-charcoal leading-tight">
-            The tools you need for market domination
+    <section
+      id="services"
+      className="relative overflow-hidden bg-gradient-to-br from-[#050a1f] via-[#0b1330] to-[#050815] py-28"
+    >
+      <div className="absolute inset-0">
+        <div className="absolute left-[8%] top-[-6rem] h-[26rem] w-[26rem] rounded-full bg-action-blue/20 blur-[170px]" />
+        <div className="absolute right-[-5rem] top-[30%] h-[24rem] w-[24rem] rounded-full bg-energetic-pink/20 blur-[160px]" />
+        <div className="absolute left-1/2 bottom-[-8rem] h-[22rem] w-[22rem] -translate-x-1/2 rounded-full bg-vibrant-green/15 blur-[150px]" />
+      </div>
+
+      <div className="page-shell relative mx-auto max-w-[1400px]">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.3em] text-slate-100">
+            Services
+          </span>
+          <h2 className="mt-6 font-plus-jakarta-sans text-4xl font-bold text-slate-50 sm:text-[2.75rem]">
+            Everything you need to dominate your market
           </h2>
-        </div>
+          <p className="mt-4 font-inter text-base text-slate-200/80">
+            Modular offerings designed to plug directly into your acquisition stack, tailored to the maturity of your team.
+          </p>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {services.map((service, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
-              style={{ animationDelay: `${index * 150}ms` }}
+        <motion.div
+          variants={fadeInStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mt-16 grid gap-8 lg:grid-cols-3"
+        >
+          {services.map((service) => (
+            <motion.article
+              key={service.title}
+              variants={fadeInUp}
+              whileHover={hoverLift}
+              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/15 bg-white/10 p-8 shadow-[0_35px_100px_rgba(6,11,27,0.45)] backdrop-blur-2xl"
             >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                
-                {/* Icon Overlay */}
-                <div className="absolute bottom-4 left-4">
-                  <service.icon className="h-10 w-10 text-white drop-shadow-lg" />
+              <div className={`absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 bg-gradient-to-br ${service.accent} opacity-50 blur-3xl transition-all duration-500 group-hover:opacity-80`} />
+              <div className="relative z-10 flex flex-1 flex-col gap-6">
+                <span className="w-max rounded-full border border-white/15 bg-white/10 px-3 py-1 font-inter text-xs font-semibold uppercase tracking-[0.25em] text-slate-200">
+                  {service.badge}
+                </span>
+
+                <div className="relative flex h-16 w-16 items-center justify-center">
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${service.glow} blur-2xl`} />
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-action-blue shadow-[0_18px_40px_rgba(9,14,35,0.45)]">
+                    <service.icon className="h-7 w-7" />
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-charcoal">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed text-sm">
-                  {service.description}
-                </p>
+                <div>
+                  <h3 className="font-plus-jakarta-sans text-2xl font-semibold text-slate-50">{service.title}</h3>
+                  <p className="mt-3 font-inter text-sm text-slate-200/80 leading-relaxed">{service.description}</p>
+                </div>
 
-                <button className="text-primary-orange hover:text-primary-orange-dark font-bold group/btn flex items-center gap-2 transition-colors">
-                  Learn More
-                  <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                <motion.a
+                  whileHover={iconHover}
+                  href="/contact"
+                  className="mt-auto inline-flex items-center gap-2 font-inter text-sm font-semibold text-action-blue transition-colors hover:text-action-blue/80"
+                >
+                  Learn how it works
+                  <ArrowRight className="h-4 w-4" />
+                </motion.a>
               </div>
-            </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

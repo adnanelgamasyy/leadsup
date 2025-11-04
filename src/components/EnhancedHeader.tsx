@@ -44,25 +44,28 @@ export default function EnhancedHeader() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white shadow-lg border-b border-border' 
-          : 'bg-transparent'
+        isScrolled
+          ? 'border-b border-white/10 bg-[#070f25]/95 shadow-[0_12px_40px_rgba(3,6,17,0.55)] backdrop-blur-2xl'
+          : 'border-b border-transparent bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto w-full px-6 sm:px-10 lg:px-16">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group relative z-10">
-            <div className="bg-gradient-to-br from-primary-orange to-orange-600 rounded-lg p-1.5 group-hover:scale-110 transition-transform shadow-md">
-              <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <Link to="/" className="relative z-10 flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-action-blue via-energetic-pink to-vibrant-green shadow-[0_12px_30px_rgba(61,130,247,0.45)] transition-transform duration-300 hover:scale-105">
+              <svg className="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
               </svg>
             </div>
-            <span className="text-lg font-black text-charcoal">The Leads Up</span>
+            <div className="flex flex-col">
+              <span className="font-plus-jakarta-sans text-lg font-semibold tracking-tight text-slate-100">LeadsUp</span>
+              <span className="text-[0.65rem] uppercase tracking-[0.4em] text-slate-200/60">We don't do cold calls, we make cash calls.</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 relative z-10">
+          <nav className="relative z-10 hidden items-center gap-8 md:flex">
             {/* Services Dropdown */}
             <div 
               className="relative group"
@@ -70,21 +73,21 @@ export default function EnhancedHeader() {
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button
-                className="flex items-center gap-1 text-gray-600 hover:text-primary-orange transition-colors duration-200 font-semibold"
+                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
               >
                 Services
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {/* Dropdown Menu */}
-              <div className={`absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-premium-xl border border-border overflow-hidden transition-all duration-200 ${
-                isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+              <div className={`absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-2xl border border-white/10 bg-[#0c162f]/95 shadow-[0_25px_70px_rgba(5,8,18,0.65)] backdrop-blur-2xl transition-all duration-200 ${
+                isServicesOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
               }`}>
                 {services.map((service) => (
                   <Link
                     key={service.name}
                     to={service.href}
-                    className="block px-4 py-3 text-muted-foreground hover:bg-primary/5 hover:text-primary transition-colors duration-200 border-b border-border last:border-0"
+                    className="block px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
                   >
                     {service.name}
                   </Link>
@@ -94,42 +97,42 @@ export default function EnhancedHeader() {
 
             <Link
               to="/about"
-              className="text-gray-600 hover:text-primary-orange transition-colors duration-200 font-semibold relative group"
+              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
               About Us
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-orange group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
             </Link>
 
             <button
               onClick={() => scrollToSection('pricing')}
-              className="text-gray-600 hover:text-primary-orange transition-colors duration-200 font-semibold relative group"
+              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
               Pricing
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-orange group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
             </button>
 
             <Link
               to="/blog"
-              className="text-gray-600 hover:text-primary-orange transition-colors duration-200 font-semibold relative group"
+              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
               Blog
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-orange group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
             </Link>
 
             <Link
               to="/contact"
-              className="text-gray-600 hover:text-primary-orange transition-colors duration-200 font-semibold relative group"
+              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
               Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-orange group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
             </Link>
           </nav>
 
           {/* Primary CTA Button */}
-          <div className="hidden md:block relative z-10">
+          <div className="relative z-10 hidden md:block">
             <Button
               onClick={() => scrollToSection('contact')}
-              className="bg-primary-orange hover:bg-primary-orange-dark text-white font-bold px-5 py-2 text-sm rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="rounded-2xl bg-action-blue px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
             >
               Get Started
             </Button>
@@ -137,7 +140,7 @@ export default function EnhancedHeader() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground hover:text-primary transition-colors relative z-10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-2"
+            className="relative z-10 rounded-lg p-2 text-slate-100 transition-colors hover:text-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/60 focus:ring-offset-2 focus:ring-offset-[#070f25] md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -148,16 +151,16 @@ export default function EnhancedHeader() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-border shadow-premium-lg">
-          <div className="px-4 py-6 space-y-4">
+        <div className="border-t border-white/10 bg-[#0d1532]/95 backdrop-blur-2xl shadow-[0_25px_60px_rgba(5,8,20,0.65)] md:hidden">
+          <div className="space-y-4 px-6 py-6">
             {/* Services Mobile */}
             <div className="space-y-2">
-              <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Services</div>
+              <div className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70">Services</div>
               {services.map((service) => (
                 <Link
                   key={service.name}
                   to={service.href}
-                  className="block pl-4 py-2 text-muted-foreground hover:text-primary transition-colors duration-200"
+                  className="block rounded-xl px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {service.name}
@@ -167,7 +170,7 @@ export default function EnhancedHeader() {
 
             <Link
               to="/about"
-              className="block text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-lg"
+              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About Us
@@ -175,14 +178,14 @@ export default function EnhancedHeader() {
 
             <button
               onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-lg"
+              className="block w-full rounded-xl px-4 py-3 text-left font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
             >
               Pricing
             </button>
 
             <Link
               to="/blog"
-              className="block text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-lg"
+              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Blog
@@ -190,7 +193,7 @@ export default function EnhancedHeader() {
 
             <Link
               to="/contact"
-              className="block text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-lg"
+              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
@@ -201,7 +204,7 @@ export default function EnhancedHeader() {
                 scrollToSection('contact')
                 setIsMobileMenuOpen(false)
               }}
-              className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg mt-4"
+              className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
             >
               Book My Free Call
             </Button>

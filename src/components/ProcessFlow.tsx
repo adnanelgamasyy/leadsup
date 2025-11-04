@@ -1,141 +1,126 @@
 "use client"
 
 import { Calendar, Users, Target, ArrowRight } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { fadeInStagger, fadeInUp, hoverLift, viewportOnce, iconHover } from '@/lib/motion'
+
+const steps = [
+  {
+    label: 'Book your strategy call',
+    title: 'Diagnose your market and deal criteria',
+    description: 'We dive deep into your territory, goals, and seller profile to architect a data-driven outreach plan built for your KPIs.',
+    icon: Calendar,
+    gradient: 'from-action-blue/60 via-action-blue/20 to-transparent',
+    numberColor: 'from-action-blue to-energetic-pink'
+  },
+  {
+    label: 'Deploy your A-team',
+    title: 'Handpick trained callers and launch with premium data',
+    description: 'We match you with elite agents, load precision life-event data, and plug everything into our QA workflows so the lines light up instantly.',
+    icon: Users,
+    gradient: 'from-vibrant-green/60 via-vibrant-green/20 to-transparent',
+    numberColor: 'from-vibrant-green to-action-blue'
+  },
+  {
+    label: 'Receive qualified leads',
+    title: 'Take live transfers or calendar-ready appointments',
+    description: 'Motivated sellers are routed straight to your phone or booked into your calendar with context, so all that’s left is making the offer.',
+    icon: Target,
+    gradient: 'from-energetic-pink/60 via-energetic-pink/20 to-transparent',
+    numberColor: 'from-energetic-pink to-bright-amber'
+  }
+]
 
 export default function ProcessFlow() {
-  const [visibleSteps, setVisibleSteps] = useState<number[]>([])
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Animate steps sequentially
-            [0, 1, 2].forEach((index) => {
-              setTimeout(() => {
-                setVisibleSteps(prev => [...prev, index])
-              }, index * 200)
-            })
-          }
-        })
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  const steps = [
-    {
-      number: "1",
-      icon: Calendar,
-      title: "Book Your Strategy Call",
-      description: "We'll dive deep into your target market, criteria, and goals to build a custom outreach plan.",
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      iconColor: "text-blue-600"
-    },
-    {
-      number: "2",
-      icon: Users,
-      title: "We Deploy Your A-Team",
-      description: "We assign our best-fit agents and equip them with premium, multi-sourced data for your target area.",
-      color: "from-primary to-orange-500",
-      bgColor: "bg-orange-50",
-      iconColor: "text-primary"
-    },
-    {
-      number: "3",
-      icon: Target,
-      title: "Receive Qualified Leads",
-      description: "Motivated sellers are transferred live or booked directly into your calendar. You just show up and make offers.",
-      color: "from-green-500 to-green-600",
-      bgColor: "bg-green-50",
-      iconColor: "text-green-600"
-    }
-  ]
-
   return (
-    <section id="process" className="py-16 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-sm font-bold text-primary-orange uppercase tracking-wide mb-3">How It Works</p>
-          <h2 className="text-3xl sm:text-4xl font-black mb-3 text-charcoal leading-tight">
-            Go from consultation to qualified leads in <span className="text-primary-orange">72 hours</span>
-          </h2>
-          <p className="text-base text-gray-600 max-w-2xl mx-auto">
-            Getting started is simple, fast, and designed to get you results immediately
-          </p>
-        </div>
+    <section
+      id="process"
+      className="relative overflow-hidden bg-gradient-to-br from-[#060b1f] via-[#0e1531] to-[#050815] py-28"
+    >
+      <div className="absolute inset-0">
+        <div className="absolute -top-24 left-[-6rem] h-[24rem] w-[24rem] rounded-full bg-action-blue/20 blur-[160px]" />
+        <div className="absolute right-[-8rem] top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-energetic-pink/20 blur-[200px]" />
+        <div className="absolute left-1/3 bottom-[-6rem] h-[22rem] w-[22rem] rounded-full bg-vibrant-green/15 blur-[150px]" />
+      </div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {steps.map((step, index) => (
-              <div 
-                key={index} 
-                className={`relative transition-all duration-700 ${
-                  visibleSteps.includes(index) 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-8'
-                }`}
-              >
-                <div className="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border-2 border-orange-100 shadow-lg hover:shadow-xl hover:border-primary-orange hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-orange/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                  
-                  <div className="relative z-10">
-                    {/* Step Number Badge */}
-                    <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-orange to-orange-600 rounded-xl text-white text-2xl font-black mb-6 shadow-lg">
-                      {step.number}
-                    </div>
-                    
-                    {/* Icon */}
-                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 shadow-md">
-                      <step.icon className="h-6 w-6 text-primary-orange" />
-                    </div>
-                    
-                    <h3 className="text-xl font-bold mb-3 text-charcoal">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed text-sm">
-                      {step.description}
-                    </p>
-                  </div>
+      <div className="page-shell relative mx-auto max-w-[1400px]">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="max-w-5xl text-left"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.3em] text-slate-100">
+            The process
+          </span>
+          <h2 className="mt-6 font-plus-jakarta-sans text-4xl font-bold text-slate-50 sm:text-[2.8rem]">
+            Launch your lead machine in 72 hours
+          </h2>
+          <p className="mt-4 max-w-2xl font-inter text-base text-slate-200/80">
+            Getting started is simple, fast, and engineered to deliver qualified conversations immediately—no guesswork, no overwhelm.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={fadeInStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mt-16 grid gap-8 md:grid-cols-3"
+        >
+          {steps.map((step, index) => (
+            <motion.article
+              key={step.title}
+              variants={fadeInUp}
+              whileHover={hoverLift}
+              className="group relative overflow-hidden rounded-3xl border border-white/15 bg-white/10 p-8 shadow-[0_30px_80px_rgba(7,10,25,0.5)] backdrop-blur-2xl"
+            >
+              <div className={`absolute -right-20 -top-16 h-64 w-64 rounded-full bg-gradient-to-br ${step.gradient} blur-3xl transition-opacity duration-500 group-hover:opacity-90`} />
+              <div className="relative z-10 flex flex-col gap-6">
+                <div className="flex items-center gap-4">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10">
+                    <span className={`font-plus-jakarta-sans text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-br ${step.numberColor}`}>
+                      {index + 1}
+                    </span>
+                  </span>
+                  <span className="font-inter text-xs uppercase tracking-[0.35em] text-slate-200/70">{step.label}</span>
                 </div>
 
-                {/* Connector Arrow */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:flex absolute top-1/2 -right-4 z-10 items-center justify-center">
-                    <div className="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center border-2 border-primary-orange">
-                      <ArrowRight className="h-4 w-4 text-primary-orange" />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-action-blue">
+                  <step.icon className="h-6 w-6" />
+                </div>
 
-          {/* CTA Section */}
-          <div className="mt-16 text-center">
-            <Button 
-              size="lg"
-              className="bg-primary-orange hover:bg-primary-orange-dark text-white px-10 py-6 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
-            >
-              Get Started Today
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
-            <p className="text-sm text-gray-600 mt-4 font-medium">
-              Free consultation • No commitment required • Fast setup
-            </p>
-          </div>
-        </div>
+                <div>
+                  <h3 className="font-plus-jakarta-sans text-xl font-semibold text-slate-50">{step.title}</h3>
+                  <p className="mt-3 font-inter text-sm text-slate-200/80 leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="mt-16 flex flex-col items-center gap-4 text-center"
+        >
+          <Button
+            size="lg"
+            className="flex items-center gap-2 rounded-xl bg-action-blue px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.45)] transition hover:bg-action-blue/90"
+          >
+            Launch my outbound engine
+            <motion.span whileHover={iconHover}>
+              <ArrowRight className="h-5 w-5" />
+            </motion.span>
+          </Button>
+          <p className="font-inter text-sm text-slate-200/70">
+            Free discovery call • Lightning-fast onboarding • Cancel anytime
+          </p>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,139 +1,165 @@
-/* Updated: 2025-10-14T11:10:18.152Z */
-/* Updated: 2025-10-14T11:06:52.797Z */
-/* Updated: 2025-10-14T10:38:57.308Z */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Design System Colors */
-  --radius: 0.75rem; /* 12px for cards */
-  
-  /* Primary Palette */
-  --charcoal: #1A202C;
-  --body-text: #2D3748; /* Darker body text for better contrast */
-  --dark-gray: #4A5568;
-  --white: #FFFFFF;
-  --light-gray: #F7FAFC;
-  --light-peach: #FFF5F0;
-  --lighter-peach: #FFF9F5;
-  
-  /* Accent & CTA Palette - VIBRANT */
-  --primary-orange: #FF6B2C;
-  --primary-orange-dark: #D95821;
-  --primary-orange-light: #FFE5D9;
-  --vibrant-teal: #00C49A;
-  --vibrant-green: #38A169;
-  --vibrant-yellow: #D69E2E;
-  --success-green: #48BB78;
-  --data-blue: #4299E1;
-  --warning-yellow: #ECC94B;
-  
-  /* Card & Border Colors */
-  --card-border: #E2E8F0;
-  
-  /* Mapped to Tailwind Variables (HSL format for compatibility) */
-  --background: 210 17% 98%; /* #F8F9FA - Sophisticated off-white */
-  --foreground: 215 25% 27%; /* #2D3748 - Deep charcoal for high contrast */
-  --card: 0 0% 100%;
-  --card-foreground: 210 24% 16%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 210 24% 16%;
-  --primary: 16 100% 58%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 210 20% 98%;
-  --secondary-foreground: 215 16% 47%;
-  --muted: 210 20% 98%;
-  --muted-foreground: 215 16% 47%;
-  --accent: 210 20% 98%;
-  --accent-foreground: 210 24% 16%;
-  --destructive: 0 84% 60%;
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 16 100% 58%;
-}
+  --radius: 0.75rem;
 
-.dark {
-  --background: 210 25% 8%;
-  --foreground: 210 20% 98%;
-  --card: 210 24% 12%;
-  --card-foreground: 210 20% 98%;
-  --popover: 210 24% 12%;
-  --popover-foreground: 210 20% 98%;
-  --primary: 16 100% 60%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 210 20% 16%;
-  --secondary-foreground: 210 20% 98%;
-  --muted: 210 20% 16%;
-  --muted-foreground: 220 9% 65%;
-  --accent: 217 33% 17%;
-  --accent-foreground: 235 89% 74%;
-  --destructive: 0 84% 60%;
-  --border: 0 0% 100% / 0.1;
-  --input: 0 0% 100% / 0.1;
-  --ring: 16 100% 60%;
+  /* Neutral foundation */
+  --background: 224 29% 7%;
+  --foreground: 210 40% 96%;
+  --muted: 220 15% 16%;
+  --muted-foreground: 215 20% 80%;
+  --border: 220 13% 20%;
+  --input: 220 13% 20%;
+  --card: 220 15% 12%;
+  --card-foreground: 210 40% 96%;
+  --popover: 220 15% 12%;
+  --popover-foreground: 210 40% 96%;
+
+  /* Brand colors */
+  --primary: 217 92% 70%; /* Action Blue */
+  --primary-foreground: 222 47% 11%;
+  --secondary: 256 50% 65%; /* Deep Purple */
+  --secondary-foreground: 222 47% 11%;
+  --accent: 98 53% 55%; /* Vibrant Green */
+  --accent-foreground: 224 29% 7%;
+  --ring: 217 92% 70%;
+
+  /* Status */
+  --success: 142 72% 45%;
+  --warning: 38 92% 50%;
+  --destructive: 0 72% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Typography helpers */
+  --headline: #F8FAFC;
+  --body: #E2E8F0;
+
+  /* Effects */
+  --gradient-primary: linear-gradient(135deg, #101633 0%, #1a1f3b 45%, #3d82f7 100%);
 }
 
 @layer base {
-  * {
+  *,
+  *::before,
+  *::after {
     @apply border-border;
   }
-  
+
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-[#0b1024] text-body antialiased;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-weight: 400;
-    font-size: 1rem; /* 16px */
     line-height: 1.6;
+    color: var(--body);
   }
-  
-  /* Design System Typography - MODERN & BOLD */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    color: var(--headline);
+    letter-spacing: -0.02em;
+  }
+
   h1 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900; /* Extra Bold for maximum impact */
-    font-size: 4rem; /* 64px - Bold and impactful */
-    line-height: 1.1;
-    color: #1A202C; /* Charcoal */
+    @apply text-5xl md:text-6xl font-bold tracking-tighter;
   }
-  
+
   h2 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 900; /* Extra Bold for impact */
-    font-size: 2.5rem; /* 40px - Bolder headers */
-    line-height: 1.2;
-    color: #1A202C; /* Charcoal */
+    @apply text-4xl md:text-5xl font-bold tracking-tighter;
   }
-  
+
   h3 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700; /* Bold for emphasis */
-    font-size: 1.5rem; /* 24px */
-    line-height: 1.3;
-    color: #1A202C; /* Charcoal */
+    @apply text-2xl font-semibold;
   }
-  
+
   p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400; /* Regular for readability */
-    font-size: 1rem; /* 16px */
-    line-height: 1.6;
-    color: #2D3748; /* Body text */
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    color: var(--body);
   }
-  
-  /* Small text for labels and metadata */
-  small, .text-small {
-    font-size: 0.875rem; /* 14px */
-    font-weight: 400;
+
+  a {
+    @apply text-action-blue font-medium transition-colors duration-200;
   }
-  
-  /* Lozenge/Tags */
-  .tag, .lozenge {
-    font-size: 0.75rem; /* 12px */
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+
+  a:hover {
+    @apply text-action-blue/80;
+  }
+
+  ::selection {
+    background: rgba(61, 130, 247, 0.35);
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .page-shell {
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-shell {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .page-shell {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .page-shell {
+      padding-left: 6.5rem;
+      padding-right: 6.5rem;
+    }
+  }
+
+  .text-headline {
+    color: var(--headline);
+  }
+
+  .text-body {
+    color: var(--body);
+  }
+
+  .shadow-card {
+    box-shadow: 0 20px 60px rgba(28, 54, 96, 0.08);
+  }
+
+  .backdrop-blur-surface {
+    backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  .surface-card {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-card;
+  }
+
+  .surface-dark {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.5rem;
+  }
+
+  .tag {
+    @apply font-inter text-xs font-medium uppercase tracking-[0.2em] text-slate-500;
   }
 }
 
