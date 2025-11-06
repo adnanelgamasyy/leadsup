@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: Car,
-    title: 'Motivated Buyers & Sellers',
-    description: 'Connect with individuals actively looking to purchase or sell vehicles. We target prospects with immediate needs: lease expirations, trade-in opportunities, and urgent vehicle sales.'
+    title: "Motivated Buyers & Sellers",
+    description: "Connect with individuals actively looking to purchase or sell vehicles. We target prospects with immediate needs: lease expirations, trade-in opportunities, and urgent vehicle sales."
   },
   {
     icon: Users,
-    title: 'Qualified Appointments',
-    description: 'Pre-screen prospects for credit worthiness, trade-in availability, and purchasing timeline. Your sales team spends time closing deals, not chasing tire kickers.'
+    title: "Qualified Appointments",
+    description: "Pre-screen prospects for credit worthiness, trade-in availability, and purchasing timeline. Your sales team spends time closing deals, not chasing tire kickers."
   },
   {
     icon: TrendingUp,
-    title: 'Dealership Growth Programs',
-    description: 'Whether you're a new car dealer, used car lot, or private seller network, we build custom lead generation systems that drive showroom traffic and online inquiries.'
+    title: "Dealership Growth Programs",
+    description: "Whether you're a new car dealer, used car lot, or private seller network, we build custom lead generation systems that drive showroom traffic and online inquiries."
   },
   {
     icon: Phone,
-    title: 'Service Department Leads',
-    description: 'Fill your service bays with maintenance appointments, recall work, and repair needs. We target vehicle owners due for service in your geographic area.'
+    title: "Service Department Leads",
+    description: "Fill your service bays with maintenance appointments, recall work, and repair needs. We target vehicle owners due for service in your geographic area."
   }
 ]
 

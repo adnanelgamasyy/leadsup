@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: Database,
-    title: 'Motivated Seller Lists',
-    description: 'We target property owners facing foreclosure, probate, divorce, tax liens, and other high-motivation scenarios that signal urgency and willingness to sell below market value.'
+    title: "Motivated Seller Lists",
+    description: "We target property owners facing foreclosure, probate, divorce, tax liens, and other high-motivation scenarios that signal urgency and willingness to sell below market value."
   },
   {
     icon: Phone,
-    title: 'Quick Cash Conversations',
-    description: 'Our callers are trained to speak your language—ARV, MAO, assignment fees. They handle objections, qualify sellers, and set appointments with prospects ready to move fast.'
+    title: "Quick Cash Conversations",
+    description: "Our callers are trained to speak your language-ARV, MAO, assignment fees. They handle objections, qualify sellers, and set appointments with prospects ready to move fast."
   },
   {
     icon: TrendingUp,
-    title: 'Deal Flow That Scales',
-    description: 'Whether you're closing 1 deal per month or 10, our system scales with you. More volume means more contracts, more assignments, and more cash in your pocket.'
+    title: "Deal Flow That Scales",
+    description: "Whether you're closing 1 deal per month or 10, our system scales with you. More volume means more contracts, more assignments, and more cash in your pocket."
   },
   {
     icon: CheckCircle,
-    title: 'Full Transparency',
-    description: 'Real-time dashboards, recorded calls, and detailed CRM tracking. You'll always know exactly where your leads are in the pipeline and what's being said.'
+    title: "Full Transparency",
+    description: "Real-time dashboards, recorded calls, and detailed CRM tracking. You'll always know exactly where your leads are in the pipeline and what's being said."
   }
 ]
 

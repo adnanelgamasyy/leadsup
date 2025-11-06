@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: Home,
-    title: 'Distressed Property Leads',
-    description: 'We target properties with deferred maintenance, code violations, and abandonment signals—exactly the type of distressed deals that offer maximum flip potential and equity upside.'
+    title: "Distressed Property Leads",
+    description: "We target properties with deferred maintenance, code violations, and abandonment signals-exactly the type of distressed deals that offer maximum flip potential and equity upside."
   },
   {
     icon: TrendingUp,
-    title: 'ARV-Focused Prospecting',
-    description: 'Our team understands After Repair Value. We pre-screen for properties in neighborhoods with strong comps, ensuring you're not wasting time on deals that won't pencil out.'
+    title: "ARV-Focused Prospecting",
+    description: "Our team understands After Repair Value. We pre-screen for properties in neighborhoods with strong comps, ensuring you're not wasting time on deals that won't pencil out."
   },
   {
     icon: Users,
-    title: 'Contractor-Ready Deals',
-    description: 'Find properties your crew can transform. We connect you with motivated sellers in markets where your fix-and-flip model thrives, maximizing your ROI on every project.'
+    title: "Contractor-Ready Deals",
+    description: "Find properties your crew can transform. We connect you with motivated sellers in markets where your fix-and-flip model thrives, maximizing your ROI on every project."
   },
   {
     icon: CheckCircle,
-    title: 'Full Pipeline Management',
-    description: 'Track every lead from first contact to closing. Our CRM integration and real-time reporting keep you informed on deal progress, estimated timelines, and projected profits.'
+    title: "Full Pipeline Management",
+    description: "Track every lead from first contact to closing. Our CRM integration and real-time reporting keep you informed on deal progress, estimated timelines, and projected profits."
   }
 ]
 

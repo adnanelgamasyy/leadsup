@@ -46,17 +46,22 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-col gap-4 sm:flex-row">
-              <motion.div whileHover={buttonHover}>
-                <Button
-                  size="lg"
-                  className="flex items-center gap-2 rounded-xl bg-action-blue px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_30px_80px_rgba(61,130,247,0.5)] transition-all hover:bg-action-blue/90"
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative overflow-hidden flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_30px_80px_rgba(61,130,247,0.5)] hover:shadow-[0_35px_90px_rgba(61,130,247,0.6)] transition-all duration-300"
+              >
+                {/* Shimmer effect */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="relative z-10">Get LeadsUp Today</span>
+                <motion.span
+                  className="relative z-10"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  Get LeadsUp Today
-                  <motion.span whileHover={iconHover}>
-                    <ArrowRight className="h-5 w-5" />
-                  </motion.span>
-                </Button>
-              </motion.div>
+                  <ArrowRight className="h-5 w-5" />
+                </motion.span>
+              </motion.button>
 
               <motion.a
                 whileHover={buttonHover}

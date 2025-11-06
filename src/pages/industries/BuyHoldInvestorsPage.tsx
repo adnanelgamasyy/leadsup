@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: TrendingUp,
-    title: 'High-ROI Properties',
-    description: 'We target properties with strong rent-to-value ratios in appreciating neighborhoods. Build your empire on cash-flowing assets that generate wealth for decades.'
+    title: "High-ROI Properties",
+    description: "We target properties with strong rent-to-value ratios in appreciating neighborhoods. Build your empire on cash-flowing assets that generate wealth for decades."
   },
   {
     icon: DollarSign,
-    title: 'Cash Flow First',
-    description: 'Our data-driven approach identifies properties that hit your target cap rates and cash-on-cash returns. Every lead is pre-screened for rental income potential.'
+    title: "Cash Flow First",
+    description: "Our data-driven approach identifies properties that hit your target cap rates and cash-on-cash returns. Every lead is pre-screened for rental income potential."
   },
   {
     icon: Users,
-    title: 'Off-Market Opportunities',
-    description: 'Find motivated sellers before properties hit the MLS. Lock in below-market deals that maximize your returns from day one of ownership.'
+    title: "Off-Market Opportunities",
+    description: "Find motivated sellers before properties hit the MLS. Lock in below-market deals that maximize your returns from day one of ownership."
   },
   {
     icon: Home,
-    title: 'Portfolio Building Support',
-    description: 'Whether you're acquiring your first rental or your fiftieth, we provide the consistent deal flow you need to build a real estate portfolio that creates generational wealth.'
+    title: "Portfolio Building Support",
+    description: "Whether you're acquiring your first rental or your fiftieth, we provide the consistent deal flow you need to build a real estate portfolio that creates generational wealth."
   }
 ]
 
