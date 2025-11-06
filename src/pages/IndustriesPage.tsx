@@ -2,7 +2,8 @@ import { Home, Hammer, Building2, Users, Zap, Sun, Heart, Car, ArrowRight } from
 import { Button } from '@/components/ui/button'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
-import AnimatedSection from '@/components/AnimatedSection'
+import { motion } from 'framer-motion'
+import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHover } from '@/lib/motion'
 
 const realEstateNiches = [
   {
@@ -73,213 +74,280 @@ export default function IndustriesPage() {
       <EnhancedHeader />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-primary/5 via-orange-50/30 to-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-foreground">
-                Proven Systems for{' '}
-                <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">
-                  Growth-Driven Professionals
-                </span>
-              </h1>
-              <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-                Our battle-tested methodology for building predictable pipelines delivers results across a wide range of industries. Find your niche and discover how we can build a custom outreach engine for you.
-              </p>
-            </div>
-          </AnimatedSection>
+      <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900 pt-32 pb-24">
+        {/* Glow overlays */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[10%] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-action-blue/20 blur-3xl" />
+          <div className="absolute right-[10%] top-[35%] h-[22rem] w-[22rem] rounded-full bg-energetic-pink/20 blur-[150px]" />
+        </div>
+
+        <div className="page-shell relative mx-auto max-w-[1400px]">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate="show"
+            className="mx-auto max-w-4xl text-center"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.3em] text-slate-100 backdrop-blur-md">
+              Industries We Serve
+            </span>
+            <h1 className="mt-6 font-plus-jakarta-sans text-4xl font-bold leading-tight text-slate-50 sm:text-5xl lg:text-[3.75rem] lg:leading-[1.05]">
+              Proven Systems for Growth-Driven Professionals
+            </h1>
+            <p className="mt-6 font-inter text-base text-slate-200/80 sm:text-lg">
+              Our battle-tested methodology for building predictable pipelines delivers results across a wide range of industries. Find your niche and discover how we can build a custom outreach engine for you.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Real Estate Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection>
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6">
-                  <Home className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
-                  The Engine for Real Estate Investors
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Our core expertise. We speak your language because we come from your world. Whether you're wholesaling for quick cash, flipping for maximum profit, or building a rental empire, our systems are designed to find you the off-market deals that fuel your growth.
-                </p>
-              </div>
-            </AnimatedSection>
+      <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#1A1F3B] to-slate-900 py-28">
+        <div className="absolute inset-0">
+          <div className="absolute left-[10%] top-0 h-96 w-96 rounded-full bg-action-blue/20 blur-3xl" />
+        </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-              {realEstateNiches.map((niche, index) => {
-                const Icon = niche.icon
-                return (
-                  <AnimatedSection key={index} delay={index * 100}>
-                    <div className="group bg-card rounded-2xl border border-border shadow-premium hover:shadow-premium-lg transition-all duration-300 overflow-hidden cursor-pointer h-full">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src={niche.image}
-                          alt={niche.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-transparent" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                              <Icon className="w-5 h-5 text-white" />
-                            </div>
-                            <h3 className="text-lg font-bold text-white">
-                              {niche.title}
-                            </h3>
-                          </div>
+        <div className="page-shell relative mx-auto max-w-[1400px]">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl">
+              <Home className="h-8 w-8 text-action-blue" />
+            </div>
+            <h2 className="mt-6 font-plus-jakarta-sans text-4xl font-bold text-slate-50 sm:text-5xl">
+              The Engine for Real Estate Investors
+            </h2>
+            <p className="mt-4 font-inter text-base text-slate-200/80">
+              Our core expertise. We speak your language because we come from your world. Whether you're wholesaling for quick cash, flipping for maximum profit, or building a rental empire, our systems are designed to find you the off-market deals that fuel your growth.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInStagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          >
+            {realEstateNiches.map((niche, index) => {
+              const Icon = niche.icon
+              return (
+                <motion.article
+                  key={index}
+                  variants={fadeInUp}
+                  whileHover={hoverLift}
+                  className="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl transition"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={niche.image}
+                      alt={niche.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/70 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-xl">
+                          <Icon className="h-5 w-5 text-action-blue" />
                         </div>
-                      </div>
-                      <div className="p-6">
-                        <p className="text-muted-foreground">
-                          {niche.description}
-                        </p>
+                        <h3 className="font-plus-jakarta-sans text-lg font-semibold text-white">
+                          {niche.title}
+                        </h3>
                       </div>
                     </div>
-                  </AnimatedSection>
-                )
-              })}
-            </div>
-          </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="font-inter text-sm text-slate-200/80">
+                      {niche.description}
+                    </p>
+                  </div>
+                </motion.article>
+              )
+            })}
+          </motion.div>
         </div>
       </section>
 
       {/* Contractors Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection>
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-500/10 rounded-2xl mb-6">
-                  <Hammer className="w-8 h-8 text-orange-500" />
-                </div>
-                <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
-                  Filling the Job Queue for Contractors
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  A crew that isn't working is a crew that's costing you money. We keep your teams booked and busy by delivering a consistent flow of qualified, high-intent appointments with property owners who are ready to act now.
-                </p>
-              </div>
-            </AnimatedSection>
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#1A1F3B] via-[#101633] to-deep-purple py-28">
+        <div className="absolute inset-0">
+          <div className="absolute right-[15%] bottom-0 h-[30rem] w-[30rem] rounded-full bg-energetic-pink/20 blur-[180px]" />
+        </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
-              {contractorServices.map((service, index) => {
-                const Icon = service.icon
-                return (
-                  <AnimatedSection key={index} delay={index * 100}>
-                    <div className="group bg-card rounded-2xl border border-border shadow-premium hover:shadow-premium-lg transition-all duration-300 overflow-hidden cursor-pointer">
-                      <div className="relative h-56 overflow-hidden">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-transparent" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
-                              <Icon className="w-5 h-5 text-white" />
-                            </div>
-                            <h3 className="text-xl font-bold text-white">
-                              {service.title}
-                            </h3>
-                          </div>
+        <div className="page-shell relative mx-auto max-w-[1400px]">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl">
+              <Hammer className="h-8 w-8 text-energetic-pink" />
+            </div>
+            <h2 className="mt-6 font-plus-jakarta-sans text-4xl font-bold text-slate-50 sm:text-5xl">
+              Filling the Job Queue for Contractors
+            </h2>
+            <p className="mt-4 font-inter text-base text-slate-200/80">
+              A crew that isn't working is a crew that's costing you money. We keep your teams booked and busy by delivering a consistent flow of qualified, high-intent appointments with property owners who are ready to act now.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInStagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mx-auto mt-16 grid max-w-4xl gap-6 md:grid-cols-2"
+          >
+            {contractorServices.map((service, index) => {
+              const Icon = service.icon
+              return (
+                <motion.article
+                  key={index}
+                  variants={fadeInUp}
+                  whileHover={hoverLift}
+                  className="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl transition"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/70 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-xl">
+                          <Icon className="h-5 w-5 text-energetic-pink" />
                         </div>
-                      </div>
-                      <div className="p-6">
-                        <p className="text-muted-foreground">
-                          {service.description}
-                        </p>
+                        <h3 className="font-plus-jakarta-sans text-xl font-semibold text-white">
+                          {service.title}
+                        </h3>
                       </div>
                     </div>
-                  </AnimatedSection>
-                )
-              })}
-            </div>
-          </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="font-inter text-sm text-slate-200/80">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.article>
+              )
+            })}
+          </motion.div>
         </div>
       </section>
 
       {/* Professional Services Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection>
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6">
-                  <Zap className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground">
-                  High-Intent Leads for Professional Services
-                </h2>
-                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  We adapt our real estate-inspired outreach system to find clients and prospects who are actively seeking your services. We filter for intent, ensuring your team spends less time chasing and more time closing.
-                </p>
-              </div>
-            </AnimatedSection>
+      <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900 py-28">
+        <div className="absolute inset-0">
+          <div className="absolute left-1/2 bottom-[-7rem] h-[20rem] w-[20rem] -translate-x-1/2 rounded-full bg-vibrant-green/20 blur-[150px]" />
+        </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
-              {professionalServices.map((service, index) => {
-                const Icon = service.icon
-                return (
-                  <AnimatedSection key={index} delay={index * 100}>
-                    <div className="group bg-card rounded-2xl border border-border shadow-premium hover:shadow-premium-lg transition-all duration-300 overflow-hidden cursor-pointer">
-                      <div className="relative h-56 overflow-hidden">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-transparent" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                              <Icon className="w-5 h-5 text-white" />
-                            </div>
-                            <h3 className="text-xl font-bold text-white">
-                              {service.title}
-                            </h3>
-                          </div>
+        <div className="page-shell relative mx-auto max-w-[1400px]">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl">
+              <Zap className="h-8 w-8 text-vibrant-green" />
+            </div>
+            <h2 className="mt-6 font-plus-jakarta-sans text-4xl font-bold text-slate-50 sm:text-5xl">
+              High-Intent Leads for Professional Services
+            </h2>
+            <p className="mt-4 font-inter text-base text-slate-200/80">
+              We adapt our real estate-inspired outreach system to find clients and prospects who are actively seeking your services. We filter for intent, ensuring your team spends less time chasing and more time closing.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInStagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mx-auto mt-16 grid max-w-4xl gap-6 md:grid-cols-2"
+          >
+            {professionalServices.map((service, index) => {
+              const Icon = service.icon
+              return (
+                <motion.article
+                  key={index}
+                  variants={fadeInUp}
+                  whileHover={hoverLift}
+                  className="group relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl transition"
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/70 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-xl">
+                          <Icon className="h-5 w-5 text-vibrant-green" />
                         </div>
-                      </div>
-                      <div className="p-6">
-                        <p className="text-muted-foreground">
-                          {service.description}
-                        </p>
+                        <h3 className="font-plus-jakarta-sans text-xl font-semibold text-white">
+                          {service.title}
+                        </h3>
                       </div>
                     </div>
-                  </AnimatedSection>
-                )
-              })}
-            </div>
-          </div>
+                  </div>
+                  <div className="p-6">
+                    <p className="font-inter text-sm text-slate-200/80">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.article>
+              )
+            })}
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary via-primary/90 to-orange-500">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
-                Don't See Your Industry? Let's Talk.
-              </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Our systems are adaptable to any business model. Book a free consultation and we'll create a custom outreach strategy tailored to your exact needs.
-              </p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-action-blue via-deep-purple to-energetic-pink py-28">
+        <div className="absolute inset-0">
+          <div className="absolute left-[20%] top-[-8rem] h-[20rem] w-[20rem] rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute right-[20%] bottom-[-8rem] h-[20rem] w-[20rem] rounded-full bg-white/10 blur-3xl" />
+        </div>
+
+        <div className="page-shell relative mx-auto max-w-[1400px]">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mx-auto max-w-4xl text-center"
+          >
+            <h2 className="font-plus-jakarta-sans text-4xl font-bold text-white sm:text-5xl">
+              Don't See Your Industry? Let's Talk.
+            </h2>
+            <p className="mt-6 font-inter text-lg text-white/90">
+              Our systems are adaptable to any business model. Book a free consultation and we'll create a custom outreach strategy tailored to your exact needs.
+            </p>
+            <motion.div whileHover={buttonHover} className="mt-10">
               <Button
                 size="lg"
-                className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-2 rounded-xl bg-white px-8 py-4 font-inter text-base font-semibold text-action-blue shadow-[0_30px_80px_rgba(0,0,0,0.3)] transition-all hover:bg-white/90"
                 onClick={() => window.location.href = '/contact'}
               >
                 Book Your Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <motion.span whileHover={iconHover}>
+                  <ArrowRight className="h-5 w-5" />
+                </motion.span>
               </Button>
-            </div>
-          </AnimatedSection>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
