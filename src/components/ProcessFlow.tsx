@@ -108,15 +108,22 @@ export default function ProcessFlow() {
           viewport={viewportOnce}
           className="mt-16 flex flex-col items-center gap-4 text-center"
         >
-          <Button
-            size="lg"
-            className="flex items-center gap-2 rounded-xl bg-action-blue px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.45)] transition hover:bg-action-blue/90"
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="group relative overflow-hidden flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.45)] hover:shadow-[0_25px_70px_rgba(61,130,247,0.6)] transition-all duration-300"
           >
-            Launch my outbound engine
-            <motion.span whileHover={iconHover}>
+            {/* Shimmer effect */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+            <span className="relative z-10">Launch my outbound engine</span>
+            <motion.span
+              className="relative z-10"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
               <ArrowRight className="h-5 w-5" />
             </motion.span>
-          </Button>
+          </motion.button>
           <p className="font-inter text-sm text-slate-200/70">
             Free discovery call • Lightning-fast onboarding • Cancel anytime
           </p>

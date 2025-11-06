@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Check, ArrowRight, ShieldCheck, Timer, Eye } from 'lucide-react'
+import { Check, ArrowRight, ShieldCheck, Timer, Eye, Rocket, TrendingUp, Crown, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { fadeInStagger, fadeInUp, hoverLift, viewportOnce, iconHover } from '@/lib/motion'
 
@@ -12,6 +12,8 @@ const plans = [
     price: '$3,500',
     period: '/month',
     accent: 'from-action-blue/40 to-action-blue/10',
+    gradient: 'from-action-blue to-energetic-pink',
+    icon: Rocket,
     highlight: false,
     features: [
       '1 elite cold caller embedded into your brand voice',
@@ -31,6 +33,8 @@ const plans = [
     price: '$6,750',
     period: '/month',
     accent: 'from-energetic-pink/40 to-action-blue/20',
+    gradient: 'from-energetic-pink to-vibrant-green',
+    icon: TrendingUp,
     highlight: true,
     features: [
       'Everything in Drive',
@@ -50,6 +54,8 @@ const plans = [
     price: 'Custom pricing',
     period: '',
     accent: 'from-vibrant-green/40 to-bright-amber/20',
+    gradient: 'from-bright-amber to-vibrant-green',
+    icon: Crown,
     highlight: false,
     features: [
       'Everything in Momentum',
@@ -116,57 +122,104 @@ export default function Pricing() {
             <motion.article
               key={plan.name}
               variants={fadeInUp}
-              whileHover={hoverLift}
-              className={`relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl transition ${
-                plan.highlight ? 'ring-1 ring-action-blue/60' : ''
+              whileHover={{ y: -12, scale: 1.02 }}
+              transition={{ duration: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
+              className={`group relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-white/5 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.45)] backdrop-blur-3xl ${
+                plan.highlight ? 'ring-2 ring-action-blue/40' : ''
               }`}
             >
-              <div className={`absolute -top-24 right-[-40px] h-56 w-56 rounded-full bg-gradient-to-br ${plan.accent} blur-3xl opacity-70`} />
+              {/* Glassmorphism overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-action-blue/5 via-transparent to-energetic-pink/5 pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-action-blue/40 to-transparent" />
+
+              {/* Gradient glow */}
+              <div className={`absolute -top-24 right-[-40px] h-56 w-56 rounded-full bg-gradient-to-br ${plan.accent} blur-3xl opacity-70 transition-transform duration-500 group-hover:scale-125`} />
+
               <div className="relative z-10 flex h-full flex-col">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-2">
-                    <h3 className="font-plus-jakarta-sans text-2xl font-semibold text-slate-50">{plan.name}</h3>
-                    <p className="font-inter text-xs uppercase tracking-[0.35em] text-slate-200/70">{plan.ideal}</p>
-                  </div>
+                {/* Icon */}
+                <div className="flex items-start justify-between mb-6">
+                  <motion.div
+                    className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${plan.accent} border border-white/20 shadow-lg`}
+                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <plan.icon className={`h-8 w-8 bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`} strokeWidth={2} />
+                    {/* Sparkle effect */}
+                    <motion.div
+                      className="absolute -top-1 -right-1"
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileHover={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Sparkles className="w-4 h-4 text-vibrant-green" />
+                    </motion.div>
+                  </motion.div>
+
                   {plan.highlight && (
-                    <span className="rounded-full border border-action-blue/40 bg-action-blue/20 px-3 py-1 text-xs font-semibold text-action-blue">
+                    <motion.span
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="rounded-full border border-action-blue/40 bg-action-blue/20 px-3 py-1.5 text-xs font-semibold text-action-blue backdrop-blur-sm"
+                    >
                       Most Popular
-                    </span>
+                    </motion.span>
                   )}
                 </div>
 
-                <p className="mt-4 font-inter text-sm text-slate-200/80">
+                {/* Plan name with gradient */}
+                <h3 className={`font-plus-jakarta-sans text-2xl font-bold bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent mb-2`}>
+                  {plan.name}
+                </h3>
+                <p className="font-inter text-xs uppercase tracking-[0.35em] text-slate-200/70 mb-4">{plan.ideal}</p>
+
+                <p className="font-inter text-sm text-slate-200/80 mb-6">
                   {plan.tagline}
                 </p>
 
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span className="font-plus-jakarta-sans text-4xl font-bold text-slate-50">{plan.price}</span>
-                  {plan.period && <span className="font-inter text-sm text-slate-200/70">{plan.period}</span>}
+                {/* Price */}
+                <div className="mb-8 flex items-baseline gap-2">
+                  <span className={`font-plus-jakarta-sans text-5xl font-bold bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`}>
+                    {plan.price}
+                  </span>
+                  {plan.period && <span className="font-inter text-base text-slate-200/70">{plan.period}</span>}
                 </div>
 
-                <Button
-                  size="lg"
+                {/* Gradient CTA Button */}
+                <motion.button
                   onClick={() => handlePlanCta(plan.id)}
-                  className={`mt-8 flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-inter text-sm font-semibold transition ${
-                    plan.highlight
-                      ? 'bg-action-blue text-white shadow-elevated-md hover:bg-action-blue/90'
-                      : 'bg-white/10 text-slate-100 hover:bg-white/20'
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`group/btn relative overflow-hidden flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-inter text-sm font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.4)] hover:shadow-[0_25px_70px_rgba(61,130,247,0.6)] transition-all duration-300 ${
+                    plan.highlight ? 'bg-gradient-to-r from-action-blue to-energetic-pink' : 'bg-gradient-to-r from-vibrant-green to-action-blue'
                   }`}
                 >
-                  {plan.cta}
-                  <motion.span whileHover={iconHover}>
+                  {/* Shimmer effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative z-10">{plan.cta}</span>
+                  <motion.span
+                    className="relative z-10"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
                     <ArrowRight className="h-4 w-4" />
                   </motion.span>
-                </Button>
+                </motion.button>
 
                 <ul className="mt-8 space-y-3">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-white/30 bg-white/10 text-action-blue">
-                        <Check className="h-3 w-3" />
+                  {plan.features.map((feature, i) => (
+                    <motion.li
+                      key={feature}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.05 }}
+                      className="flex items-start gap-3"
+                    >
+                      <span className={`mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-white/30 bg-gradient-to-br ${plan.accent} shadow-sm`}>
+                        <Check className={`h-3 w-3 bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`} strokeWidth={3} />
                       </span>
                       <p className="font-inter text-sm text-slate-200/80 leading-relaxed">{feature}</p>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
 

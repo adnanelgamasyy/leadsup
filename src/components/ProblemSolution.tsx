@@ -177,13 +177,16 @@ export default function ProblemSolution() {
               </ul>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <Button
-                  size="lg"
-                  asChild
-                  className="rounded-xl bg-action-blue px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_25px_60px_rgba(61,130,247,0.45)] transition hover:bg-action-blue/90"
+                <motion.a
+                  href="#process"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative overflow-hidden flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-vibrant-green to-action-blue px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_25px_60px_rgba(61,130,247,0.45)] hover:shadow-[0_30px_70px_rgba(61,130,247,0.6)] transition-all duration-300"
                 >
-                  <a href="#process">Discover our process</a>
-                </Button>
+                  {/* Shimmer effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative z-10">Discover our process</span>
+                </motion.a>
                 <a
                   href="#pricing"
                   className="flex items-center justify-center rounded-xl border border-white/20 px-8 py-4 font-inter text-base font-semibold text-slate-100 transition hover:border-action-blue hover:text-action-blue"

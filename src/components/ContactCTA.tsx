@@ -51,17 +51,22 @@ export default function ContactCTA() {
                 className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
                 variants={fadeInUp}
               >
-                <motion.div whileHover={buttonHover}>
-                  <Button
-                    size="lg"
-                    className="flex items-center gap-3 rounded-2xl bg-action-blue px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_30px_80px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative overflow-hidden flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-energetic-pink to-vibrant-green px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_30px_80px_rgba(61,130,247,0.5)] hover:shadow-[0_35px_90px_rgba(61,130,247,0.6)] transition-all duration-300"
+                >
+                  {/* Shimmer effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative z-10">Get started today</span>
+                  <motion.span
+                    className="relative z-10"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
                   >
-                    Get started today
-                    <motion.span whileHover={iconHover}>
-                      <ArrowRight className="h-5 w-5" />
-                    </motion.span>
-                  </Button>
-                </motion.div>
+                    <ArrowRight className="h-5 w-5" />
+                  </motion.span>
+                </motion.button>
               </motion.div>
 
               <div className="flex flex-col gap-3 font-inter text-xs uppercase tracking-[0.3em] text-slate-200/70 sm:flex-row sm:gap-6 sm:text-sm">

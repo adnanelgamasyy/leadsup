@@ -61,17 +61,18 @@ export default function FreeStrategySection() {
           </div>
 
           <motion.div className="mt-10" variants={fadeInUp}>
-            <motion.div whileHover={buttonHover}>
-              <Button
-                size="lg"
-                className="flex w-full items-center justify-center gap-3 rounded-2xl bg-action-blue px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_30px_90px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90 sm:w-auto"
-                asChild
-              >
-                <a href="https://cal.com/leadsup/strategy-report" target="_blank" rel="noopener noreferrer">
-                  Get my free market strategy
-                </a>
-              </Button>
-            </motion.div>
+            <motion.a
+              href="https://cal.com/leadsup/strategy-report"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative overflow-hidden flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-vibrant-green to-action-blue px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_30px_90px_rgba(61,130,247,0.5)] hover:shadow-[0_35px_100px_rgba(61,130,247,0.6)] transition-all duration-300 sm:w-auto"
+            >
+              {/* Shimmer effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative z-10">Get my free market strategy</span>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
