@@ -10,6 +10,7 @@ import SkipToContent from '@/components/SkipToContent'
 // Lazy load below-the-fold components for performance
 const ProblemSolution = lazy(() => import('@/components/ProblemSolution'))
 const ProcessFlow = lazy(() => import('@/components/ProcessFlow'))
+const ServicesOverview = lazy(() => import('@/components/ServicesOverview'))
 const WhoWeHelp = lazy(() => import('@/components/WhoWeHelp'))
 const AudioSamples = lazy(() => import('@/components/AudioSamples'))
 const Pricing = lazy(() => import('@/components/Pricing'))
@@ -66,6 +67,10 @@ export default function HomePage() {
 
           <Suspense fallback={<SectionSkeleton />}>
             <ProcessFlow />
+          </Suspense>
+
+          <Suspense fallback={<SectionSkeleton />}>
+            <ServicesOverview />
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton />}>

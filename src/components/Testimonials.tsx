@@ -1,10 +1,34 @@
 "use client"
 
-import { Star } from 'lucide-react'
+import { Star, Play } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { fadeInStagger, fadeInUp, hoverLift, viewportOnce } from '@/lib/motion'
 
 export default function Testimonials() {
+  const videoTestimonials = [
+    {
+      thumbnail: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
+      author: 'Michael T.',
+      role: 'Real Estate Wholesaler',
+      duration: '2:45',
+      videoUrl: '#' // Placeholder - will be updated later
+    },
+    {
+      thumbnail: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600',
+      author: 'Sarah K.',
+      role: 'Fix & Flip Investor',
+      duration: '3:12',
+      videoUrl: '#' // Placeholder - will be updated later
+    },
+    {
+      thumbnail: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600',
+      author: 'James R.',
+      role: 'Buy & Hold Investor',
+      duration: '2:58',
+      videoUrl: '#' // Placeholder - will be updated later
+    }
+  ]
+
   const testimonials = [
     {
       quote:
@@ -101,6 +125,90 @@ export default function Testimonials() {
               </div>
             </motion.article>
           ))}
+        </motion.div>
+
+        {/* Video Testimonials Section */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          className="relative mt-24"
+        >
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h3 className="font-plus-jakarta-sans text-3xl font-bold text-slate-50 sm:text-4xl">
+              See What Our Clients Say
+            </h3>
+            <p className="mt-4 font-inter text-base text-slate-200/80">
+              Real stories from real investors who've transformed their business with The Leads Up.
+            </p>
+          </div>
+
+          <motion.div
+            variants={fadeInStagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto"
+          >
+            {videoTestimonials.map((video, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/10 shadow-[0_25px_80px_rgba(6,10,26,0.4)] backdrop-blur-2xl cursor-pointer"
+              >
+                {/* Video Thumbnail */}
+                <div className="relative aspect-video overflow-hidden">
+                  <img
+                    src={video.thumbnail}
+                    alt={`${video.author} testimonial`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050a1f] via-[#050a1f]/50 to-transparent" />
+
+                  {/* Play Button */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-action-blue/30 rounded-full blur-xl" />
+                      <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-action-blue to-energetic-pink shadow-[0_20px_60px_rgba(61,130,247,0.5)]">
+                        <Play className="h-7 w-7 text-white fill-white ml-1" />
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Duration Badge */}
+                  <div className="absolute bottom-3 right-3 rounded-lg bg-black/70 backdrop-blur-sm px-2 py-1 font-inter text-xs font-semibold text-white">
+                    {video.duration}
+                  </div>
+                </div>
+
+                {/* Video Info */}
+                <div className="p-5">
+                  <p className="font-plus-jakarta-sans text-base font-bold text-slate-50">{video.author}</p>
+                  <p className="font-inter text-sm text-slate-200/70">{video.role}</p>
+                </div>
+
+                {/* Hover Glow */}
+                <div className="absolute inset-0 bg-gradient-to-t from-action-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.p
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mt-8 text-center font-inter text-sm text-slate-200/60 italic"
+          >
+            Video testimonials will be updated soon with real client stories
+          </motion.p>
         </motion.div>
       </div>
     </section>

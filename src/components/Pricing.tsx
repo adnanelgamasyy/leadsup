@@ -16,7 +16,7 @@ const plans = [
     icon: Rocket,
     highlight: false,
     features: [
-      '1 elite cold caller embedded into your brand voice',
+      '1 elite cold caller (4 hours/day) embedded into your brand voice',
       'Dedicated Client Success Manager + weekly huddles',
       'Handpick your caller before launch',
       'Quality control on every conversation',

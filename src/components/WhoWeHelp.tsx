@@ -6,7 +6,7 @@ const industries = [
   {
     title: 'Real Estate Wholesalers',
     description: 'Fill your pipeline with quick-cash opportunities and boost assignment fees with smarter, faster lead generation.',
-    href: '/industries/wholesalers',
+    href: '/industries/real-estate-wholesalers',
     icon: Home,
     gradient: 'from-action-blue to-energetic-pink',
     iconBg: 'from-action-blue/20 to-energetic-pink/10'
@@ -14,7 +14,7 @@ const industries = [
   {
     title: 'Fix & Flip Investors',
     description: 'Find profitable flips faster with exclusive, high-quality off-market opportunities sourced before anyone else.',
-    href: '/industries/fix-and-flip',
+    href: '/industries/fix-flip-investors',
     icon: Wrench,
     gradient: 'from-energetic-pink to-vibrant-green',
     iconBg: 'from-energetic-pink/20 to-vibrant-green/10'
@@ -22,7 +22,7 @@ const industries = [
   {
     title: 'Buy & Hold Investors',
     description: 'Build long-term wealth with consistent deal flow and steady access to motivated seller leads in your buy box.',
-    href: '/industries/buy-and-hold',
+    href: '/industries/buy-hold-investors',
     icon: Building2,
     gradient: 'from-vibrant-green to-action-blue',
     iconBg: 'from-vibrant-green/20 to-action-blue/10'
@@ -30,7 +30,7 @@ const industries = [
   {
     title: 'Real Estate Agents',
     description: 'Generate more listings and attract ready-to-act buyers through precision-targeted outbound conversations.',
-    href: '/industries/agents',
+    href: '/industries/real-estate-agents',
     icon: Users2,
     gradient: 'from-bright-amber to-energetic-pink',
     iconBg: 'from-bright-amber/20 to-energetic-pink/10'
