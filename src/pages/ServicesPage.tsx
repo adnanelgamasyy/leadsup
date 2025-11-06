@@ -136,8 +136,11 @@ export default function ServicesPage() {
                   {/* Service Content */}
                   <div className="relative z-10 p-8">
                     <h3 className="font-plus-jakarta-sans text-2xl font-semibold text-slate-50">
-                      {service.headline}
+                      {service.title}
                     </h3>
+                    <p className="mt-2 font-inter text-sm font-semibold text-action-blue">
+                      {service.headline}
+                    </p>
                     <p className="mt-4 font-inter text-sm leading-relaxed text-slate-200/80">
                       {service.body}
                     </p>
