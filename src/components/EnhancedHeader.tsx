@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Menu, X, ChevronDown } from 'lucide-react'
@@ -6,8 +6,13 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 export default function EnhancedHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
+  const [isIndustriesDropdownOpen, setIsIndustriesDropdownOpen] = useState(false)
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isMobileIndustriesOpen, setIsMobileIndustriesOpen] = useState(false)
   const location = useLocation()
+  const servicesDropdownRef = useRef<HTMLDivElement>(null)
+  const industriesDropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +21,42 @@ export default function EnhancedHeader() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
+        setIsServicesDropdownOpen(false)
+      }
+      if (industriesDropdownRef.current && !industriesDropdownRef.current.contains(event.target as Node)) {
+        setIsIndustriesDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const servicesMenuItems = [
+    { name: 'All Services', path: '/services' },
+    { name: 'Cold Calling', path: '/services/cold-calling' },
+    { name: 'Data Generation', path: '/services/data-generation' },
+    { name: 'Skip Tracing', path: '/services/skip-tracing' },
+    { name: 'Market Research', path: '/services/market-research' },
+    { name: 'Acquisitions & Dispositions', path: '/services/acquisitions-dispositions' },
+    { name: 'Appointment Setting', path: '/services/appointment-setting' }
+  ]
+
+  const industriesMenuItems = [
+    { name: 'All Industries', path: '/industries' },
+    { name: 'Real Estate Wholesalers', path: '/industries/real-estate-wholesalers' },
+    { name: 'Fix & Flip Investors', path: '/industries/fix-flip-investors' },
+    { name: 'Buy & Hold Investors', path: '/industries/buy-hold-investors' },
+    { name: 'Real Estate Agents', path: '/industries/real-estate-agents' },
+    { name: 'Real Estate (PPL)', path: '/industries/real-estate' },
+    { name: 'Roofing Companies', path: '/industries/roofing' },
+    { name: 'Solar Industry', path: '/industries/solar' },
+    { name: 'Medical Insurance', path: '/industries/medical-insurance' },
+    { name: 'Automotive', path: '/industries/automotive' }
+  ]
 
   const scrollToSection = (sectionId: string) => {
     if (location.pathname !== '/') {
@@ -34,12 +75,6 @@ export default function EnhancedHeader() {
     }
     setIsMobileMenuOpen(false)
   }
-
-  const services = [
-    { name: 'Cold Calling VAs', href: '/services/cold-calling' },
-    { name: 'Skip Tracing & Data', href: '/services/skip-tracing' },
-    { name: 'Full-Service Acquisition', href: '/services/full-service' },
-  ]
 
   return (
     <header
@@ -67,55 +102,66 @@ export default function EnhancedHeader() {
           {/* Desktop Navigation */}
           <nav className="relative z-10 hidden items-center gap-8 md:flex">
             {/* Services Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
+            <div ref={servicesDropdownRef} className="relative">
               <button
+                onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
                 className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
               >
                 Services
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
-              
-              {/* Dropdown Menu */}
-              <div className={`absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-2xl border border-white/10 bg-[#0c162f]/95 shadow-[0_25px_70px_rgba(5,8,18,0.65)] backdrop-blur-2xl transition-all duration-200 ${
-                isServicesOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
-              }`}>
-                {services.map((service) => (
-                  <Link
-                    key={service.name}
-                    to={service.href}
-                    className="block px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
+
+              {isServicesDropdownOpen && (
+                <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-white/20 bg-[#070f25]/98 shadow-[0_25px_60px_rgba(5,8,20,0.65)] backdrop-blur-2xl">
+                  <div className="py-2">
+                    {servicesMenuItems.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={item.path}
+                        onClick={() => setIsServicesDropdownOpen(false)}
+                        className="block px-4 py-2.5 font-inter text-sm text-slate-200/80 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Industries Dropdown */}
+            <div ref={industriesDropdownRef} className="relative">
+              <button
+                onClick={() => setIsIndustriesDropdownOpen(!isIndustriesDropdownOpen)}
+                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              >
+                Industries
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isIndustriesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isIndustriesDropdownOpen && (
+                <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-white/20 bg-[#070f25]/98 shadow-[0_25px_60px_rgba(5,8,20,0.65)] backdrop-blur-2xl">
+                  <div className="py-2">
+                    {industriesMenuItems.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={item.path}
+                        onClick={() => setIsIndustriesDropdownOpen(false)}
+                        className="block px-4 py-2.5 font-inter text-sm text-slate-200/80 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <Link
-              to="/about"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
-            >
-              About Us
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
-            </Link>
-
-            <button
-              onClick={() => scrollToSection('pricing')}
+              to="/pricing"
               className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
               Pricing
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
-            </button>
-
-            <Link
-              to="/blog"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
-            >
-              Blog
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
             </Link>
 
@@ -130,12 +176,13 @@ export default function EnhancedHeader() {
 
           {/* Primary CTA Button */}
           <div className="relative z-10 hidden md:block">
-            <Button
-              onClick={() => scrollToSection('contact')}
-              className="rounded-2xl bg-action-blue px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
-            >
-              Get Started
-            </Button>
+            <Link to="/contact">
+              <Button
+                className="rounded-2xl bg-action-blue px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -153,42 +200,68 @@ export default function EnhancedHeader() {
       {isMobileMenuOpen && (
         <div className="border-t border-white/10 bg-[#0d1532]/95 backdrop-blur-2xl shadow-[0_25px_60px_rgba(5,8,20,0.65)] md:hidden">
           <div className="space-y-4 px-6 py-6">
-            {/* Services Mobile */}
-            <div className="space-y-2">
-              <div className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70">Services</div>
-              {services.map((service) => (
-                <Link
-                  key={service.name}
-                  to={service.href}
-                  className="block rounded-xl px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {service.name}
-                </Link>
-              ))}
+            {/* Mobile Services Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              >
+                Services
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileServicesOpen && (
+                <div className="mt-2 space-y-1 pl-4">
+                  {servicesMenuItems.map((item, index) => (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="block rounded-lg px-4 py-2 font-inter text-sm text-slate-200/70 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false)
+                        setIsMobileServicesOpen(false)
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Industries Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsMobileIndustriesOpen(!isMobileIndustriesOpen)}
+                className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              >
+                Industries
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isMobileIndustriesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileIndustriesOpen && (
+                <div className="mt-2 space-y-1 pl-4">
+                  {industriesMenuItems.map((item, index) => (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="block rounded-lg px-4 py-2 font-inter text-sm text-slate-200/70 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false)
+                        setIsMobileIndustriesOpen(false)
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             <Link
-              to="/about"
+              to="/pricing"
               className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
               onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About Us
-            </Link>
-
-            <button
-              onClick={() => scrollToSection('pricing')}
-              className="block w-full rounded-xl px-4 py-3 text-left font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
             >
               Pricing
-            </button>
-
-            <Link
-              to="/blog"
-              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Blog
             </Link>
 
             <Link
@@ -199,15 +272,14 @@ export default function EnhancedHeader() {
               Contact
             </Link>
 
-            <Button
-              onClick={() => {
-                scrollToSection('contact')
-                setIsMobileMenuOpen(false)
-              }}
-              className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
-            >
-              Book My Free Call
-            </Button>
+            <Link to="/contact">
+              <Button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+              >
+                Book My Free Call
+              </Button>
+            </Link>
           </div>
         </div>
       )}

@@ -1,9 +1,10 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { Calendar, Clock, ArrowLeft } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, BookOpen } from 'lucide-react'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
-import AnimatedSection from '@/components/AnimatedSection'
+import { motion } from 'framer-motion'
+import { fadeInUp, fadeInStagger, viewportOnce, hoverLift } from '@/lib/motion'
 import { blogPosts } from '@/data/blogPosts'
 
 export default function EnhancedBlogPostPage() {
@@ -49,10 +50,10 @@ export default function EnhancedBlogPostPage() {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <Link to="/blog" className="text-primary hover:underline">
+          <h1 className="text-4xl font-bold mb-4 text-slate-50">Post Not Found</h1>
+          <Link to="/blog" className="text-action-blue hover:text-action-blue/80">
             ← Back to Blog
           </Link>
         </div>
@@ -71,140 +72,164 @@ export default function EnhancedBlogPostPage() {
   )
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900">
       <EnhancedHeader />
-      
+
       {/* Article Header */}
       <article className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <AnimatedSection>
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              animate="show"
+            >
               {/* Back Link */}
-              <Link 
+              <Link
                 to="/blog"
-                className="inline-flex items-center gap-2 text-body-text hover:text-primary transition-colors duration-200 mb-8 group"
+                className="inline-flex items-center gap-2 text-slate-200/80 hover:text-action-blue transition-colors duration-200 mb-8 group"
               >
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
-                <span>Back to Blog</span>
+                <span className="font-inter text-sm font-semibold">Back to Blog</span>
               </Link>
 
               {/* Category Badge */}
               <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-primary-orange text-white text-sm font-semibold rounded-full uppercase tracking-wide">
+                <span className="inline-flex items-center gap-2 rounded-full border border-action-blue/30 bg-action-blue/15 px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.3em] text-action-blue backdrop-blur-md">
                   {post.category}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-charcoal leading-tight max-w-4xl">
+              <h1 className="font-plus-jakarta-sans text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-slate-50 leading-tight max-w-4xl">
                 {post.title}
               </h1>
 
               {/* Meta Information */}
-              <div className="flex flex-wrap items-center gap-6 text-body-text mb-8 pb-8 border-b border-card-border max-w-4xl">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-orange to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                    AA
+              <div className="flex flex-wrap items-center gap-6 text-slate-200/70 mb-12 pb-8 border-b border-white/10 max-w-4xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-action-blue to-vibrant-green rounded-full flex items-center justify-center text-white font-bold shadow-[0_8px_20px_rgba(61,130,247,0.4)]">
+                    <BookOpen className="w-5 h-5" />
                   </div>
-                  <span className="font-medium">{post.author}</span>
+                  <span className="font-inter text-sm font-medium text-slate-200/90">{post.author}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  <span>{new Date(post.publishDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <Calendar className="w-4 h-4 text-action-blue" />
+                  <span className="font-inter text-sm">{new Date(post.publishDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5" />
-                  <span>{post.readTime}</span>
+                  <Clock className="w-4 h-4 text-action-blue" />
+                  <span className="font-inter text-sm">{post.readTime}</span>
                 </div>
               </div>
-            </AnimatedSection>
+            </motion.div>
 
             {/* Two Column Layout: Content + TOC */}
             <div className="grid lg:grid-cols-[1fr_280px] gap-12">
               {/* Main Content Column */}
               <div>
                 {/* Featured Image */}
-                <AnimatedSection delay={100}>
-                  <div className="mb-12 rounded-2xl overflow-hidden shadow-premium-lg">
-                    <img 
-                      src={post.imageUrl} 
+                <motion.div
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={viewportOnce}
+                >
+                  <div className="mb-12 rounded-3xl overflow-hidden shadow-[0_40px_120px_rgba(15,23,42,0.5)] border border-white/10">
+                    <img
+                      src={post.imageUrl}
                       alt={post.title}
                       className="w-full h-auto"
                     />
                   </div>
-                </AnimatedSection>
+                </motion.div>
 
-                {/* Article Content with Enhancements */}
-                <AnimatedSection delay={200}>
-                  <div className="blog-content">
-                    {/* Engaging Lede (First Paragraph) */}
-                    <p className="blog-lede">
+                {/* Article Content */}
+                <motion.div
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={viewportOnce}
+                  className="blog-content-wrapper"
+                >
+                  {/* Engaging Lede (First Paragraph) */}
+                  <div className="mb-8 rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.35)]">
+                    <p className="font-inter text-lg text-slate-200/90 leading-relaxed">
                       {post.excerpt}
                     </p>
+                  </div>
 
-                    {/* Key Takeaways Box */}
-                    <div className="key-takeaways">
-                      <h3>Key Takeaways</h3>
-                      <ul>
-                        <li>Learn the critical mistakes that are costing you deals</li>
-                        <li>Discover proven strategies to improve conversion rates</li>
-                        <li>Get actionable tips you can implement immediately</li>
-                      </ul>
+                  {/* Main Content with Proper Styling */}
+                  <div
+                    className="blog-content
+                      [&>p]:font-inter [&>p]:text-base [&>p]:text-slate-200/80 [&>p]:leading-relaxed [&>p]:mb-6
+                      [&>h2]:font-plus-jakarta-sans [&>h2]:text-3xl [&>h2]:font-bold [&>h2]:text-slate-50 [&>h2]:mt-12 [&>h2]:mb-6
+                      [&>h3]:font-plus-jakarta-sans [&>h3]:text-2xl [&>h3]:font-semibold [&>h3]:text-slate-50 [&>h3]:mt-8 [&>h3]:mb-4
+                      [&>h4]:font-plus-jakarta-sans [&>h4]:text-xl [&>h4]:font-semibold [&>h4]:text-slate-50 [&>h4]:mt-6 [&>h4]:mb-3
+                      [&>ul]:my-6 [&>ul]:space-y-3 [&>ul]:ml-6
+                      [&>ul>li]:font-inter [&>ul>li]:text-base [&>ul>li]:text-slate-200/80 [&>ul>li]:leading-relaxed
+                      [&>ul>li]:pl-2 [&>ul>li]:relative
+                      [&>ul>li::before]:content-[''] [&>ul>li::before]:absolute [&>ul>li::before]:left-[-1.5rem] [&>ul>li::before]:top-[0.6rem]
+                      [&>ul>li::before]:w-2 [&>ul>li::before]:h-2 [&>ul>li::before]:rounded-full [&>ul>li::before]:bg-action-blue
+                      [&>strong]:text-slate-50 [&>strong]:font-semibold
+                      [&>.video-container]:my-10 [&>.video-container]:rounded-2xl [&>.video-container]:overflow-hidden
+                      [&>.video-container]:shadow-[0_40px_120px_rgba(15,23,42,0.5)] [&>.video-container]:border [&>.video-container]:border-white/10
+                      [&>.video-container>iframe]:w-full [&>.video-container>iframe]:aspect-video
+                      [&>table]:my-8 [&>table]:w-full [&>table]:rounded-2xl [&>table]:overflow-hidden [&>table]:border [&>table]:border-white/20
+                      [&>table_thead]:bg-white/10
+                      [&>table_th]:font-inter [&>table_th]:text-sm [&>table_th]:font-semibold [&>table_th]:text-slate-50 [&>table_th]:px-4 [&>table_th]:py-3 [&>table_th]:text-left
+                      [&>table_td]:font-inter [&>table_td]:text-sm [&>table_td]:text-slate-200/80 [&>table_td]:px-4 [&>table_td]:py-3
+                      [&>table_tbody>tr]:border-t [&>table_tbody>tr]:border-white/10
+                      [&_a]:text-action-blue [&_a]:font-semibold [&_a]:no-underline hover:[&_a]:underline"
+                    dangerouslySetInnerHTML={{ __html: contentWithIds }}
+                  />
+
+                  {/* Author Bio */}
+                  <div className="mt-16 rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.35)] flex gap-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-action-blue to-vibrant-green rounded-full flex items-center justify-center text-white font-bold text-xl shadow-[0_12px_30px_rgba(61,130,247,0.4)] flex-shrink-0">
+                      TL
                     </div>
-
-                    {/* Main Content */}
-                    <div 
-                      className="prose prose-lg max-w-none
-                        prose-headings:font-bold prose-headings:text-charcoal
-                        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6
-                        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-                        prose-p:text-body-text prose-p:leading-relaxed prose-p:mb-6
-                        prose-strong:text-charcoal prose-strong:font-semibold
-                        prose-ul:my-6 prose-li:text-body-text
-                        prose-a:text-primary-orange prose-a:no-underline hover:prose-a:underline"
-                      dangerouslySetInnerHTML={{ __html: contentWithIds }}
-                    />
-
-                    {/* Author Bio */}
-                    <div className="author-bio">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary-orange to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
-                        TL
-                      </div>
-                      <div className="author-bio-text">
-                        <h4>Written by The Leads Up Team</h4>
-                        <p>
-                          Our team of real estate acquisition experts has generated over $50M in deals using the exact strategies we share. 
-                          We're committed to helping investors like you build predictable, scalable acquisition systems.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Blog Post CTA */}
-                    <div className="blog-post-cta">
-                      <h3>Ready to 10X Your Deal Flow?</h3>
-                      <p>
-                        Stop struggling with inconsistent leads. Book your free strategy call and discover how The Leads Up 
-                        can fill your pipeline with motivated sellers in just 72 hours.
+                    <div>
+                      <h4 className="font-plus-jakarta-sans text-lg font-semibold text-slate-50 mb-2">Written by The Leads Up Team</h4>
+                      <p className="font-inter text-sm text-slate-200/80 leading-relaxed">
+                        Our team of real estate acquisition experts has generated over $50M in deals using the exact strategies we share.
+                        We're committed to helping investors like you build predictable, scalable acquisition systems.
                       </p>
-                      <button>
-                        Book My Free Strategy Call
-                      </button>
                     </div>
                   </div>
-                </AnimatedSection>
+
+                  {/* Blog Post CTA */}
+                  <div className="mt-12 rounded-3xl border border-action-blue/30 bg-gradient-to-br from-action-blue/20 via-deep-purple/20 to-energetic-pink/20 p-10 backdrop-blur-2xl shadow-[0_40px_120px_rgba(61,130,247,0.3)] text-center">
+                    <h3 className="font-plus-jakarta-sans text-3xl font-bold text-slate-50 mb-4">Ready to 10X Your Deal Flow?</h3>
+                    <p className="font-inter text-base text-slate-200/80 leading-relaxed mb-6 max-w-2xl mx-auto">
+                      Stop struggling with inconsistent leads. Book your free strategy call and discover how The Leads Up
+                      can fill your pipeline with motivated sellers in just 72 hours.
+                    </p>
+                    <button
+                      onClick={() => window.location.href = '/contact'}
+                      className="rounded-xl bg-action-blue px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.5)] transition-all hover:bg-action-blue/90 hover:shadow-[0_30px_80px_rgba(61,130,247,0.6)] hover:scale-105"
+                    >
+                      Book My Free Strategy Call
+                    </button>
+                  </div>
+                </motion.div>
               </div>
 
               {/* Sticky Table of Contents (Desktop Only) */}
               {headings.length > 0 && (
                 <div className="hidden lg:block">
-                  <div className="blog-toc">
-                    <div className="blog-toc-title">Table of Contents</div>
-                    <ul>
+                  <div className="sticky top-24 rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.35)]">
+                    <div className="font-plus-jakarta-sans text-sm font-semibold uppercase tracking-[0.2em] text-slate-50 mb-4">Table of Contents</div>
+                    <ul className="space-y-2">
                       {headings.map((heading) => (
                         <li key={heading.id}>
                           <a
                             href={`#${heading.id}`}
-                            className={activeSection === heading.id ? 'active' : ''}
+                            className={`block font-inter text-sm py-2 px-3 rounded-lg transition-all duration-200 ${
+                              activeSection === heading.id
+                                ? 'bg-action-blue/20 text-action-blue font-semibold'
+                                : 'text-slate-200/70 hover:text-action-blue hover:bg-white/10'
+                            }`}
                             onClick={(e) => {
                               e.preventDefault()
                               document.getElementById(heading.id)?.scrollIntoView({
@@ -227,43 +252,69 @@ export default function EnhancedBlogPostPage() {
       </article>
 
       {/* Related Posts */}
-      <section className="py-16 bg-light-gray">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-gradient-to-br from-[#1A1F3B] via-[#101633] to-deep-purple">
+        <div className="absolute inset-0">
+          <div className="absolute right-[15%] bottom-0 h-[30rem] w-[30rem] rounded-full bg-energetic-pink/20 blur-[180px]" />
+        </div>
+
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <AnimatedSection>
-              <h2 className="text-2xl font-bold mb-8 text-charcoal">Related Articles</h2>
-            </AnimatedSection>
-            <div className="grid md:grid-cols-3 gap-6">
+            <motion.h2
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportOnce}
+              className="font-plus-jakarta-sans text-3xl font-bold mb-12 text-slate-50"
+            >
+              Related Articles
+            </motion.h2>
+            <motion.div
+              variants={fadeInStagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportOnce}
+              className="grid md:grid-cols-3 gap-8"
+            >
               {blogPosts
                 .filter(p => p.id !== post.id)
                 .slice(0, 3)
-                .map((relatedPost, index) => (
-                  <AnimatedSection key={relatedPost.id} delay={index * 100}>
-                    <Link 
+                .map((relatedPost) => (
+                  <motion.article
+                    key={relatedPost.id}
+                    variants={fadeInUp}
+                    whileHover={hoverLift}
+                  >
+                    <Link
                       to={`/blog/${relatedPost.slug}`}
                       className="group block h-full"
                     >
-                      <div className="bg-white rounded-xl overflow-hidden border border-card-border shadow-premium card-hover h-full card-compact">
-                        <div className="relative h-40 overflow-hidden">
-                          <img 
-                            src={relatedPost.imageUrl} 
+                      <div className="h-full overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl transition">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src={relatedPost.imageUrl}
                             alt={relatedPost.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/50 to-transparent" />
+                          <div className="absolute left-4 top-4">
+                            <span className="inline-flex rounded-full border border-white/20 bg-action-blue px-3 py-1 font-inter text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                              {relatedPost.category}
+                            </span>
+                          </div>
                         </div>
-                        <div className="p-4">
-                          <span className="inline-block px-2 py-1 bg-primary-orange-light text-primary-orange text-xs font-semibold rounded mb-2">
-                            {relatedPost.category}
-                          </span>
-                          <h3 className="text-base font-bold text-charcoal group-hover:text-primary-orange transition-colors duration-300 line-clamp-2">
+                        <div className="p-6">
+                          <h3 className="font-plus-jakarta-sans text-xl font-semibold text-slate-50 transition-colors group-hover:text-action-blue line-clamp-2">
                             {relatedPost.title}
                           </h3>
+                          <p className="mt-3 font-inter text-sm text-slate-200/70 line-clamp-2">
+                            {relatedPost.excerpt}
+                          </p>
                         </div>
                       </div>
                     </Link>
-                  </AnimatedSection>
+                  </motion.article>
                 ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

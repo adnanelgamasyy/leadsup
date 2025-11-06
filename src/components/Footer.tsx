@@ -4,16 +4,16 @@ import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ArrowRight
 
 const quickLinks = {
   services: [
-    { name: 'Cold calling specialists', href: '#pricing' },
-    { name: 'Skip tracing & data', href: '#pricing' },
-    { name: 'Acquisitions managed', href: '#process' },
-    { name: 'Industries we support', href: '#industries' }
+    { name: 'Our Services', href: '/services' },
+    { name: 'Industries We Serve', href: '/industries' },
+    { name: 'Pricing Plans', href: '/pricing' },
+    { name: 'Contact Us', href: '/contact' }
   ],
   company: [
     { name: 'About LeadsUp', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Playbook', href: '/blog' }
+    { name: 'Blog & Resources', href: '/blog' },
+    { name: 'Book Strategy Call', href: '/contact' },
+    { name: 'Get Started', href: '/pricing' }
   ]
 }
 
@@ -109,18 +109,18 @@ export default function Footer() {
             <ul className="space-y-4 font-inter text-sm text-slate-200/80">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-1 h-5 w-5 text-action-blue" />
-                <span>123 Business St, Suite 100<br />Miami, FL 33131</span>
+                <span>Operated by Adnan Ahmed<br />Registered in WY, USA<br />Operating nationwide</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-energetic-pink" />
-                <a className="transition hover:text-action-blue" href="tel:+18885551234">
-                  (888) 555-1234
+                <a className="transition hover:text-action-blue" href="tel:+15513584982">
+                  +1 (551) 358-4982
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-vibrant-green" />
-                <a className="transition hover:text-action-blue" href="mailto:hello@theleadsup.com">
-                  hello@theleadsup.com
+                <a className="transition hover:text-action-blue" href="mailto:info@theleadsup.com">
+                  info@theleadsup.com
                 </a>
               </li>
             </ul>
