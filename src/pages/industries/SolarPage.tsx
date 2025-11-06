@@ -14,12 +14,12 @@ const features = [
   {
     icon: Zap,
     title: 'High-Intent Homeowners',
-    description: 'Target prospects actively researching solar solutions, motivated by rising energy costs, tax incentives, and environmental concerns. These aren't cold leads—they're warm conversations.'
+    description: 'Target prospects actively researching solar solutions, motivated by rising energy costs, tax incentives, and environmental concerns. These aren\'t cold leads—they\'re warm conversations.'
   },
   {
     icon: Phone,
     title: 'Appointment Setting Included',
-    description: 'We don't just generate interest—we book appointments directly on your calendar. Show up to homes with qualified prospects ready to discuss installation timelines and financing.'
+    description: 'We don\'t just generate interest—we book appointments directly on your calendar. Show up to homes with qualified prospects ready to discuss installation timelines and financing.'
   },
   {
     icon: TrendingUp,
