@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 export default function EnhancedHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -35,12 +34,6 @@ export default function EnhancedHeader() {
     setIsMobileMenuOpen(false)
   }
 
-  const services = [
-    { name: 'Cold Calling VAs', href: '/services/cold-calling' },
-    { name: 'Skip Tracing & Data', href: '/services/skip-tracing' },
-    { name: 'Full-Service Acquisition', href: '/services/full-service' },
-  ]
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -66,56 +59,27 @@ export default function EnhancedHeader() {
 
           {/* Desktop Navigation */}
           <nav className="relative z-10 hidden items-center gap-8 md:flex">
-            {/* Services Dropdown */}
-            <div 
-              className="relative group"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <button
-                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
-              >
-                Services
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {/* Dropdown Menu */}
-              <div className={`absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-2xl border border-white/10 bg-[#0c162f]/95 shadow-[0_25px_70px_rgba(5,8,18,0.65)] backdrop-blur-2xl transition-all duration-200 ${
-                isServicesOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
-              }`}>
-                {services.map((service) => (
-                  <Link
-                    key={service.name}
-                    to={service.href}
-                    className="block px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
             <Link
-              to="/about"
+              to="/services"
               className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
-              About Us
+              Services
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
             </Link>
 
-            <button
-              onClick={() => scrollToSection('pricing')}
+            <Link
+              to="/industries"
+              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+            >
+              Industries
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
+            </Link>
+
+            <Link
+              to="/pricing"
               className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
               Pricing
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
-            </button>
-
-            <Link
-              to="/blog"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
-            >
-              Blog
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
             </Link>
 
@@ -130,12 +94,13 @@ export default function EnhancedHeader() {
 
           {/* Primary CTA Button */}
           <div className="relative z-10 hidden md:block">
-            <Button
-              onClick={() => scrollToSection('contact')}
-              className="rounded-2xl bg-action-blue px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
-            >
-              Get Started
-            </Button>
+            <Link to="/contact">
+              <Button
+                className="rounded-2xl bg-action-blue px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -153,42 +118,28 @@ export default function EnhancedHeader() {
       {isMobileMenuOpen && (
         <div className="border-t border-white/10 bg-[#0d1532]/95 backdrop-blur-2xl shadow-[0_25px_60px_rgba(5,8,20,0.65)] md:hidden">
           <div className="space-y-4 px-6 py-6">
-            {/* Services Mobile */}
-            <div className="space-y-2">
-              <div className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70">Services</div>
-              {services.map((service) => (
-                <Link
-                  key={service.name}
-                  to={service.href}
-                  className="block rounded-xl px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {service.name}
-                </Link>
-              ))}
-            </div>
-
             <Link
-              to="/about"
+              to="/services"
               className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              About Us
+              Services
             </Link>
 
-            <button
-              onClick={() => scrollToSection('pricing')}
-              className="block w-full rounded-xl px-4 py-3 text-left font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-            >
-              Pricing
-            </button>
-
             <Link
-              to="/blog"
+              to="/industries"
               className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Blog
+              Industries
+            </Link>
+
+            <Link
+              to="/pricing"
+              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Pricing
             </Link>
 
             <Link
@@ -199,15 +150,14 @@ export default function EnhancedHeader() {
               Contact
             </Link>
 
-            <Button
-              onClick={() => {
-                scrollToSection('contact')
-                setIsMobileMenuOpen(false)
-              }}
-              className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
-            >
-              Book My Free Call
-            </Button>
+            <Link to="/contact">
+              <Button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+              >
+                Book My Free Call
+              </Button>
+            </Link>
           </div>
         </div>
       )}

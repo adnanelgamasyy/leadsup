@@ -17,10 +17,10 @@ export default function Header() {
   }, [])
 
   const navLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Services', href: '/services' },
+    { name: 'Industries', href: '/industries' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Contact', href: '/contact' },
   ]
 
   return (
@@ -32,7 +32,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group relative z-10">
+          <a href="/" className="flex items-center gap-2 group relative z-10">
             <div className="bg-gradient-to-br from-primary to-orange-500 rounded-lg p-2 group-hover:scale-110 transition-transform shadow-md">
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
@@ -59,6 +59,7 @@ export default function Header() {
           <div className="hidden md:block relative z-10">
             <Button
               className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+              onClick={() => window.location.href = '/contact'}
             >
               Get Started
             </Button>
@@ -90,7 +91,10 @@ export default function Header() {
             ))}
             <Button
               className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+                window.location.href = '/contact'
+              }}
             >
               Get Started
             </Button>
