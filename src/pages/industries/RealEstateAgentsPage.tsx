@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: Star,
-    title: 'Exclusive Pocket Listings',
-    description: 'Connect with sellers before their properties hit the MLS. Give your clients first access to off-market opportunities and build your reputation as the agent with the best deals.'
+    title: "Exclusive Pocket Listings",
+    description: "Connect with sellers before their properties hit the MLS. Give your clients first access to off-market opportunities and build your reputation as the agent with the best deals."
   },
   {
     icon: Phone,
-    title: 'Pre-Qualified Buyer Leads',
-    description: 'Stop wasting time with tire kickers. We connect you with serious buyers who are ready to move, have financing in place, and are actively searching in your market.'
+    title: "Pre-Qualified Buyer Leads",
+    description: "Stop wasting time with tire kickers. We connect you with serious buyers who are ready to move, have financing in place, and are actively searching in your market."
   },
   {
     icon: TrendingUp,
-    title: 'Consistent Transaction Flow',
-    description: 'Build a predictable income with a steady pipeline of buyer and seller leads. More transactions mean more commissions and faster growth for your business.'
+    title: "Consistent Transaction Flow",
+    description: "Build a predictable income with a steady pipeline of buyer and seller leads. More transactions mean more commissions and faster growth for your business."
   },
   {
     icon: Users,
-    title: 'Referral-Quality Leads',
-    description: 'Every lead is vetted and qualified before reaching you. We handle the initial outreach and screening so you can focus on closing deals and serving clients.'
+    title: "Referral-Quality Leads",
+    description: "Every lead is vetted and qualified before reaching you. We handle the initial outreach and screening so you can focus on closing deals and serving clients."
   }
 ]
 

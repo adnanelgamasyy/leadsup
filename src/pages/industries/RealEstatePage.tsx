@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const pplFeatures = [
   {
     icon: DollarSign,
-    title: 'Pay Per Lead Model',
-    description: 'Only pay for verified, qualified leads that match your exact criteria. No upfront fees, no monthly retainers—just results you can measure.'
+    title: "Pay Per Lead Model",
+    description: "Only pay for verified, qualified leads that match your exact criteria. No upfront fees, no monthly retainers-just results you can measure."
   },
   {
     icon: Users,
-    title: 'Pre-Qualified Prospects',
-    description: 'Every lead is vetted before delivery. We verify motivation, timeline, and property details so you're only paying for prospects ready to transact.'
+    title: "Pre-Qualified Prospects",
+    description: "Every lead is vetted before delivery. We verify motivation, timeline, and property details so you're only paying for prospects ready to transact."
   },
   {
     icon: TrendingUp,
-    title: 'Scalable & Flexible',
-    description: 'Scale up during hot markets, scale down when needed. Adjust your lead volume based on your capacity and market conditions.'
+    title: "Scalable & Flexible",
+    description: "Scale up during hot markets, scale down when needed. Adjust your lead volume based on your capacity and market conditions."
   },
   {
     icon: Building2,
-    title: 'Custom Targeting',
-    description: 'Define your perfect lead by geography, property type, price range, and motivation level. We deliver exactly what you need, nothing you don't.'
+    title: "Custom Targeting",
+    description: "Define your perfect lead by geography, property type, price range, and motivation level. We deliver exactly what you need, nothing you don't."
   }
 ]
 
@@ -54,7 +54,7 @@ export default function RealEstatePage() {
               <span className="bg-gradient-to-r from-action-blue to-vibrant-green bg-clip-text text-transparent">Pay-Per-Lead</span> Real Estate Program
             </h1>
             <p className="mt-6 font-inter text-base text-slate-200/80 sm:text-lg">
-              For investors who want maximum flexibility with zero risk. Our Pay-Per-Lead (PPL) program delivers pre-qualified, motivated seller leads—and you only pay for what you use.
+              For investors who want maximum flexibility with zero risk. Our Pay-Per-Lead (PPL) program delivers pre-qualified, motivated seller leads-and you only pay for what you use.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
               <motion.div whileHover={buttonHover}>

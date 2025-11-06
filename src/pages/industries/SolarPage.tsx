@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: Sun,
-    title: 'Qualified Solar Appointments',
-    description: 'We connect you with property owners who meet your ideal criteria: credit scores, roof condition, energy usage, and genuine interest in going solar.'
+    title: "Qualified Solar Appointments",
+    description: "We connect you with property owners who meet your ideal criteria: credit scores, roof condition, energy usage, and genuine interest in going solar."
   },
   {
     icon: Zap,
-    title: 'High-Intent Homeowners',
-    description: 'Target prospects actively researching solar solutions, motivated by rising energy costs, tax incentives, and environmental concerns. These aren\'t cold leads—they\'re warm conversations.'
+    title: "High-Intent Homeowners",
+    description: "Target prospects actively researching solar solutions, motivated by rising energy costs, tax incentives, and environmental concerns. These aren't cold leads-they're warm conversations."
   },
   {
     icon: Phone,
-    title: 'Appointment Setting Included',
-    description: 'We don\'t just generate interest—we book appointments directly on your calendar. Show up to homes with qualified prospects ready to discuss installation timelines and financing.'
+    title: "Appointment Setting Included",
+    description: "We don't just generate interest-we book appointments directly on your calendar. Show up to homes with qualified prospects ready to discuss installation timelines and financing."
   },
   {
     icon: TrendingUp,
-    title: 'Consistent Pipeline Growth',
-    description: 'Build a predictable sales process with a steady flow of solar-ready leads. More appointments mean more installations, more revenue, and faster business growth.'
+    title: "Consistent Pipeline Growth",
+    description: "Build a predictable sales process with a steady flow of solar-ready leads. More appointments mean more installations, more revenue, and faster business growth."
   }
 ]
 

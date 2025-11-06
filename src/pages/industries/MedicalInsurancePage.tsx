@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: Users,
-    title: 'Life Event Triggers',
-    description: 'We target prospects experiencing qualifying life events: new jobs, relocations, family changes, and open enrollment periods—moments when people are actively seeking coverage.'
+    title: "Life Event Triggers",
+    description: "We target prospects experiencing qualifying life events: new jobs, relocations, family changes, and open enrollment periods-moments when people are actively seeking coverage."
   },
   {
     icon: Phone,
-    title: 'Pre-Qualified Prospects',
-    description: 'Every lead is screened for eligibility, coverage gaps, and enrollment urgency. Connect with individuals and families ready to discuss their health insurance options.'
+    title: "Pre-Qualified Prospects",
+    description: "Every lead is screened for eligibility, coverage gaps, and enrollment urgency. Connect with individuals and families ready to discuss their health insurance options."
   },
   {
     icon: TrendingUp,
-    title: 'High-Intent Appointments',
-    description: 'We don't just deliver names and numbers—we book appointments with prospects who have immediate coverage needs and are ready to enroll during the call.'
+    title: "High-Intent Appointments",
+    description: "We don't just deliver names and numbers-we book appointments with prospects who have immediate coverage needs and are ready to enroll during the call."
   },
   {
     icon: CheckCircle,
-    title: 'Compliance-First Approach',
-    description: 'Our outreach methods are fully compliant with HIPAA, TCPA, and insurance marketing regulations. Protect your agency while growing your book of business.'
+    title: "Compliance-First Approach",
+    description: "Our outreach methods are fully compliant with HIPAA, TCPA, and insurance marketing regulations. Protect your agency while growing your book of business."
   }
 ]
 

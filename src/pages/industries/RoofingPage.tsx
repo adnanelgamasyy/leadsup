@@ -8,23 +8,23 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 const features = [
   {
     icon: Home,
-    title: 'Storm-Damaged Leads',
-    description: 'We target homeowners in areas recently affected by hail, wind, or storm damage—property owners actively searching for roofing contractors and emergency repairs.'
+    title: "Storm-Damaged Leads",
+    description: "We target homeowners in areas recently affected by hail, wind, or storm damage-property owners actively searching for roofing contractors and emergency repairs."
   },
   {
     icon: Phone,
-    title: 'Pre-Qualified Homeowners',
-    description: 'Every lead is screened for property ownership, insurance claims, and repair urgency. Your sales team spends time closing deals, not chasing cold prospects.'
+    title: "Pre-Qualified Homeowners",
+    description: "Every lead is screened for property ownership, insurance claims, and repair urgency. Your sales team spends time closing deals, not chasing cold prospects."
   },
   {
     icon: Users,
-    title: 'Appointment Setting',
-    description: 'We don't just hand you a list—we book appointments directly on your calendar with homeowners ready for inspections, estimates, and same-week installations.'
+    title: "Appointment Setting",
+    description: "We don't just hand you a list-we book appointments directly on your calendar with homeowners ready for inspections, estimates, and same-week installations."
   },
   {
     icon: TrendingUp,
-    title: 'Keep Crews Busy Year-Round',
-    description: 'Avoid slow seasons with a consistent pipeline of roofing leads. Whether it's repairs, replacements, or new construction, we keep your crews working and profitable.'
+    title: "Keep Crews Busy Year-Round",
+    description: "Avoid slow seasons with a consistent pipeline of roofing leads. Whether it's repairs, replacements, or new construction, we keep your crews working and profitable."
   }
 ]
 
