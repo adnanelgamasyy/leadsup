@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
 export default function EnhancedHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
   const location = useLocation()
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +18,26 @@ export default function EnhancedHeader() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsServicesDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const servicesMenuItems = [
+    { name: 'All Services', path: '/services' },
+    { name: 'Cold Calling', path: '/services/cold-calling' },
+    { name: 'Data Generation', path: '/services/data-generation' },
+    { name: 'Skip Tracing', path: '/services/skip-tracing' },
+    { name: 'Market Research', path: '/services/market-research' },
+    { name: 'Acquisitions & Dispositions', path: '/services/acquisitions-dispositions' },
+    { name: 'Appointment Setting', path: '/services/appointment-setting' }
+  ]
 
   const scrollToSection = (sectionId: string) => {
     if (location.pathname !== '/') {
@@ -59,13 +82,33 @@ export default function EnhancedHeader() {
 
           {/* Desktop Navigation */}
           <nav className="relative z-10 hidden items-center gap-8 md:flex">
-            <Link
-              to="/services"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
-            >
-              Services
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
-            </Link>
+            {/* Services Dropdown */}
+            <div ref={dropdownRef} className="relative">
+              <button
+                onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              >
+                Services
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isServicesDropdownOpen && (
+                <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-white/20 bg-[#070f25]/98 shadow-[0_25px_60px_rgba(5,8,20,0.65)] backdrop-blur-2xl">
+                  <div className="py-2">
+                    {servicesMenuItems.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={item.path}
+                        onClick={() => setIsServicesDropdownOpen(false)}
+                        className="block px-4 py-2.5 font-inter text-sm text-slate-200/80 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
             <Link
               to="/industries"
@@ -118,13 +161,33 @@ export default function EnhancedHeader() {
       {isMobileMenuOpen && (
         <div className="border-t border-white/10 bg-[#0d1532]/95 backdrop-blur-2xl shadow-[0_25px_60px_rgba(5,8,20,0.65)] md:hidden">
           <div className="space-y-4 px-6 py-6">
-            <Link
-              to="/services"
-              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Services
-            </Link>
+            {/* Mobile Services Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              >
+                Services
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileServicesOpen && (
+                <div className="mt-2 space-y-1 pl-4">
+                  {servicesMenuItems.map((item, index) => (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="block rounded-lg px-4 py-2 font-inter text-sm text-slate-200/70 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false)
+                        setIsMobileServicesOpen(false)
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <Link
               to="/industries"

@@ -12,7 +12,8 @@ const services = [
     headline: 'Conversations That Close Deals.',
     body: 'Our professional callers bring years of industry experience, precision, and persistence to every conversation. We don\'t just dial—we build rapport, uncover motivation, and move deals forward.',
     image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-    accent: 'from-action-blue/40 to-action-blue/10'
+    accent: 'from-action-blue/40 to-action-blue/10',
+    path: '/services/cold-calling'
   },
   {
     icon: Database,
@@ -20,7 +21,8 @@ const services = [
     headline: 'Beyond Motivation—Into Action.',
     body: 'Our data experts go deeper than surface-level filters. We target prospects going through life or financial transitions that indicate real intent, maximizing your chance to connect with people ready to make a deal today.',
     image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-    accent: 'from-energetic-pink/40 to-action-blue/20'
+    accent: 'from-energetic-pink/40 to-action-blue/20',
+    path: '/services/data-generation'
   },
   {
     icon: Search,
@@ -28,7 +30,8 @@ const services = [
     headline: 'Accuracy That Delivers Opportunity.',
     body: 'We use advanced tracing tools and verified databases to provide precise contact information with unmatched accuracy. Each record is validated, ensuring your outreach reaches the right person at the right time.',
     image: 'https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800',
-    accent: 'from-vibrant-green/40 to-bright-amber/20'
+    accent: 'from-vibrant-green/40 to-bright-amber/20',
+    path: '/services/skip-tracing'
   },
   {
     icon: TrendingUp,
@@ -36,7 +39,8 @@ const services = [
     headline: 'Strategy Before Outreach. Always.',
     body: 'Every campaign starts with research. Our analysts identify the hottest areas, best entry points, and strongest exit strategies to help you move with confidence and clarity before the first call is ever made.',
     image: 'https://images.pexels.com/photos/7621135/pexels-photo-7621135.jpeg?auto=compress&cs=tinysrgb&w=800',
-    accent: 'from-action-blue/40 to-energetic-pink/20'
+    accent: 'from-action-blue/40 to-energetic-pink/20',
+    path: '/services/market-research'
   },
   {
     icon: Users,
@@ -44,7 +48,8 @@ const services = [
     headline: 'An Entire Department Dedicated to Your Deal Flow.',
     body: 'We help you find motivated sellers, manage acquisitions, and assist with dispositions. From the first call to the final key exchange, we cover your entire deal flow so you can focus on scaling.',
     image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
-    accent: 'from-deep-purple/40 to-action-blue/20'
+    accent: 'from-deep-purple/40 to-action-blue/20',
+    path: '/services/acquisitions-dispositions'
   },
   {
     icon: Calendar,
@@ -52,7 +57,8 @@ const services = [
     headline: 'Booked. Confirmed. Connected. Closed.',
     body: 'Our appointment setting goes beyond scheduling. Every meeting is double-confirmed and supported with live transfers, connecting your team instantly with ready-to-act prospects.',
     image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
-    accent: 'from-vibrant-green/40 to-action-blue/20'
+    accent: 'from-vibrant-green/40 to-action-blue/20',
+    path: '/services/appointment-setting'
   }
 ]
 
@@ -137,6 +143,7 @@ export default function ServicesPage() {
                     </p>
                     <motion.div whileHover={buttonHover} className="mt-6">
                       <Button
+                        onClick={() => window.location.href = service.path}
                         className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-6 py-4 font-inter text-sm font-semibold text-slate-100 transition hover:bg-white/20"
                       >
                         Learn More
