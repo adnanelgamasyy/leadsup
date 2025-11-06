@@ -7,9 +7,12 @@ export default function EnhancedHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
+  const [isIndustriesDropdownOpen, setIsIndustriesDropdownOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false)
+  const [isMobileIndustriesOpen, setIsMobileIndustriesOpen] = useState(false)
   const location = useLocation()
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const servicesDropdownRef = useRef<HTMLDivElement>(null)
+  const industriesDropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +24,11 @@ export default function EnhancedHeader() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
         setIsServicesDropdownOpen(false)
+      }
+      if (industriesDropdownRef.current && !industriesDropdownRef.current.contains(event.target as Node)) {
+        setIsIndustriesDropdownOpen(false)
       }
     }
     document.addEventListener('mousedown', handleClickOutside)
@@ -37,6 +43,19 @@ export default function EnhancedHeader() {
     { name: 'Market Research', path: '/services/market-research' },
     { name: 'Acquisitions & Dispositions', path: '/services/acquisitions-dispositions' },
     { name: 'Appointment Setting', path: '/services/appointment-setting' }
+  ]
+
+  const industriesMenuItems = [
+    { name: 'All Industries', path: '/industries' },
+    { name: 'Real Estate Wholesalers', path: '/industries/real-estate-wholesalers' },
+    { name: 'Fix & Flip Investors', path: '/industries/fix-flip-investors' },
+    { name: 'Buy & Hold Investors', path: '/industries/buy-hold-investors' },
+    { name: 'Real Estate Agents', path: '/industries/real-estate-agents' },
+    { name: 'Real Estate (PPL)', path: '/industries/real-estate' },
+    { name: 'Roofing Companies', path: '/industries/roofing' },
+    { name: 'Solar Industry', path: '/industries/solar' },
+    { name: 'Medical Insurance', path: '/industries/medical-insurance' },
+    { name: 'Automotive', path: '/industries/automotive' }
   ]
 
   const scrollToSection = (sectionId: string) => {
@@ -83,7 +102,7 @@ export default function EnhancedHeader() {
           {/* Desktop Navigation */}
           <nav className="relative z-10 hidden items-center gap-8 md:flex">
             {/* Services Dropdown */}
-            <div ref={dropdownRef} className="relative">
+            <div ref={servicesDropdownRef} className="relative">
               <button
                 onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
                 className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
@@ -110,13 +129,33 @@ export default function EnhancedHeader() {
               )}
             </div>
 
-            <Link
-              to="/industries"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
-            >
-              Industries
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
-            </Link>
+            {/* Industries Dropdown */}
+            <div ref={industriesDropdownRef} className="relative">
+              <button
+                onClick={() => setIsIndustriesDropdownOpen(!isIndustriesDropdownOpen)}
+                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              >
+                Industries
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isIndustriesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isIndustriesDropdownOpen && (
+                <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-white/20 bg-[#070f25]/98 shadow-[0_25px_60px_rgba(5,8,20,0.65)] backdrop-blur-2xl">
+                  <div className="py-2">
+                    {industriesMenuItems.map((item, index) => (
+                      <Link
+                        key={index}
+                        to={item.path}
+                        onClick={() => setIsIndustriesDropdownOpen(false)}
+                        className="block px-4 py-2.5 font-inter text-sm text-slate-200/80 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
             <Link
               to="/pricing"
@@ -189,13 +228,33 @@ export default function EnhancedHeader() {
               )}
             </div>
 
-            <Link
-              to="/industries"
-              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Industries
-            </Link>
+            {/* Mobile Industries Dropdown */}
+            <div>
+              <button
+                onClick={() => setIsMobileIndustriesOpen(!isMobileIndustriesOpen)}
+                className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              >
+                Industries
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isMobileIndustriesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileIndustriesOpen && (
+                <div className="mt-2 space-y-1 pl-4">
+                  {industriesMenuItems.map((item, index) => (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="block rounded-lg px-4 py-2 font-inter text-sm text-slate-200/70 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false)
+                        setIsMobileIndustriesOpen(false)
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <Link
               to="/pricing"

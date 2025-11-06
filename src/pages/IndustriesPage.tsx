@@ -10,31 +10,36 @@ const realEstateNiches = [
     icon: Building2,
     title: 'Real Estate Wholesalers',
     description: 'Quick cash deals with motivated sellers ready to move fast.',
-    image: 'https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/real-estate-wholesalers'
   },
   {
     icon: Hammer,
     title: 'Fix & Flip Investors',
     description: 'Find distressed properties with maximum profit potential.',
-    image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/fix-flip-investors'
   },
   {
     icon: Home,
     title: 'Buy & Hold Investors',
     description: 'Build your rental empire with high-ROI properties.',
-    image: 'https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/1370704/pexels-photo-1370704.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/buy-hold-investors'
   },
   {
     icon: Users,
     title: 'Real Estate Agents',
     description: 'Exclusive pocket listings and off-market opportunities.',
-    image: 'https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/real-estate-agents'
   },
   {
     icon: Building2,
     title: 'Real Estate Investors (PPL Program)',
     description: 'Pay-per-lead program for verified, qualified prospects.',
-    image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/real-estate'
   }
 ]
 
@@ -43,13 +48,15 @@ const contractorServices = [
     icon: Home,
     title: 'Roofing Companies',
     description: 'Connect with homeowners ready for roof repairs and replacements.',
-    image: 'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/roofing'
   },
   {
     icon: Sun,
     title: 'Solar Industry',
     description: 'Qualified appointments with property owners interested in going solar.',
-    image: 'https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/solar'
   }
 ]
 
@@ -58,13 +65,15 @@ const professionalServices = [
     icon: Heart,
     title: 'Medical Insurance Companies',
     description: 'High-intent leads actively seeking health coverage solutions.',
-    image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/medical-insurance'
   },
   {
     icon: Car,
     title: 'Automotive Industry',
     description: 'Connect with buyers and sellers in your target market.',
-    image: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=600'
+    image: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=600',
+    path: '/industries/automotive'
   }
 ]
 
@@ -161,9 +170,20 @@ export default function IndustriesPage() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <p className="font-inter text-sm text-slate-200/80">
+                    <p className="font-inter text-sm text-slate-200/80 mb-4">
                       {niche.description}
                     </p>
+                    <motion.div whileHover={buttonHover}>
+                      <Button
+                        onClick={() => window.location.href = niche.path}
+                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-3 font-inter text-sm font-semibold text-slate-100 transition hover:bg-white/20"
+                      >
+                        Learn More
+                        <motion.span whileHover={iconHover}>
+                          <ArrowRight className="h-4 w-4" />
+                        </motion.span>
+                      </Button>
+                    </motion.div>
                   </div>
                 </motion.article>
               )
@@ -232,9 +252,20 @@ export default function IndustriesPage() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <p className="font-inter text-sm text-slate-200/80">
+                    <p className="font-inter text-sm text-slate-200/80 mb-4">
                       {service.description}
                     </p>
+                    <motion.div whileHover={buttonHover}>
+                      <Button
+                        onClick={() => window.location.href = service.path}
+                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-3 font-inter text-sm font-semibold text-slate-100 transition hover:bg-white/20"
+                      >
+                        Learn More
+                        <motion.span whileHover={iconHover}>
+                          <ArrowRight className="h-4 w-4" />
+                        </motion.span>
+                      </Button>
+                    </motion.div>
                   </div>
                 </motion.article>
               )
@@ -303,9 +334,20 @@ export default function IndustriesPage() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <p className="font-inter text-sm text-slate-200/80">
+                    <p className="font-inter text-sm text-slate-200/80 mb-4">
                       {service.description}
                     </p>
+                    <motion.div whileHover={buttonHover}>
+                      <Button
+                        onClick={() => window.location.href = service.path}
+                        className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-4 py-3 font-inter text-sm font-semibold text-slate-100 transition hover:bg-white/20"
+                      >
+                        Learn More
+                        <motion.span whileHover={iconHover}>
+                          <ArrowRight className="h-4 w-4" />
+                        </motion.span>
+                      </Button>
+                    </motion.div>
                   </div>
                 </motion.article>
               )
