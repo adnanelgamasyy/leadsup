@@ -19,6 +19,8 @@ export default function Header() {
   const navLinks = [
     { name: 'Services', href: '/services' },
     { name: 'Industries', href: '/industries' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'Contact', href: '/contact' },
   ]
@@ -58,10 +60,11 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:block relative z-10">
             <Button
-              className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="group relative overflow-hidden bg-gradient-to-r from-action-blue to-energetic-pink text-white font-semibold px-6 rounded-lg shadow-[0_20px_60px_rgba(61,130,247,0.4)] hover:shadow-[0_25px_70px_rgba(61,130,247,0.6)] hover:scale-105 transition-all duration-300"
               onClick={() => window.location.href = '/contact'}
             >
-              Get Started
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative z-10">Get Started</span>
             </Button>
           </div>
 
@@ -90,13 +93,14 @@ export default function Header() {
               </a>
             ))}
             <Button
-              className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg"
+              className="group relative overflow-hidden w-full bg-gradient-to-r from-action-blue to-energetic-pink text-white font-semibold py-3 rounded-lg shadow-[0_20px_60px_rgba(61,130,247,0.4)]"
               onClick={() => {
                 setIsMobileMenuOpen(false)
                 window.location.href = '/contact'
               }}
             >
-              Get Started
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="relative z-10">Get Started</span>
             </Button>
           </div>
         </div>

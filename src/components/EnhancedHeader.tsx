@@ -158,6 +158,22 @@ export default function EnhancedHeader() {
             </div>
 
             <Link
+              to="/about"
+              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+            >
+              About
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
+            </Link>
+
+            <Link
+              to="/blog"
+              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+            >
+              Blog
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
+            </Link>
+
+            <Link
               to="/pricing"
               className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
@@ -177,11 +193,12 @@ export default function EnhancedHeader() {
           {/* Primary CTA Button */}
           <div className="relative z-10 hidden md:block">
             <Link to="/contact">
-              <Button
-                className="rounded-2xl bg-action-blue px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+              <button
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-action-blue to-energetic-pink px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] hover:shadow-[0_20px_50px_rgba(61,130,247,0.6)] transition-all duration-300 hover:scale-105"
               >
-                Get Started
-              </Button>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="relative z-10">Get Started</span>
+              </button>
             </Link>
           </div>
 
@@ -257,6 +274,22 @@ export default function EnhancedHeader() {
             </div>
 
             <Link
+              to="/about"
+              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+
+            <Link
+              to="/blog"
+              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Blog
+            </Link>
+
+            <Link
               to="/pricing"
               className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -273,12 +306,13 @@ export default function EnhancedHeader() {
             </Link>
 
             <Link to="/contact">
-              <Button
+              <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+                className="group relative overflow-hidden mt-4 w-full rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] hover:shadow-[0_25px_60px_rgba(61,130,247,0.6)] transition-all duration-300"
               >
-                Book My Free Call
-              </Button>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="relative z-10">Book My Free Call</span>
+              </button>
             </Link>
           </div>
         </div>

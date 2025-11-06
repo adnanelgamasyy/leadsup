@@ -403,16 +403,16 @@ export default function AboutPage() {
                     Join 120+ investors who trust The Leads Up to fuel their business growth.
                   </p>
 
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                    <Button
-                      size="lg"
-                      className="bg-action-blue hover:bg-action-blue/90 text-white px-10 py-6 text-lg font-semibold rounded-xl shadow-[0_20px_60px_rgba(61,130,247,0.5)] hover:shadow-[0_30px_80px_rgba(61,130,247,0.7)] transition-all duration-300"
-                      onClick={() => window.location.href = '/contact'}
-                      aria-label="Book your free strategy call"
-                    >
-                      Book Your Free Strategy Call
-                    </Button>
-                  </motion.div>
+                  <motion.button
+                    onClick={() => window.location.href = '/contact'}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink px-10 py-6 text-lg font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.5)] hover:shadow-[0_30px_80px_rgba(61,130,247,0.7)] transition-all duration-300"
+                    aria-label="Book your free strategy call"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                    <span className="relative z-10">Book Your Free Strategy Call</span>
+                  </motion.button>
 
                   {/* Trust indicators */}
                   <div className="flex items-center justify-center gap-8 mt-12 flex-wrap">

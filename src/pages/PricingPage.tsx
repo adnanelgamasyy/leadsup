@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Check, Phone, Users, ArrowRight, Rocket, Zap, Trophy, ShieldCheck, Timer, Eye } from 'lucide-react'
+import { Check, Phone, Users, ArrowRight, Rocket, TrendingUp, Crown, Sparkles, ShieldCheck, Timer, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
@@ -8,53 +8,75 @@ import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHove
 
 const pricingPlans = [
   {
+    id: 'drive',
     name: 'LeadsUp Drive',
-    tagline: 'The Essential Engine for Solo Operators.',
+    ideal: 'Ideal for: The Solo Operator & Small Team',
+    tagline: 'You hand us the list—we hand you the deals.',
+    price: '$3,500',
+    period: '/month',
     icon: Rocket,
     accent: 'from-action-blue/40 to-action-blue/10',
+    gradient: 'from-action-blue to-energetic-pink',
     highlight: false,
     features: [
-      '1 Experienced Cold Caller (4 hrs/day)',
-      'Client Success Manager',
-      'Quality Control Management',
-      'Daily & Weekly Reports',
-      'Weekly Team Meetings',
-      'Choose Your Cold Caller',
-      'ReadyMode Dialer'
-    ]
+      '1 elite cold caller embedded into your brand voice',
+      'Dedicated Client Success Manager + weekly huddles',
+      'Handpick your caller before launch',
+      'Quality control on every conversation',
+      'Daily & weekly performance reporting',
+      'ReadyMode dialer + lead routing setup'
+    ],
+    cta: 'Get Started Today'
   },
   {
+    id: 'momentum',
     name: 'LeadsUp Momentum',
-    tagline: 'The Complete System for Growing Businesses.',
-    icon: Zap,
+    ideal: 'Ideal for: The growing business ready to scale',
+    tagline: 'Keep your deals in motion with an all-in-one system.',
+    price: '$6,750',
+    period: '/month',
+    icon: TrendingUp,
     accent: 'from-energetic-pink/40 to-action-blue/20',
+    gradient: 'from-energetic-pink to-vibrant-green',
     highlight: true,
     features: [
-      'Everything in Drive, PLUS:',
-      '15K Records of Data Pulling',
-      '15K Records of Skip Tracing',
-      'Priority Support',
-      'Advanced Analytics Dashboard',
-      'Campaign Optimization'
-    ]
+      'Everything in Drive',
+      '15K data pulling records per month included',
+      '15K skip tracing records with multi-source enrichment',
+      'Speed-to-lead automations + CRM and Slack sync',
+      'Performance war room with weekly KPI reviews',
+      'Dedicated optimization strategist'
+    ],
+    cta: 'Start Scaling Now'
   },
   {
+    id: 'prime',
     name: 'LeadsUp Prime',
-    tagline: 'The Unfair Advantage for Market Leaders.',
-    icon: Trophy,
+    ideal: 'Ideal for: Market leaders & scaling operations',
+    tagline: 'Full-scale growth. Every call counts.',
+    price: 'Custom pricing',
+    period: '',
+    icon: Crown,
     accent: 'from-vibrant-green/40 to-bright-amber/20',
+    gradient: 'from-bright-amber to-vibrant-green',
     highlight: false,
     features: [
-      'Everything in Momentum, PLUS:',
-      '2 Experienced Cold Callers',
-      '30K Records of Data Pulling',
-      '30K Records of Skip Tracing',
-      'Dedicated Account Manager',
-      'Custom Integration Support',
-      'White-Glove Onboarding'
-    ]
+      'Everything in Momentum',
+      '2 elite cold callers assigned with multi-seat coverage',
+      '30K data pulling records + 30K skip tracing records monthly',
+      'Advanced buyer matchmaking & dispo coordination',
+      'Multi-market scripting with compliance reviews',
+      'Executive revenue dashboards & quarterly strategy intensives'
+    ],
+    cta: 'Dominate Your Market'
   }
 ]
+
+const planFormUrls: Record<string, string> = {
+  drive: 'https://cal.com/leadsup/drive',
+  momentum: 'https://cal.com/leadsup/momentum',
+  prime: 'https://cal.com/leadsup/prime'
+}
 
 export default function PricingPage() {
   const [numCallers, setNumCallers] = useState('1')
@@ -63,6 +85,15 @@ export default function PricingPage() {
   const handleCustomSubmit = () => {
     const calendarUrl = `https://cal.com/leadsup/strategy-call?callers=${numCallers}&managers=${numAcquisitionManagers}`
     window.open(calendarUrl, '_blank')
+  }
+
+  const handlePlanCta = (planId: string) => {
+    const url = planFormUrls[planId]
+    if (!url) return
+
+    if (typeof window !== 'undefined') {
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }
   }
 
   return (
@@ -98,7 +129,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#1A1F3B] to-slate-900 py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900 py-28">
         <div className="absolute inset-0">
           <div className="absolute left-[10%] top-0 h-96 w-96 rounded-full bg-action-blue/20 blur-3xl" />
           <div className="absolute right-[15%] bottom-0 h-[30rem] w-[30rem] rounded-full bg-energetic-pink/20 blur-[180px]" />
@@ -112,72 +143,117 @@ export default function PricingPage() {
             viewport={viewportOnce}
             className="grid gap-8 lg:grid-cols-3"
           >
-            {pricingPlans.map((plan, index) => {
-              const Icon = plan.icon
-              return (
-                <motion.article
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={hoverLift}
-                  className={`relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl transition ${
-                    plan.highlight ? 'ring-1 ring-action-blue/60' : ''
-                  }`}
-                >
-                  <div className={`absolute -top-24 right-[-40px] h-56 w-56 rounded-full bg-gradient-to-br ${plan.accent} blur-3xl opacity-70`} />
+            {pricingPlans.map((plan) => (
+              <motion.article
+                key={plan.name}
+                variants={fadeInUp}
+                whileHover={{ y: -12, scale: 1.02 }}
+                transition={{ duration: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
+                className={`group relative overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-white/10 via-white/5 to-white/5 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.45)] backdrop-blur-3xl ${
+                  plan.highlight ? 'ring-2 ring-action-blue/40' : ''
+                }`}
+              >
+                {/* Glassmorphism overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-action-blue/5 via-transparent to-energetic-pink/5 pointer-events-none" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-action-blue/40 to-transparent" />
 
-                  <div className="relative z-10 flex h-full flex-col">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-3">
-                          <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 ${plan.highlight ? 'bg-action-blue' : 'bg-white/10'} backdrop-blur-xl`}>
-                            <Icon className={`h-6 w-6 ${plan.highlight ? 'text-white' : 'text-action-blue'}`} />
-                          </div>
-                          <h3 className="font-plus-jakarta-sans text-2xl font-semibold text-slate-50">{plan.name}</h3>
-                        </div>
-                        <p className="font-inter text-xs uppercase tracking-[0.35em] text-slate-200/70">{plan.tagline}</p>
-                      </div>
-                      {plan.highlight && (
-                        <span className="rounded-full border border-action-blue/40 bg-action-blue/20 px-3 py-1 text-xs font-semibold text-action-blue">
-                          Most Popular
-                        </span>
-                      )}
-                    </div>
+                {/* Gradient glow */}
+                <div className={`absolute -top-24 right-[-40px] h-56 w-56 rounded-full bg-gradient-to-br ${plan.accent} blur-3xl opacity-70 transition-transform duration-500 group-hover:scale-125`} />
 
-                    <ul className="mt-8 space-y-3">
-                      {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-3">
-                          <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-white/30 bg-white/10 text-action-blue">
-                            <Check className="h-3 w-3" />
-                          </span>
-                          <p className="font-inter text-sm leading-relaxed text-slate-200/80">{feature}</p>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <motion.div whileHover={buttonHover} className="mt-8">
-                      <Button
-                        size="lg"
-                        onClick={() => window.location.href = '/contact'}
-                        className={`flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 font-inter text-sm font-semibold transition ${
-                          plan.highlight
-                            ? 'bg-action-blue text-white shadow-[0_20px_60px_rgba(61,130,247,0.4)] hover:bg-action-blue/90'
-                            : 'bg-white/10 text-slate-100 hover:bg-white/20'
-                        }`}
+                <div className="relative z-10 flex h-full flex-col">
+                  {/* Icon */}
+                  <div className="flex items-start justify-between mb-6">
+                    <motion.div
+                      className={`inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${plan.accent} border border-white/20 shadow-lg`}
+                      whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <plan.icon className={`h-8 w-8 bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`} strokeWidth={2} />
+                      {/* Sparkle effect */}
+                      <motion.div
+                        className="absolute -top-1 -right-1"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileHover={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.2 }}
                       >
-                        {plan.highlight ? 'Start Scaling Now' : plan.name === 'LeadsUp Drive' ? 'Get Started Today' : 'Dominate Your Market'}
-                        <motion.span whileHover={iconHover}>
-                          <ArrowRight className="h-4 w-4" />
-                        </motion.span>
-                      </Button>
+                        <Sparkles className="w-4 h-4 text-vibrant-green" />
+                      </motion.div>
                     </motion.div>
 
-                    <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 font-inter text-xs text-slate-200/70">
-                      Includes onboarding concierge · QA reviews every call · Instant pause or scale up
-                    </div>
+                    {plan.highlight && (
+                      <motion.span
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="rounded-full border border-action-blue/40 bg-action-blue/20 px-3 py-1.5 text-xs font-semibold text-action-blue backdrop-blur-sm"
+                      >
+                        Most Popular
+                      </motion.span>
+                    )}
                   </div>
-                </motion.article>
-              )
-            })}
+
+                  {/* Plan name with gradient */}
+                  <h3 className={`font-plus-jakarta-sans text-2xl font-bold bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent mb-2`}>
+                    {plan.name}
+                  </h3>
+                  <p className="font-inter text-xs uppercase tracking-[0.35em] text-slate-200/70 mb-4">{plan.ideal}</p>
+
+                  <p className="font-inter text-sm text-slate-200/80 mb-6">
+                    {plan.tagline}
+                  </p>
+
+                  {/* Price */}
+                  <div className="mb-8 flex items-baseline gap-2">
+                    <span className={`font-plus-jakarta-sans text-5xl font-bold bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`}>
+                      {plan.price}
+                    </span>
+                    {plan.period && <span className="font-inter text-base text-slate-200/70">{plan.period}</span>}
+                  </div>
+
+                  {/* Gradient CTA Button */}
+                  <motion.button
+                    onClick={() => handlePlanCta(plan.id)}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`group/btn relative overflow-hidden flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-inter text-sm font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.4)] hover:shadow-[0_25px_70px_rgba(61,130,247,0.6)] transition-all duration-300 ${
+                      plan.highlight ? 'bg-gradient-to-r from-action-blue to-energetic-pink' : 'bg-gradient-to-r from-vibrant-green to-action-blue'
+                    }`}
+                  >
+                    {/* Shimmer effect */}
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700" />
+                    <span className="relative z-10">{plan.cta}</span>
+                    <motion.span
+                      className="relative z-10"
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="h-4 w-4" />
+                    </motion.span>
+                  </motion.button>
+
+                  <ul className="mt-8 space-y-3">
+                    {plan.features.map((feature, i) => (
+                      <motion.li
+                        key={feature}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                        className="flex items-start gap-3"
+                      >
+                        <span className={`mt-0.5 flex h-5 w-5 items-center justify-center rounded-full border border-white/30 bg-gradient-to-br ${plan.accent} shadow-sm`}>
+                          <Check className={`h-3 w-3 bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`} strokeWidth={3} />
+                        </span>
+                        <p className="font-inter text-sm text-slate-200/80 leading-relaxed">{feature}</p>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-4 font-inter text-xs text-slate-200/60">
+                    Includes onboarding concierge · QA reviews every call · Instant pause or scale up
+                  </div>
+                </div>
+              </motion.article>
+            ))}
           </motion.div>
 
           {/* Guarantees */}
@@ -279,17 +355,23 @@ export default function PricingPage() {
                 </div>
               </div>
 
-              <motion.div whileHover={buttonHover} className="mt-8">
-                <Button
+              <motion.div className="mt-8">
+                <motion.button
                   onClick={handleCustomSubmit}
-                  size="lg"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-action-blue px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.4)] transition hover:bg-action-blue/90"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group relative overflow-hidden flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.4)] hover:shadow-[0_25px_70px_rgba(61,130,247,0.6)] transition-all duration-300"
                 >
-                  Let's Talk
-                  <motion.span whileHover={iconHover}>
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative z-10">Let's Talk</span>
+                  <motion.span
+                    className="relative z-10"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
                     <Phone className="h-5 w-5" />
                   </motion.span>
-                </Button>
+                </motion.button>
               </motion.div>
             </motion.div>
           </div>
