@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useEffect } from 'react'
 import Turnstile from 'react-turnstile'
 import { TURNSTILE_SITE_KEY } from '@/config/turnstile'
 import { motion } from 'framer-motion'
@@ -23,6 +23,11 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
   const [turnstileToken, setTurnstileToken] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -41,8 +46,6 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
       // Reset form
       setFormData(initialData)
       setTurnstileToken('')
-      // Reset Turnstile widget
-      window.location.hash = 'success'
     } catch (error) {
       setSubmitStatus('error')
       console.error('Form submission error:', error)
@@ -116,12 +119,17 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
       </div>
 
       {/* Turnstile */}
-      <div className="flex justify-center">
-        <Turnstile
-          sitekey={TURNSTILE_SITE_KEY}
-          onVerify={(token) => setTurnstileToken(token)}
-          theme="dark"
-        />
+      <div className="flex justify-center py-4">
+        {isMounted ? (
+          <Turnstile
+            sitekey={TURNSTILE_SITE_KEY}
+            onVerify={(token) => setTurnstileToken(token)}
+            onError={() => console.error('Turnstile error')}
+            theme="dark"
+          />
+        ) : (
+          <div className="h-16 w-64 bg-white/5 rounded-lg animate-pulse" />
+        )}
       </div>
 
       {/* Submit Button */}

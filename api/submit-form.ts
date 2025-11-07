@@ -5,7 +5,7 @@ import { Resend } from 'resend'
 
 // Environment variables (set these in Cloudflare dashboard):
 // RESEND_API_KEY - Your Resend API key
-// TURNSTILE_SECRET_KEY - Your Cloudflare Turnstile secret key
+// Turnstile_secret_key - Your Cloudflare Turnstile secret key
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -34,7 +34,7 @@ export interface FormSubmission {
 // Verify Turnstile token
 async function verifyTurnstileToken(token: string, ip: string): Promise<boolean> {
   const formData = new FormData()
-  formData.append('secret', process.env.TURNSTILE_SECRET_KEY!)
+  formData.append('secret', process.env.Turnstile_secret_key!)
   formData.append('response', token)
   formData.append('remoteip', ip)
 
