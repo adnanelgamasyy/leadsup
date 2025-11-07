@@ -1,7 +1,6 @@
 import { Mail, Phone, MapPin } from 'lucide-react'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
-import SEO from '@/components/SEO'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInStagger, viewportOnce } from '@/lib/motion'
 import ContactForm from '@/components/forms/ContactForm'

@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react'
-import { Turnstile } from 'react-turnstile'
+import Turnstile from 'react-turnstile'
 import { TURNSTILE_SITE_KEY } from '@/config/turnstile'
 import { motion } from 'framer-motion'
 
