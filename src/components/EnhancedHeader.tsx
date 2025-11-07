@@ -87,13 +87,12 @@ export default function EnhancedHeader() {
       <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="relative z-10 flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-action-blue via-energetic-pink to-vibrant-green shadow-[0_10px_25px_rgba(61,130,247,0.4)] transition-transform duration-300 hover:scale-105">
-              <svg className="h-3.5 w-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-              </svg>
-            </div>
-            <span className="font-plus-jakarta-sans text-base font-bold tracking-tight text-slate-100">The Leads Up</span>
+          <Link to="/" className="relative z-10 flex items-center group">
+            <img
+              src="/leadsup-logo.png"
+              alt="The Leads Up Logo"
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}

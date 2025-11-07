@@ -52,6 +52,7 @@ export default function ContactCTA() {
                 variants={fadeInUp}
               >
                 <motion.button
+                  onClick={() => window.location.href = '/contact'}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
                   className="group relative overflow-hidden flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-energetic-pink to-vibrant-green px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_30px_80px_rgba(61,130,247,0.5)] hover:shadow-[0_35px_90px_rgba(61,130,247,0.6)] transition-all duration-300"

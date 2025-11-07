@@ -47,6 +47,7 @@ export default function Hero() {
 
             <div className="flex flex-col gap-4 sm:flex-row">
               <motion.button
+                onClick={() => window.location.href = '/contact'}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative overflow-hidden flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink px-8 py-4 font-inter text-base font-semibold text-white shadow-[0_30px_80px_rgba(61,130,247,0.5)] hover:shadow-[0_35px_90px_rgba(61,130,247,0.6)] transition-all duration-300"
