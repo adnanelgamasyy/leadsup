@@ -2,7 +2,6 @@ import { Database, Search, Layers, Zap, ArrowRight, CheckCircle2 } from 'lucide-
 import { Button } from '@/components/ui/button'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
-import SEO from '@/components/SEO'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHover } from '@/lib/motion'
 import DataGenerationForm from '@/components/forms/DataGenerationForm'

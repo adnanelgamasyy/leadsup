@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { Calendar, Clock, ArrowLeft, BookOpen } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, BookOpen, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon } from 'lucide-react'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
 import { motion } from 'framer-motion'
@@ -11,6 +11,37 @@ export default function EnhancedBlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
   const post = blogPosts.find(p => p.slug === slug)
   const [activeSection, setActiveSection] = useState('')
+  const [copied, setCopied] = useState(false)
+
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : ''
+  const shareTitle = post?.title || ''
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  const shareButtons = [
+    {
+      name: 'Facebook',
+      icon: Facebook,
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+      color: 'hover:bg-[#1877F2] hover:text-white'
+    },
+    {
+      name: 'Twitter',
+      icon: Twitter,
+      url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`,
+      color: 'hover:bg-[#1DA1F2] hover:text-white'
+    },
+    {
+      name: 'LinkedIn',
+      icon: Linkedin,
+      url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+      color: 'hover:bg-[#0A66C2] hover:text-white'
+    }
+  ]
 
   // Extract H2 headings for Table of Contents
   const extractHeadings = (content: string) => {
@@ -183,6 +214,45 @@ export default function EnhancedBlogPostPage() {
                       [&_a]:text-action-blue [&_a]:font-semibold [&_a]:no-underline hover:[&_a]:underline"
                     dangerouslySetInnerHTML={{ __html: contentWithIds }}
                   />
+
+                  {/* Share Buttons */}
+                  <div className="mt-12 pt-8 border-t border-white/10">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                      <div className="flex items-center gap-3">
+                        <Share2 className="w-5 h-5 text-action-blue" />
+                        <span className="font-plus-jakarta-sans text-lg font-semibold text-slate-50">Share this article</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        {shareButtons.map((button) => {
+                          const Icon = button.icon
+                          return (
+                            <a
+                              key={button.name}
+                              href={button.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`flex items-center justify-center w-12 h-12 rounded-xl border border-white/20 bg-white/5 text-slate-200 transition-all duration-300 ${button.color} hover:border-transparent hover:scale-110 hover:shadow-lg`}
+                              aria-label={`Share on ${button.name}`}
+                            >
+                              <Icon className="w-5 h-5" />
+                            </a>
+                          )
+                        })}
+                        <button
+                          onClick={handleCopyLink}
+                          className="flex items-center justify-center w-12 h-12 rounded-xl border border-white/20 bg-white/5 text-slate-200 transition-all duration-300 hover:bg-action-blue hover:text-white hover:border-transparent hover:scale-110 hover:shadow-lg relative"
+                          aria-label="Copy link"
+                        >
+                          <LinkIcon className="w-5 h-5" />
+                          {copied && (
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-vibrant-green text-white text-xs px-3 py-1 rounded-lg whitespace-nowrap">
+                              Link copied!
+                            </span>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
 
                   {/* Author Bio */}
                   <div className="mt-16 rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.35)] flex gap-6">
