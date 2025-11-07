@@ -13,7 +13,7 @@ export default function SEO({
   title,
   description,
   keywords,
-  ogImage = '/Leadsup Logo colored.svg',
+  ogImage = '/leadsup-og.png',
   ogType = 'website',
   canonical
 }: SEOProps) {
@@ -72,7 +72,7 @@ export default function SEO({
       name: 'The Leads Up',
       description: 'Elite cold calling and lead generation for real estate investors',
       url: 'https://theleadsup.com',
-      logo: 'https://theleadsup.com/Leadsup Logo colored.svg',
+      logo: 'https://theleadsup.com/leadsup-logo.png',
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+1-888-555-1234',
