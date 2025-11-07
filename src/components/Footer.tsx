@@ -30,19 +30,16 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr,0.9fr,0.9fr]">
           <div className="space-y-6">
             <div className="flex flex-col gap-3">
-              <div className="inline-flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-action-blue via-energetic-pink to-vibrant-green shadow-[0_12px_30px_rgba(61,130,247,0.45)]">
-                  <svg className="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-                  </svg>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-plus-jakarta-sans text-lg font-semibold tracking-tight text-slate-50">LeadsUp</span>
-                  <span className="text-[0.6rem] uppercase tracking-[0.4em] text-slate-300/60">
-                    We don&apos;t do cold calls, we make cash calls.
-                  </span>
-                </div>
-              </div>
+              <a href="/" className="inline-flex items-center">
+                <img
+                  src="/leadsup-logo.png"
+                  alt="The Leads Up Logo"
+                  className="h-12 w-auto"
+                />
+              </a>
+              <p className="text-[0.75rem] uppercase tracking-[0.3em] text-slate-300/60 font-semibold">
+                We don&apos;t do cold calls, we make cash calls.
+              </p>
               <p className="max-w-sm font-inter text-sm text-slate-200/80">
                 The dedicated acquisitions engine for investors and operators. Elite callers, precision data, and battle-tested playbooks on tap.
               </p>
