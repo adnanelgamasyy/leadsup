@@ -52,16 +52,12 @@ export default function EnhancedHeader() {
       <div className="mx-auto w-full px-6 sm:px-10 lg:px-16">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="relative z-10 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-action-blue via-energetic-pink to-vibrant-green shadow-[0_12px_30px_rgba(61,130,247,0.45)] transition-transform duration-300 hover:scale-105">
-              <svg className="h-4 w-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-plus-jakarta-sans text-lg font-semibold tracking-tight text-slate-100">LeadsUp</span>
-              <span className="text-[0.65rem] uppercase tracking-[0.4em] text-slate-200/60">We don't do cold calls, we make cash calls.</span>
-            </div>
+          <Link to="/" className="relative z-10 flex items-center group">
+            <img
+              src="/leadsup-logo.png"
+              alt="The Leads Up Logo"
+              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}
