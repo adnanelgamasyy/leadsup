@@ -1,100 +1,82 @@
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 interface SEOProps {
   title: string
   description: string
   keywords?: string
   ogImage?: string
-  ogType?: string
+  ogType?: 'website' | 'article'
   canonical?: string
+  schemaMarkup?: object | object[]
+  author?: string
+  publishedDate?: string
+  modifiedDate?: string
 }
 
 export default function SEO({
   title,
   description,
   keywords,
-  ogImage = '/Leadsup Logo colored.svg',
+  ogImage = 'https://theleadsup.com/leadsup-og.png',
   ogType = 'website',
-  canonical
+  canonical,
+  schemaMarkup,
+  author,
+  publishedDate,
+  modifiedDate
 }: SEOProps) {
-  useEffect(() => {
-    // Set document title
-    document.title = `${title} | The Leads Up`
+  const fullTitle = `${title} | The Leads Up`
+  const pageUrl = canonical || (typeof window !== 'undefined' ? window.location.href : 'https://theleadsup.com')
 
-    // Set or update meta tags
-    const setMetaTag = (property: string, content: string, isProperty = false) => {
-      const attribute = isProperty ? 'property' : 'name'
-      let element = document.querySelector(`meta[${attribute}="${property}"]`)
+  // Ensure ogImage is a full URL
+  const fullOgImage = ogImage.startsWith('http') ? ogImage : `https://theleadsup.com${ogImage}`
 
-      if (!element) {
-        element = document.createElement('meta')
-        element.setAttribute(attribute, property)
-        document.head.appendChild(element)
-      }
+  return (
+    <Helmet>
+      {/* Primary Meta Tags */}
+      <title>{fullTitle}</title>
+      <meta name="title" content={fullTitle} />
+      <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
+      {canonical && <link rel="canonical" href={canonical} />}
 
-      element.setAttribute('content', content)
-    }
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={ogType} />
+      <meta property="og:url" content={pageUrl} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={fullOgImage} />
+      <meta property="og:site_name" content="The Leads Up" />
+      <meta property="og:locale" content="en_US" />
 
-    // Basic meta tags
-    setMetaTag('description', description)
-    if (keywords) {
-      setMetaTag('keywords', keywords)
-    }
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={pageUrl} />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={fullOgImage} />
 
-    // Open Graph tags
-    setMetaTag('og:title', title, true)
-    setMetaTag('og:description', description, true)
-    setMetaTag('og:type', ogType, true)
-    setMetaTag('og:image', ogImage, true)
-    setMetaTag('og:site_name', 'The Leads Up', true)
+      {/* Article specific tags */}
+      {ogType === 'article' && author && (
+        <>
+          <meta property="article:author" content={author} />
+          {publishedDate && <meta property="article:published_time" content={publishedDate} />}
+          {modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
+        </>
+      )}
 
-    // Twitter Card tags
-    setMetaTag('twitter:card', 'summary_large_image')
-    setMetaTag('twitter:title', title)
-    setMetaTag('twitter:description', description)
-    setMetaTag('twitter:image', ogImage)
+      {/* Additional SEO tags */}
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="7 days" />
 
-    // Canonical URL
-    if (canonical) {
-      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement
-      if (!link) {
-        link = document.createElement('link')
-        link.rel = 'canonical'
-        document.head.appendChild(link)
-      }
-      link.href = canonical
-    }
-
-    // Structured data for organization
-    const structuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'The Leads Up',
-      description: 'Elite cold calling and lead generation for real estate investors',
-      url: 'https://theleadsup.com',
-      logo: 'https://theleadsup.com/Leadsup Logo colored.svg',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        telephone: '+1-888-555-1234',
-        contactType: 'Sales',
-        email: 'hello@theleadsup.com'
-      },
-      sameAs: [
-        'https://facebook.com/theleadsup',
-        'https://twitter.com/theleadsup',
-        'https://linkedin.com/company/theleadsup',
-        'https://instagram.com/theleadsup'
-      ]
-    }
-
-    let scriptTag = document.querySelector('script[type="application/ld+json"]')
-    if (!scriptTag) {
-      scriptTag = document.createElement('script')
-      scriptTag.setAttribute('type', 'application/ld+json')
-      document.head.appendChild(scriptTag)
-    }
-    scriptTag.textContent = JSON.stringify(structuredData)
-  }, [title, description, keywords, ogImage, ogType, canonical])
-
-  return null
+      {/* Schema.org structured data */}
+      {schemaMarkup && (
+        <script type="application/ld+json">
+          {JSON.stringify(Array.isArray(schemaMarkup) ? schemaMarkup : [schemaMarkup])}
+        </script>
+      )}
+    </Helmet>
+  )
 }

@@ -34,7 +34,7 @@ export default function Footer() {
                 <img
                   src="/leadsup-logo.png"
                   alt="The Leads Up Logo"
-                  className="h-12 w-auto"
+                  className="h-16 w-auto"
                 />
               </a>
               <p className="text-[0.75rem] uppercase tracking-[0.3em] text-slate-300/60 font-semibold">

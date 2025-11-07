@@ -1,0 +1,31 @@
+# robots.txt for theleadsup.com
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow crawling of private/admin areas
+Disallow: /dashboard
+
+# Sitemap location
+Sitemap: https://theleadsup.com/sitemap.xml
+
+# Crawl-delay for all bots (optional - helps prevent server overload)
+# Crawl-delay: 1
+
+# Allow common search engine bots explicitly
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Block bad bots (optional - uncomment if needed)
+# User-agent: AhrefsBot
+# Disallow: /
+
+# User-agent: SemrushBot
+# Disallow: /

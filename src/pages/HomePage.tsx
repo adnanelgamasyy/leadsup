@@ -6,6 +6,7 @@ import ErrorBoundary from '@/components/ErrorBoundary'
 import SEO from '@/components/SEO'
 import ScrollProgress from '@/components/ScrollProgress'
 import SkipToContent from '@/components/SkipToContent'
+import { organizationSchema, websiteSchema, createFAQSchema, commonFAQs } from '@/data/schema'
 
 // Lazy load below-the-fold components for performance
 const ProblemSolution = lazy(() => import('@/components/ProblemSolution'))
@@ -42,10 +43,11 @@ export default function HomePage() {
   return (
     <ErrorBoundary>
       <SEO
-        title="Elite Cold Calling & Lead Generation for Real Estate Investors"
-        description="Built by investors, for investors. The Leads Up provides elite cold calling VAs, precision data, and proven systems to build predictable deal pipelines for real estate wholesalers and investors."
-        keywords="real estate cold calling, lead generation, skip tracing, wholesaling, real estate investing, motivated sellers, cold calling VAs"
+        title="Real Estate Lead Generation & Cold Calling Services"
+        description="Dominate your market with elite cold calling and data services. Built for investors, by investors—we build predictable deal pipelines. Get motivated seller leads that convert."
+        keywords="real estate lead generation, cold calling services, skip tracing, motivated sellers, real estate wholesaling, investor leads, property leads, cold calling VAs"
         canonical="https://theleadsup.com"
+        schemaMarkup={[organizationSchema, websiteSchema, createFAQSchema(commonFAQs)]}
       />
 
       <SkipToContent />
