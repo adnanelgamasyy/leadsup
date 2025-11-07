@@ -266,7 +266,7 @@ function AudioPlayer({ sample, isFeatured = false }: { sample: typeof samples[0]
 
 export default function AudioSamples() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#060c24] via-[#0d1533] to-[#050815] py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#060c24] via-[#0d1533] to-[#050815] py-12 sm:py-20 lg:py-28">
       <div className="absolute inset-0">
         <div className="absolute left-1/4 top-[-8rem] h-[26rem] w-[26rem] rounded-full bg-action-blue/15 blur-[170px]" />
         <div className="absolute right-[5%] top-[25%] h-[24rem] w-[24rem] rounded-full bg-energetic-pink/20 blur-[150px]" />
@@ -279,26 +279,26 @@ export default function AudioSamples() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="mb-16 max-w-5xl text-left"
+          className="mb-8 sm:mb-12 lg:mb-16 max-w-5xl text-left"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.3em] text-slate-100">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 sm:px-4 sm:py-2 font-inter text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-slate-100">
             Audio proof
           </span>
-          <h2 className="mt-6 font-plus-jakarta-sans text-4xl font-bold text-slate-50 sm:text-[2.9rem]">
+          <h2 className="mt-4 sm:mt-6 font-plus-jakarta-sans text-2xl sm:text-4xl lg:text-[2.9rem] font-bold text-slate-50">
             The difference between a "no" and a signed contract
           </h2>
-          <p className="mt-4 max-w-3xl font-inter text-base text-slate-200/80">
-            The quality of the first conversation is everything. Don’t settle for robotic scripts—listen to how real agents turn cold outreach into warm opportunities.
+          <p className="mt-3 sm:mt-4 max-w-3xl font-inter text-sm sm:text-base text-slate-200/80">
+            The quality of the first conversation is everything. Don't settle for robotic scripts—listen to how real agents turn cold outreach into warm opportunities.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-slate-200/60">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 font-semibold uppercase tracking-[0.25em]">
-              <span className="h-2 w-2 rounded-full bg-vibrant-green" /> Live QA reviewed
+          <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-4 text-[10px] sm:text-xs text-slate-200/60">
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-1 sm:px-3 sm:py-2 font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em]">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-vibrant-green" /> Live QA reviewed
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 font-semibold uppercase tracking-[0.25em]">
-              <span className="h-2 w-2 rounded-full bg-action-blue" /> AI transcripts
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-1 sm:px-3 sm:py-2 font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em]">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-action-blue" /> AI transcripts
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 font-semibold uppercase tracking-[0.25em]">
-              <span className="h-2 w-2 rounded-full bg-energetic-pink" /> Seller consent secured
+            <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-1 sm:px-3 sm:py-2 font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em]">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-energetic-pink" /> Seller consent secured
             </span>
           </div>
         </motion.div>
@@ -308,50 +308,50 @@ export default function AudioSamples() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="grid gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
+          className="grid gap-4 sm:gap-6 lg:gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
         >
           <motion.article
             variants={fadeInUp}
-            className="flex flex-col gap-6 rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-white/5 to-white/5 p-8 shadow-[0_35px_110px_rgba(5,8,20,0.65)] backdrop-blur-3xl relative overflow-hidden"
+            className="flex flex-col gap-4 sm:gap-6 rounded-2xl sm:rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-white/5 to-white/5 p-4 sm:p-6 lg:p-8 shadow-[0_35px_110px_rgba(5,8,20,0.65)] backdrop-blur-3xl relative overflow-hidden"
           >
             {/* Glassmorphism overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-action-blue/5 via-transparent to-energetic-pink/5 pointer-events-none" />
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-action-blue/40 to-transparent" />
 
             <div className="relative z-10">
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-3 sm:mb-4">
                 <div>
-                  <p className="font-inter text-sm uppercase tracking-[0.35em] text-slate-200/70">{featureSample.label}</p>
-                  <h3 className="mt-2 font-plus-jakarta-sans text-3xl font-semibold text-slate-50">
+                  <p className="font-inter text-[10px] sm:text-sm uppercase tracking-[0.25em] sm:tracking-[0.35em] text-slate-200/70">{featureSample.label}</p>
+                  <h3 className="mt-1.5 sm:mt-2 font-plus-jakarta-sans text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-50">
                     "How we uncover timing & motivation in under 2 minutes"
                   </h3>
                 </div>
               </div>
 
-              <div className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl">
-                <div className="flex items-center gap-3">
+              <div className="grid gap-3 sm:gap-4 rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 p-3 sm:p-4 backdrop-blur-xl">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <div className="relative">
                     <img
                       src={featureSample.avatar}
                       alt={featureSample.caller}
-                      className="h-14 w-14 rounded-full border-2 border-white/30 object-cover shadow-lg"
+                      className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border-2 border-white/30 object-cover shadow-lg"
                     />
-                    <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-vibrant-green border-2 border-[#0c1533] rounded-full flex items-center justify-center">
-                      <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                    <span className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 bg-vibrant-green border-2 border-[#0c1533] rounded-full flex items-center justify-center">
+                      <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse" />
                     </span>
                   </div>
                   <div>
-                    <p className="font-plus-jakarta-sans text-base font-semibold text-slate-50">{featureSample.caller}</p>
-                    <p className="font-inter text-sm text-slate-200/70">{featureSample.role}</p>
+                    <p className="font-plus-jakarta-sans text-sm sm:text-base font-semibold text-slate-50">{featureSample.caller}</p>
+                    <p className="font-inter text-xs sm:text-sm text-slate-200/70">{featureSample.role}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-4 backdrop-blur-sm">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 rounded-lg sm:rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-3 sm:p-4 backdrop-blur-sm">
                   <div>
-                    <p className="font-inter text-xs uppercase tracking-[0.35em] text-slate-200/60">Target seller</p>
-                    <p className="font-plus-jakarta-sans text-sm font-semibold text-slate-50 mt-1">Single-family landlord • Tampa, FL</p>
+                    <p className="font-inter text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-slate-200/60">Target seller</p>
+                    <p className="font-plus-jakarta-sans text-xs sm:text-sm font-semibold text-slate-50 mt-0.5 sm:mt-1">Single-family landlord • Tampa, FL</p>
                   </div>
-                  <span className="rounded-full border border-vibrant-green/40 bg-vibrant-green/15 px-3 py-1.5 font-inter text-xs font-semibold text-vibrant-green backdrop-blur-sm">
+                  <span className="rounded-full border border-vibrant-green/40 bg-vibrant-green/15 px-2.5 py-1 sm:px-3 sm:py-1.5 font-inter text-[10px] sm:text-xs font-semibold text-vibrant-green backdrop-blur-sm self-start sm:self-auto">
                     Warm lead
                   </span>
                 </div>
@@ -359,22 +359,22 @@ export default function AudioSamples() {
                 {/* Interactive Audio Player */}
                 <AudioPlayer sample={featureSample} isFeatured={true} />
 
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   {featureSample.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-inter text-xs font-semibold uppercase tracking-[0.25em] text-slate-200/70 backdrop-blur-sm hover:bg-white/10 transition-colors"
+                      className="rounded-full border border-white/10 bg-white/5 px-2 py-1 sm:px-3 sm:py-1.5 font-inter text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-slate-200/70 backdrop-blur-sm hover:bg-white/10 transition-colors"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <p className="font-inter text-sm text-slate-200/80 leading-relaxed">
+                <p className="font-inter text-xs sm:text-sm text-slate-200/80 leading-relaxed">
                   {featureSample.description}
                 </p>
 
-                <div className="flex items-center justify-between rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-4 text-xs text-slate-200/70 backdrop-blur-sm">
+                <div className="flex items-center justify-between rounded-lg sm:rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-3 sm:p-4 text-[10px] sm:text-xs text-slate-200/70 backdrop-blur-sm">
                   <span className="flex items-center gap-2">
                     <Volume2 className="w-4 h-4 text-action-blue" />
                     Duration {featureSample.duration}
@@ -393,7 +393,7 @@ export default function AudioSamples() {
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
-            className="grid gap-8 md:grid-cols-2 xl:grid-cols-1"
+            className="grid gap-4 sm:gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-1"
           >
             {supportingSamples.map((sample, index) => (
               <motion.article
@@ -401,7 +401,7 @@ export default function AudioSamples() {
                 variants={fadeInUp}
                 whileHover={{ y: -12, scale: 1.02 }}
                 transition={{ duration: 0.4, ease: [0.215, 0.61, 0.355, 1] }}
-                className="group relative flex flex-col rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-white/5 to-white/5 p-6 shadow-[0_30px_90px_rgba(8,12,28,0.6)] backdrop-blur-3xl overflow-hidden"
+                className="group relative flex flex-col rounded-2xl sm:rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-white/5 to-white/5 p-4 sm:p-6 shadow-[0_30px_90px_rgba(8,12,28,0.6)] backdrop-blur-3xl overflow-hidden"
               >
                 {/* Glassmorphism overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-action-blue/5 via-transparent to-energetic-pink/5 pointer-events-none" />
@@ -409,26 +409,26 @@ export default function AudioSamples() {
                 <div className="absolute inset-x-6 top-7 h-20 rounded-full bg-gradient-to-r from-action-blue/25 via-transparent to-energetic-pink/25 blur-3xl" />
 
                 <div className="relative z-10">
-                  <div className="mb-4 flex items-center gap-4">
+                  <div className="mb-3 sm:mb-4 flex items-center gap-2.5 sm:gap-4">
                     <div className="relative">
                       <img
                         src={sample.avatar}
                         alt={sample.caller}
-                        className="h-14 w-14 rounded-full border-2 border-white/30 object-cover shadow-lg"
+                        className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border-2 border-white/30 object-cover shadow-lg"
                       />
-                      <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-vibrant-green border-2 border-[#0c1533] rounded-full flex items-center justify-center">
-                        <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                      <span className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 bg-vibrant-green border-2 border-[#0c1533] rounded-full flex items-center justify-center">
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse" />
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-plus-jakarta-sans text-base font-semibold text-slate-50">{sample.caller}</h4>
+                      <h4 className="font-plus-jakarta-sans text-sm sm:text-base font-semibold text-slate-50">{sample.caller}</h4>
                       <p className="font-inter text-xs text-slate-200/70">{sample.role}</p>
                     </div>
                   </div>
 
-                  <div className="mb-4">
-                    <span className="font-inter text-[10px] uppercase tracking-[0.35em] text-action-blue/80">{sample.label}</span>
-                    <h5 className="font-plus-jakarta-sans text-lg font-semibold text-slate-50 mt-1">
+                  <div className="mb-3 sm:mb-4">
+                    <span className="font-inter text-[9px] sm:text-[10px] uppercase tracking-[0.25em] sm:tracking-[0.35em] text-action-blue/80">{sample.label}</span>
+                    <h5 className="font-plus-jakarta-sans text-base sm:text-lg font-semibold text-slate-50 mt-0.5 sm:mt-1">
                       {sample.title}
                     </h5>
                   </div>
@@ -438,28 +438,28 @@ export default function AudioSamples() {
                     <AudioPlayer sample={sample} isFeatured={false} />
                   </div>
 
-                  <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-1.5 sm:gap-2">
                     {sample.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-inter text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-200/60 backdrop-blur-sm hover:bg-white/10 transition-colors"
+                        className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1 font-inter text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.25em] sm:tracking-[0.3em] text-slate-200/60 backdrop-blur-sm hover:bg-white/10 transition-colors"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <p className="mt-4 font-inter text-sm text-slate-200/80 leading-relaxed">
+                  <p className="mt-3 sm:mt-4 font-inter text-xs sm:text-sm text-slate-200/80 leading-relaxed">
                     {sample.description}
                   </p>
 
-                  <div className="mt-4 flex items-center gap-2 text-xs text-slate-200/60">
-                    <span className="h-2 w-2 rounded-full bg-action-blue animate-pulse" />
+                  <div className="mt-3 sm:mt-4 flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-slate-200/60">
+                    <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-action-blue animate-pulse" />
                     <span>Live QA + AI transcript available</span>
                   </div>
 
-                  <div className="mt-3 flex items-center gap-2 text-xs text-slate-200/60">
-                    <Volume2 className="h-4 w-4 text-action-blue" />
+                  <div className="mt-2 sm:mt-3 flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-slate-200/60">
+                    <Volume2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-action-blue" />
                     <span>High-fidelity sample pulled from real calls</span>
                   </div>
                 </div>
