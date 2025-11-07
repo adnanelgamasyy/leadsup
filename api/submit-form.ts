@@ -210,8 +210,8 @@ export async function POST(request: Request) {
     const emailHTML = generateEmailHTML(data)
 
     await resend.emails.send({
-      from: 'LeadsUp Forms <forms@theleadsup.com>', // Update with your verified sender domain
-      to: ['submissions@leadsupcallcenter.com'],
+      from: 'LeadsUp Forms <forms@theleadsup.com>',
+      to: ['submissions@leadsupcallcenter.com', 'adnanelgamasy@gmail.com'],
       subject: `New ${data.formType.replace(/-/g, ' ').toUpperCase()} Form Submission - ${data.fullName}`,
       html: emailHTML,
       replyTo: data.email,

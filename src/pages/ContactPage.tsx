@@ -1,35 +1,12 @@
-import { useState } from 'react'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Mail, Phone, MapPin } from 'lucide-react'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
+import SEO from '@/components/SEO'
 import { motion } from 'framer-motion'
-import { fadeInUp, fadeInStagger, viewportOnce, buttonHover, iconHover } from '@/lib/motion'
+import { fadeInUp, fadeInStagger, viewportOnce } from '@/lib/motion'
+import ContactForm from '@/components/forms/ContactForm'
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    investingStrategy: '',
-    desiredAreas: '',
-    numCallers: ''
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    alert('Thank you! We\'ll be in touch soon.')
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
   return (
     <div className="min-h-screen">
       <EnhancedHeader />
@@ -115,138 +92,7 @@ export default function ContactPage() {
               </div>
 
               <div className="overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl">
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label htmlFor="name" className="block font-inter text-sm font-semibold text-slate-50 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-inter text-sm text-slate-50 backdrop-blur-xl transition placeholder:text-slate-200/50 focus:border-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/50"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block font-inter text-sm font-semibold text-slate-50 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-inter text-sm text-slate-50 backdrop-blur-xl transition placeholder:text-slate-200/50 focus:border-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/50"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block font-inter text-sm font-semibold text-slate-50 mb-2">
-                      Phone *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      required
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-inter text-sm text-slate-50 backdrop-blur-xl transition placeholder:text-slate-200/50 focus:border-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/50"
-                      placeholder="(555) 123-4567"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block font-inter text-sm font-semibold text-slate-50 mb-2">
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-inter text-sm text-slate-50 backdrop-blur-xl transition placeholder:text-slate-200/50 focus:border-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/50"
-                      placeholder="Your Company"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="investingStrategy" className="block font-inter text-sm font-semibold text-slate-50 mb-2">
-                      Investing Strategy
-                    </label>
-                    <select
-                      id="investingStrategy"
-                      name="investingStrategy"
-                      value={formData.investingStrategy}
-                      onChange={handleChange}
-                      className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-inter text-sm text-slate-50 backdrop-blur-xl transition focus:border-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/50"
-                    >
-                      <option value="" className="bg-[#101633] text-slate-50">Select a strategy</option>
-                      <option value="wholesaling" className="bg-[#101633] text-slate-50">Wholesaling</option>
-                      <option value="fix-and-flip" className="bg-[#101633] text-slate-50">Fix & Flip</option>
-                      <option value="buy-and-hold" className="bg-[#101633] text-slate-50">Buy & Hold</option>
-                      <option value="agent" className="bg-[#101633] text-slate-50">Real Estate Agent</option>
-                      <option value="other" className="bg-[#101633] text-slate-50">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="desiredAreas" className="block font-inter text-sm font-semibold text-slate-50 mb-2">
-                      Desired Areas
-                    </label>
-                    <input
-                      type="text"
-                      id="desiredAreas"
-                      name="desiredAreas"
-                      value={formData.desiredAreas}
-                      onChange={handleChange}
-                      className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-inter text-sm text-slate-50 backdrop-blur-xl transition placeholder:text-slate-200/50 focus:border-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/50"
-                      placeholder="e.g., Dallas, Austin, Houston"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="numCallers" className="block font-inter text-sm font-semibold text-slate-50 mb-2">
-                      How Many Callers Are You Interested In?
-                    </label>
-                    <select
-                      id="numCallers"
-                      name="numCallers"
-                      value={formData.numCallers}
-                      onChange={handleChange}
-                      className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-inter text-sm text-slate-50 backdrop-blur-xl transition focus:border-action-blue focus:outline-none focus:ring-2 focus:ring-action-blue/50"
-                    >
-                      <option value="" className="bg-[#101633] text-slate-50">Select number of callers</option>
-                      <option value="1" className="bg-[#101633] text-slate-50">1 Caller</option>
-                      <option value="2" className="bg-[#101633] text-slate-50">2 Callers</option>
-                      <option value="3" className="bg-[#101633] text-slate-50">3 Callers</option>
-                      <option value="4" className="bg-[#101633] text-slate-50">4 Callers</option>
-                      <option value="5+" className="bg-[#101633] text-slate-50">5+ Callers</option>
-                    </select>
-                  </div>
-
-                  <motion.div whileHover={buttonHover}>
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-action-blue px-6 py-4 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.4)] transition hover:bg-action-blue/90"
-                    >
-                      Send Inquiry
-                      <motion.span whileHover={iconHover}>
-                        <Send className="h-5 w-5" />
-                      </motion.span>
-                    </Button>
-                  </motion.div>
-                </form>
+                <ContactForm />
 
                 {/* Direct Contact Info */}
                 <div className="mt-8 space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6">
