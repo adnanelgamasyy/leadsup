@@ -1,31 +1,38 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import HomePage from './pages/HomePage';
-import DashboardPage from './pages/DashboardPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import ServicesPage from './pages/ServicesPage';
-import IndustriesPage from './pages/IndustriesPage';
-import PricingPage from './pages/PricingPage';
-import BlogPage from './pages/BlogPage';
-import EnhancedBlogPostPage from './pages/EnhancedBlogPostPage';
-import ColdCallingPage from './pages/services/ColdCallingPage';
-import DataGenerationPage from './pages/services/DataGenerationPage';
-import SkipTracingPage from './pages/services/SkipTracingPage';
-import MarketResearchPage from './pages/services/MarketResearchPage';
-import AcquisitionsDispositionsPage from './pages/services/AcquisitionsDispositionsPage';
-import AppointmentSettingPage from './pages/services/AppointmentSettingPage';
-import RealEstateWholesalersPage from './pages/industries/RealEstateWholesalersPage';
-import FixFlipInvestorsPage from './pages/industries/FixFlipInvestorsPage';
-import BuyHoldInvestorsPage from './pages/industries/BuyHoldInvestorsPage';
-import RealEstateAgentsPage from './pages/industries/RealEstateAgentsPage';
-import RealEstatePage from './pages/industries/RealEstatePage';
-import RoofingPage from './pages/industries/RoofingPage';
-import SolarPage from './pages/industries/SolarPage';
-import MedicalInsurancePage from './pages/industries/MedicalInsurancePage';
-import AutomotivePage from './pages/industries/AutomotivePage';
+import { useEffect, Suspense, lazy } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import './app/globals.css';
+
+// Lazy load all page components for better performance
+const HomePage = lazy(() => import('./pages/HomePage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const IndustriesPage = lazy(() => import('./pages/IndustriesPage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const EnhancedBlogPostPage = lazy(() => import('./pages/EnhancedBlogPostPage'));
+
+// Service pages
+const ColdCallingPage = lazy(() => import('./pages/services/ColdCallingPage'));
+const DataGenerationPage = lazy(() => import('./pages/services/DataGenerationPage'));
+const SkipTracingPage = lazy(() => import('./pages/services/SkipTracingPage'));
+const MarketResearchPage = lazy(() => import('./pages/services/MarketResearchPage'));
+const AcquisitionsDispositionsPage = lazy(() => import('./pages/services/AcquisitionsDispositionsPage'));
+const AppointmentSettingPage = lazy(() => import('./pages/services/AppointmentSettingPage'));
+
+// Industry pages
+const RealEstateWholesalersPage = lazy(() => import('./pages/industries/RealEstateWholesalersPage'));
+const FixFlipInvestorsPage = lazy(() => import('./pages/industries/FixFlipInvestorsPage'));
+const BuyHoldInvestorsPage = lazy(() => import('./pages/industries/BuyHoldInvestorsPage'));
+const RealEstateAgentsPage = lazy(() => import('./pages/industries/RealEstateAgentsPage'));
+const RealEstatePage = lazy(() => import('./pages/industries/RealEstatePage'));
+const RoofingPage = lazy(() => import('./pages/industries/RoofingPage'));
+const SolarPage = lazy(() => import('./pages/industries/SolarPage'));
+const MedicalInsurancePage = lazy(() => import('./pages/industries/MedicalInsurancePage'));
+const AutomotivePage = lazy(() => import('./pages/industries/AutomotivePage'));
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -38,40 +45,53 @@ function ScrollToTop() {
   return null;
 }
 
+// Loading component for Suspense fallback
+function LoadingSpinner() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-background">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-action-blue"></div>
+    </div>
+  );
+}
+
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-background">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/cold-calling" element={<ColdCallingPage />} />
-          <Route path="/services/data-generation" element={<DataGenerationPage />} />
-          <Route path="/services/skip-tracing" element={<SkipTracingPage />} />
-          <Route path="/services/market-research" element={<MarketResearchPage />} />
-          <Route path="/services/acquisitions-dispositions" element={<AcquisitionsDispositionsPage />} />
-          <Route path="/services/appointment-setting" element={<AppointmentSettingPage />} />
-          <Route path="/industries" element={<IndustriesPage />} />
-          <Route path="/industries/real-estate-wholesalers" element={<RealEstateWholesalersPage />} />
-          <Route path="/industries/fix-flip-investors" element={<FixFlipInvestorsPage />} />
-          <Route path="/industries/buy-hold-investors" element={<BuyHoldInvestorsPage />} />
-          <Route path="/industries/real-estate-agents" element={<RealEstateAgentsPage />} />
-          <Route path="/industries/real-estate" element={<RealEstatePage />} />
-          <Route path="/industries/roofing" element={<RoofingPage />} />
-          <Route path="/industries/solar" element={<SolarPage />} />
-          <Route path="/industries/medical-insurance" element={<MedicalInsurancePage />} />
-          <Route path="/industries/automotive" element={<AutomotivePage />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<EnhancedBlogPostPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-        </Routes>
-        <WhatsAppFloat />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-background">
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/cold-calling" element={<ColdCallingPage />} />
+              <Route path="/services/data-generation" element={<DataGenerationPage />} />
+              <Route path="/services/skip-tracing" element={<SkipTracingPage />} />
+              <Route path="/services/market-research" element={<MarketResearchPage />} />
+              <Route path="/services/acquisitions-dispositions" element={<AcquisitionsDispositionsPage />} />
+              <Route path="/services/appointment-setting" element={<AppointmentSettingPage />} />
+              <Route path="/industries" element={<IndustriesPage />} />
+              <Route path="/industries/real-estate-wholesalers" element={<RealEstateWholesalersPage />} />
+              <Route path="/industries/fix-flip-investors" element={<FixFlipInvestorsPage />} />
+              <Route path="/industries/buy-hold-investors" element={<BuyHoldInvestorsPage />} />
+              <Route path="/industries/real-estate-agents" element={<RealEstateAgentsPage />} />
+              <Route path="/industries/real-estate" element={<RealEstatePage />} />
+              <Route path="/industries/roofing" element={<RoofingPage />} />
+              <Route path="/industries/solar" element={<SolarPage />} />
+              <Route path="/industries/medical-insurance" element={<MedicalInsurancePage />} />
+              <Route path="/industries/automotive" element={<AutomotivePage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<EnhancedBlogPostPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+            </Routes>
+          </Suspense>
+          <WhatsAppFloat />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 
