@@ -7,6 +7,7 @@ export default function EnhancedHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -36,9 +37,24 @@ export default function EnhancedHeader() {
   }
 
   const services = [
-    { name: 'Cold Calling VAs', href: '/services/cold-calling' },
-    { name: 'Skip Tracing & Data', href: '/services/skip-tracing' },
-    { name: 'Full-Service Acquisition', href: '/services/full-service' },
+    { name: 'Cold Calling', href: '/services/cold-calling' },
+    { name: 'Data Generation', href: '/services/data-generation' },
+    { name: 'Skip Tracing', href: '/services/skip-tracing' },
+    { name: 'Market Research', href: '/services/market-research' },
+    { name: 'Acquisitions & Dispositions', href: '/services/acquisitions-dispositions' },
+    { name: 'Appointment Setting', href: '/services/appointment-setting' },
+  ]
+
+  const industries = [
+    { name: 'Real Estate Wholesalers', href: '/industries/real-estate-wholesalers' },
+    { name: 'Fix & Flip Investors', href: '/industries/fix-flip-investors' },
+    { name: 'Buy & Hold Investors', href: '/industries/buy-hold-investors' },
+    { name: 'Real Estate Agents', href: '/industries/real-estate-agents' },
+    { name: 'Real Estate', href: '/industries/real-estate' },
+    { name: 'Roofing', href: '/industries/roofing' },
+    { name: 'Solar', href: '/industries/solar' },
+    { name: 'Medical Insurance', href: '/industries/medical-insurance' },
+    { name: 'Automotive', href: '/industries/automotive' },
   ]
 
   return (
@@ -86,6 +102,35 @@ export default function EnhancedHeader() {
                     className="block px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
                   >
                     {service.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Industries Dropdown */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setIsIndustriesOpen(true)}
+              onMouseLeave={() => setIsIndustriesOpen(false)}
+            >
+              <button
+                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              >
+                Industries
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isIndustriesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu */}
+              <div className={`absolute left-0 top-full mt-3 w-64 overflow-hidden rounded-2xl border border-white/10 bg-[#0c162f]/95 shadow-[0_25px_70px_rgba(5,8,18,0.65)] backdrop-blur-2xl transition-all duration-200 ${
+                isIndustriesOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
+              }`}>
+                {industries.map((industry) => (
+                  <Link
+                    key={industry.name}
+                    to={industry.href}
+                    className="block px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+                  >
+                    {industry.name}
                   </Link>
                 ))}
               </div>
@@ -160,6 +205,21 @@ export default function EnhancedHeader() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {service.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Industries Mobile */}
+            <div className="space-y-2">
+              <div className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70">Industries</div>
+              {industries.map((industry) => (
+                <Link
+                  key={industry.name}
+                  to={industry.href}
+                  className="block rounded-xl px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {industry.name}
                 </Link>
               ))}
             </div>

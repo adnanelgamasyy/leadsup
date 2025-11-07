@@ -308,7 +308,7 @@ export default function AudioSamples() {
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          className="grid gap-4 sm:gap-6 lg:gap-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
+          className="grid gap-4 sm:gap-6 lg:gap-8"
         >
           <motion.article
             variants={fadeInUp}
@@ -393,7 +393,7 @@ export default function AudioSamples() {
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
-            className="grid gap-4 sm:gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-1"
+            className="grid gap-4 sm:gap-6 lg:gap-8 md:grid-cols-2 xl:grid-cols-3"
           >
             {supportingSamples.map((sample, index) => (
               <motion.article

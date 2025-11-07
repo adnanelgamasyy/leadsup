@@ -15,10 +15,10 @@ const promiseBullets = [
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#1A1F3B] to-slate-900 pt-32 pb-24">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0f1f] via-deep-purple to-slate-900 pt-32 pb-24">
       {/* Glow overlays */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-action-blue/30 blur-3xl" />
+        <div className="absolute -top-32 -left-24 h-72 w-72 rounded-full bg-action-blue/10 blur-3xl" />
         <div className="absolute top-40 -right-24 h-80 w-80 rounded-full bg-energetic-pink/25 blur-3xl" />
         <div className="absolute bottom-0 left-1/2 h-96 w-[28rem] -translate-x-1/2 rounded-[999px] bg-gradient-to-t from-slate-900 via-transparent to-transparent blur-3xl" />
       </div>
