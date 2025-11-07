@@ -209,11 +209,12 @@ export function FormSelect({ label, name, value, onChange, options, required = f
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 text-slate-100 focus:border-action-blue focus:ring-2 focus:ring-action-blue/50 transition"
+        className="w-full px-4 py-3 rounded-xl border border-white/20 bg-white/5 text-slate-100 focus:border-action-blue focus:ring-2 focus:ring-action-blue/50 transition [&>option]:bg-slate-900 [&>option]:text-slate-100 [&>option]:py-2"
+        style={{ colorScheme: 'dark' }}
       >
-        <option value="">Select...</option>
+        <option value="" className="bg-slate-900 text-slate-400">Select...</option>
         {options.map(opt => (
-          <option key={opt.value} value={opt.value}>{opt.label}</option>
+          <option key={opt.value} value={opt.value} className="bg-slate-900 text-slate-100">{opt.label}</option>
         ))}
       </select>
     </div>

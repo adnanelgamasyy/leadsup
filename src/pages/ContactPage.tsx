@@ -4,8 +4,22 @@ import Footer from '@/components/Footer'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInStagger, viewportOnce } from '@/lib/motion'
 import ContactForm from '@/components/forms/ContactForm'
+import { useEffect } from 'react'
 
 export default function ContactPage() {
+  useEffect(() => {
+    // Load Calendly script
+    const script = document.createElement('script')
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    document.body.appendChild(script)
+
+    return () => {
+      // Cleanup script on unmount
+      document.body.removeChild(script)
+    }
+  }, [])
+
   return (
     <div className="min-h-screen">
       <EnhancedHeader />
@@ -66,16 +80,11 @@ export default function ContactPage() {
 
               {/* Calendly Embed */}
               <div className="overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl">
-                <div className="h-[600px]">
-                  <iframe
-                    src="https://cal.com/leadsup/strategy-call"
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    title="Book a Strategy Call"
-                    className="rounded-3xl"
-                  />
-                </div>
+                <div
+                  className="calendly-inline-widget"
+                  data-url="https://calendly.com/deeahmed-leadsupcallcenter?background_color=1a1a1a&text_color=0069ff&primary_color=cc5d37"
+                  style={{ minWidth: '320px', height: '700px' }}
+                />
               </div>
             </motion.div>
 
