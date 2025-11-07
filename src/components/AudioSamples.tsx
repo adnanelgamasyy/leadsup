@@ -6,33 +6,47 @@ import { useState, useRef, useEffect } from 'react'
 const samples = [
   {
     label: 'Live Call Example 1',
-    title: 'Identifying Motivation',
-    duration: '2:34',
-    caller: 'Sarah Martinez',
-    role: 'Senior Caller',
-    description: 'Sarah builds instant rapport, surfaces urgency, and books a follow-up in two minutes flat.',
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200',
-    tags: ['Discovery', 'Rapport', 'Qualification']
+    title: 'Real Estate Cold Calling',
+    duration: '2:15',
+    caller: 'Mark',
+    role: 'Real Estate Cold Caller',
+    description: 'Mark demonstrates professional cold calling techniques with real estate prospects, building rapport and identifying opportunities.',
+    avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200',
+    tags: ['Discovery', 'Rapport', 'Real Estate'],
+    audioFile: '/audio/Mark Real estate cold caller.mp3'
   },
   {
     label: 'Live Call Example 2',
-    title: 'Handling Objections',
-    duration: '3:12',
-    caller: 'Michael Chen',
-    role: 'Lead Specialist',
-    description: 'Michael juggles pricing pushback and timeline negotiations to secure a firm calendar slot.',
-    avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200',
-    tags: ['Objection handling', 'Value framing', 'Appointment']
+    title: 'Professional Outreach',
+    duration: '1:00',
+    caller: 'Paul',
+    role: 'Real Estate Cold Caller',
+    description: 'Paul showcases effective communication strategies and objection handling in real estate cold calling scenarios.',
+    avatar: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=200',
+    tags: ['Objection handling', 'Value framing', 'Real Estate'],
+    audioFile: '/audio/Paul Real estate cold caller.mp3'
   },
   {
     label: 'Live Call Example 3',
-    title: 'Setting Appointments',
-    duration: '2:48',
-    caller: 'Jessica Thompson',
-    role: 'Closing Expert',
-    description: 'Jessica creates urgency, summarizes seller pain, and confirms all stakeholders for the closing call.',
-    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=200',
-    tags: ['Next steps', 'Urgency', 'Warm transfer']
+    title: 'Cold Calling Excellence',
+    duration: '1:15',
+    caller: 'Lily',
+    role: 'Cold Caller',
+    description: 'Lily demonstrates expert-level cold calling skills, creating urgency and building trust with potential clients.',
+    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200',
+    tags: ['Next steps', 'Urgency', 'Qualification'],
+    audioFile: '/audio/lily cold caller.mp3'
+  },
+  {
+    label: 'Live Call Example 4',
+    title: 'Advanced Cold Calling',
+    duration: '3:00',
+    caller: 'Thomas',
+    role: 'Cold Caller',
+    description: 'Thomas shows how to handle complex conversations, address concerns, and move prospects toward commitment.',
+    avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200',
+    tags: ['Appointment', 'Closing', 'Follow-up'],
+    audioFile: '/audio/thomas cold caller.mp3'
   }
 ]
 
@@ -44,15 +58,8 @@ function AudioPlayer({ sample, isFeatured = false }: { sample: typeof samples[0]
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
   const [currentTime, setCurrentTime] = useState('0:00')
-  const intervalRef = useRef<NodeJS.Timeout | null>(null)
-
-  // Parse duration to seconds
-  const getDurationInSeconds = (duration: string) => {
-    const [minutes, seconds] = duration.split(':').map(Number)
-    return minutes * 60 + seconds
-  }
-
-  const totalSeconds = getDurationInSeconds(sample.duration)
+  const [duration, setDuration] = useState(sample.duration)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   // Format time
   const formatTime = (seconds: number) => {
@@ -61,51 +68,57 @@ function AudioPlayer({ sample, isFeatured = false }: { sample: typeof samples[0]
     return `${mins}:${secs.toString().padStart(2, '0')}`
   }
 
+  // Initialize audio element
+  useEffect(() => {
+    const audio = new Audio(sample.audioFile)
+    audioRef.current = audio
+
+    audio.addEventListener('loadedmetadata', () => {
+      setDuration(formatTime(audio.duration))
+    })
+
+    audio.addEventListener('timeupdate', () => {
+      const currentProgress = (audio.currentTime / audio.duration) * 100
+      setProgress(currentProgress)
+      setCurrentTime(formatTime(audio.currentTime))
+    })
+
+    audio.addEventListener('ended', () => {
+      setIsPlaying(false)
+      setProgress(0)
+      setCurrentTime('0:00')
+    })
+
+    return () => {
+      audio.pause()
+      audio.src = ''
+    }
+  }, [sample.audioFile])
+
   // Play/pause handler
   const togglePlay = () => {
+    if (!audioRef.current) return
+
     if (isPlaying) {
-      if (intervalRef.current) clearInterval(intervalRef.current)
+      audioRef.current.pause()
       setIsPlaying(false)
     } else {
+      audioRef.current.play()
       setIsPlaying(true)
-      let elapsed = (progress / 100) * totalSeconds
-
-      intervalRef.current = setInterval(() => {
-        elapsed += 0.1
-        const newProgress = (elapsed / totalSeconds) * 100
-
-        if (newProgress >= 100) {
-          setProgress(100)
-          setCurrentTime(sample.duration)
-          setIsPlaying(false)
-          if (intervalRef.current) clearInterval(intervalRef.current)
-        } else {
-          setProgress(newProgress)
-          setCurrentTime(formatTime(elapsed))
-        }
-      }, 100)
     }
-  }
-
-  // Reset handler
-  const reset = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current)
-    setProgress(0)
-    setCurrentTime('0:00')
-    setIsPlaying(false)
   }
 
   // Skip forward/back
   const skip = (seconds: number) => {
-    const currentSeconds = (progress / 100) * totalSeconds
-    const newSeconds = Math.max(0, Math.min(totalSeconds, currentSeconds + seconds))
-    setProgress((newSeconds / totalSeconds) * 100)
-    setCurrentTime(formatTime(newSeconds))
+    if (!audioRef.current) return
+    audioRef.current.currentTime = Math.max(0, Math.min(audioRef.current.duration, audioRef.current.currentTime + seconds))
   }
 
   useEffect(() => {
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current)
+      if (audioRef.current) {
+        audioRef.current.pause()
+      }
     }
   }, [])
 
@@ -208,7 +221,7 @@ function AudioPlayer({ sample, isFeatured = false }: { sample: typeof samples[0]
                 >
                   <SkipBack className="w-4 h-4" />
                 </motion.button>
-                <span className="font-mono">{currentTime} / {sample.duration}</span>
+                <span className="font-mono">{currentTime} / {duration}</span>
                 <motion.button
                   onClick={() => skip(10)}
                   whileHover={{ scale: 1.1 }}

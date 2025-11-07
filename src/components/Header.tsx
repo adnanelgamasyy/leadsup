@@ -34,13 +34,12 @@ export default function Header() {
       <div className="container mx-auto max-w-[1600px] px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 group relative z-10">
-            <div className="bg-gradient-to-br from-action-blue via-energetic-pink to-vibrant-green rounded-lg p-2 group-hover:scale-110 transition-transform shadow-[0_10px_25px_rgba(61,130,247,0.4)]">
-              <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
-              </svg>
-            </div>
-            <span className="text-base font-bold text-slate-100">The Leads Up</span>
+          <a href="/" className="flex items-center group relative z-10">
+            <img
+              src="/leadsup-logo.png"
+              alt="The Leads Up Logo"
+              className="h-10 w-auto group-hover:scale-105 transition-transform"
+            />
           </a>
 
           {/* Desktop Navigation */}
