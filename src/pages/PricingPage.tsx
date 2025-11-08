@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Check, Phone, Users, ArrowRight, Rocket, TrendingUp, Crown, Sparkles, ShieldCheck, Timer, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
+import CustomPackageForm from '@/components/forms/CustomPackageForm'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHover } from '@/lib/motion'
 
@@ -81,18 +83,15 @@ const planFormUrls: Record<string, string> = {
 export default function PricingPage() {
   const [numCallers, setNumCallers] = useState('1')
   const [numAcquisitionManagers, setNumAcquisitionManagers] = useState('0')
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
   const handleCustomSubmit = () => {
-    const calendarUrl = `https://cal.com/leadsup/strategy-call?callers=${numCallers}&managers=${numAcquisitionManagers}`
-    window.open(calendarUrl, '_blank')
+    setIsDialogOpen(true)
   }
 
   const handlePlanCta = (planId: string) => {
-    const url = planFormUrls[planId]
-    if (!url) return
-
     if (typeof window !== 'undefined') {
-      window.open(url, '_blank', 'noopener,noreferrer')
+      window.location.href = '/contact'
     }
   }
 
@@ -377,6 +376,21 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      {/* Custom Package Form Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900 border-white/20">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-plus-jakarta-sans font-bold text-slate-50">
+              Custom Enterprise Package
+            </DialogTitle>
+            <DialogDescription className="text-slate-200/80 font-inter">
+              Complete the form below to get a custom quote for your enterprise needs. Your selections have been pre-filled.
+            </DialogDescription>
+          </DialogHeader>
+          <CustomPackageForm callers={numCallers} managers={numAcquisitionManagers} />
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>

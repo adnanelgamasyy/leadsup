@@ -192,26 +192,7 @@ export default function EnhancedBlogPostPage() {
 
                   {/* Main Content with Proper Styling */}
                   <div
-                    className="blog-content
-                      [&>p]:font-inter [&>p]:text-base [&>p]:text-slate-200/80 [&>p]:leading-relaxed [&>p]:mb-6
-                      [&>h2]:font-plus-jakarta-sans [&>h2]:text-3xl [&>h2]:font-bold [&>h2]:text-slate-50 [&>h2]:mt-12 [&>h2]:mb-6
-                      [&>h3]:font-plus-jakarta-sans [&>h3]:text-2xl [&>h3]:font-semibold [&>h3]:text-slate-50 [&>h3]:mt-8 [&>h3]:mb-4
-                      [&>h4]:font-plus-jakarta-sans [&>h4]:text-xl [&>h4]:font-semibold [&>h4]:text-slate-50 [&>h4]:mt-6 [&>h4]:mb-3
-                      [&>ul]:my-6 [&>ul]:space-y-3 [&>ul]:ml-6
-                      [&>ul>li]:font-inter [&>ul>li]:text-base [&>ul>li]:text-slate-200/80 [&>ul>li]:leading-relaxed
-                      [&>ul>li]:pl-2 [&>ul>li]:relative
-                      [&>ul>li::before]:content-[''] [&>ul>li::before]:absolute [&>ul>li::before]:left-[-1.5rem] [&>ul>li::before]:top-[0.6rem]
-                      [&>ul>li::before]:w-2 [&>ul>li::before]:h-2 [&>ul>li::before]:rounded-full [&>ul>li::before]:bg-action-blue
-                      [&>strong]:text-slate-50 [&>strong]:font-semibold
-                      [&>.video-container]:my-10 [&>.video-container]:rounded-2xl [&>.video-container]:overflow-hidden
-                      [&>.video-container]:shadow-[0_40px_120px_rgba(15,23,42,0.5)] [&>.video-container]:border [&>.video-container]:border-white/10
-                      [&>.video-container>iframe]:w-full [&>.video-container>iframe]:aspect-video
-                      [&>table]:my-8 [&>table]:w-full [&>table]:rounded-2xl [&>table]:overflow-hidden [&>table]:border [&>table]:border-white/20
-                      [&>table_thead]:bg-white/10
-                      [&>table_th]:font-inter [&>table_th]:text-sm [&>table_th]:font-semibold [&>table_th]:text-slate-50 [&>table_th]:px-4 [&>table_th]:py-3 [&>table_th]:text-left
-                      [&>table_td]:font-inter [&>table_td]:text-sm [&>table_td]:text-slate-200/80 [&>table_td]:px-4 [&>table_td]:py-3
-                      [&>table_tbody>tr]:border-t [&>table_tbody>tr]:border-white/10
-                      [&_a]:text-action-blue [&_a]:font-semibold [&_a]:no-underline hover:[&_a]:underline"
+                    className="blog-content"
                     dangerouslySetInnerHTML={{ __html: contentWithIds }}
                   />
 
