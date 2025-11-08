@@ -224,7 +224,7 @@ export async function onRequestPost(context: any) {
 
     try {
       const emailResponse = await resendClient.emails.send({
-        from: 'LeadsUp Forms <forms@theleadsup.com>',
+        from: 'LeadsUp Forms <forms@leadsupcallcenter.com>',
         to: ['submissions@leadsupcallcenter.com', 'adnanelgamasy@gmail.com'],
         subject: `New ${data.formType.replace(/-/g, ' ').toUpperCase()} Form Submission - ${data.fullName}`,
         html: emailHTML,
