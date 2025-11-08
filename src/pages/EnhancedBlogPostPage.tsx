@@ -176,13 +176,7 @@ export default function EnhancedBlogPostPage() {
                 </motion.div>
 
                 {/* Article Content */}
-                <motion.div
-                  variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={viewportOnce}
-                  className="blog-content-wrapper"
-                >
+                <div className="blog-content-wrapper">
                   {/* Engaging Lede (First Paragraph) */}
                   <div className="mb-8 rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_40px_120px_rgba(15,23,42,0.35)]">
                     <p className="font-inter text-lg text-slate-200/90 leading-relaxed">
@@ -263,7 +257,7 @@ export default function EnhancedBlogPostPage() {
                       Book My Free Strategy Call
                     </button>
                   </div>
-                </motion.div>
+                </div>
               </div>
 
               {/* Sticky Table of Contents (Desktop Only) */}

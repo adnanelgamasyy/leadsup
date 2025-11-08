@@ -444,6 +444,14 @@ button[class*="bg-primary"]:hover {
    BLOG POST ENHANCEMENTS
    ======================================== */
 
+/* Ensure blog content wrapper is always visible */
+.blog-content-wrapper {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* Constrained reading width */
 .blog-content {
   max-width: 750px;
