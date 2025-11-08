@@ -144,10 +144,10 @@ export default function Footer() {
         <div className="flex flex-col gap-4 border-t border-white/10 pt-8 font-inter text-xs text-slate-200/60 sm:flex-row sm:items-center sm:justify-between">
           <p> 2024 LeadsUp Call Center. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
-            <a className="transition hover:text-action-blue" href="#">
+            <a className="transition hover:text-action-blue" href="/privacy-policy">
               Privacy Policy
             </a>
-            <a className="transition hover:text-action-blue" href="#">
+            <a className="transition hover:text-action-blue" href="/terms-of-service">
               Terms of Service
             </a>
             <a className="transition hover:text-action-blue" href="/blog">
