@@ -451,50 +451,61 @@ button[class*="bg-primary"]:hover {
   opacity: 1 !important;
 }
 
+/* Debugging: Add border to see if element exists */
+.blog-content > * {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* Blog content typography - ensure all HTML elements are visible */
 .blog-content p {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1rem;
-  color: rgba(226, 232, 240, 0.8);
+  font-size: 1rem !important;
+  color: rgba(226, 232, 240, 0.8) !important;
   line-height: 1.75;
   margin-bottom: 1.5rem;
   display: block !important;
   visibility: visible !important;
+  min-height: 1em;
 }
 
 .blog-content h2 {
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-  font-size: 1.875rem;
+  font-size: 1.875rem !important;
   font-weight: 700;
-  color: #F8FAFC;
+  color: #F8FAFC !important;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   scroll-margin-top: 6rem;
   display: block !important;
   visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .blog-content h3 {
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
   font-weight: 600;
-  color: #F8FAFC;
+  color: #F8FAFC !important;
   margin-top: 2rem;
   margin-bottom: 1rem;
   scroll-margin-top: 6rem;
   display: block !important;
   visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .blog-content h4 {
   font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.25rem !important;
   font-weight: 600;
-  color: #F8FAFC;
+  color: #F8FAFC !important;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   display: block !important;
   visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .blog-content ul {
@@ -504,18 +515,20 @@ button[class*="bg-primary"]:hover {
   list-style-type: none;
   display: block !important;
   visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .blog-content ul li {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 1rem;
-  color: rgba(226, 232, 240, 0.8);
+  font-size: 1rem !important;
+  color: rgba(226, 232, 240, 0.8) !important;
   line-height: 1.75;
   padding-left: 0.5rem;
   position: relative;
   margin-bottom: 0.75rem;
   display: list-item !important;
   visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .blog-content ul li::before {
@@ -530,21 +543,31 @@ button[class*="bg-primary"]:hover {
 }
 
 .blog-content strong {
-  color: #F8FAFC;
+  color: #F8FAFC !important;
   font-weight: 600;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .blog-content a {
-  color: #3d82f7;
+  color: #3d82f7 !important;
   font-weight: 600;
   text-decoration: none;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .blog-content a:hover {
   text-decoration: underline;
 }
 
-/* Video containers */
+/* Video containers and divs */
+.blog-content div {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 .blog-content .video-container {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
