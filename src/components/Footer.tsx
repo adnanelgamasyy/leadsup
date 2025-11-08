@@ -1,6 +1,6 @@
 "use client"
 
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
+import { Facebook, Twitter, Linkedin, Instagram, Youtube, Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
 
 const quickLinks = {
   services: [
@@ -16,6 +16,12 @@ const quickLinks = {
     { name: 'Get Started', href: '/pricing' }
   ]
 }
+
+const socialLinks = [
+  { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61583539406813', label: 'Facebook' },
+  { Icon: Instagram, href: 'https://www.instagram.com/leadsupcallcenter', label: 'Instagram' },
+  { Icon: Youtube, href: 'https://www.youtube.com/@leadsupcallcenter', label: 'YouTube' }
+]
 
 export default function Footer() {
   return (
@@ -46,21 +52,22 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
+              {socialLinks.map((social) => (
                 <a
-                  key={index}
-                  href="#"
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-action-blue hover:text-action-blue"
                 >
-                  <Icon className="h-5 w-5" />
+                  <social.Icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
 
             <a
-              href="https://cal.com/leadsup/strategy-call"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className="inline-flex max-w-xs items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 font-inter text-xs uppercase tracking-[0.35em] text-slate-100 transition hover:border-action-blue hover:text-action-blue"
             >
               Book a 15-min strategy call
