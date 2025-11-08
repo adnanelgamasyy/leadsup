@@ -178,13 +178,34 @@ export async function onRequestPost(context: any) {
     const request = context.request
     const env = context.env
 
-    // Initialize Resend with environment variable
-    const resendClient = new Resend(env.RESEND_API_KEY)
-
+    // Parse request data
     const data: FormSubmission = await request.json()
 
     // Get client IP
     const ip = request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || 'unknown'
+
+    // Check if environment variables are set
+    if (!env.TURNSTILE_SECRET_KEY) {
+      console.error('TURNSTILE_SECRET_KEY environment variable is not set')
+      return new Response(JSON.stringify({
+        error: 'Server configuration error. Please contact support.',
+        details: 'Missing Turnstile configuration'
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
+
+    if (!env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY environment variable is not set')
+      return new Response(JSON.stringify({
+        error: 'Server configuration error. Please contact support.',
+        details: 'Missing email configuration'
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
 
     // Verify Turnstile token
     const formData = new FormData()
@@ -197,13 +218,30 @@ export async function onRequestPost(context: any) {
       body: formData,
     })
 
-    const outcome = await result.json()
+    const outcome: any = await result.json()
+
+    // Log Turnstile verification result for debugging
+    console.log('Turnstile verification:', {
+      success: outcome.success,
+      errorCodes: outcome['error-codes'],
+      timestamp: new Date().toISOString()
+    })
+
     if (!outcome.success) {
-      return new Response(JSON.stringify({ error: 'Invalid captcha token' }), {
+      return new Response(JSON.stringify({
+        error: 'Security verification failed. Please try again.',
+        details: outcome['error-codes']?.join(', ') || 'Invalid token'
+      }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        },
       })
     }
+
+    // Initialize Resend with environment variable
+    const resendClient = new Resend(env.RESEND_API_KEY)
 
     // Send email via Resend
     const emailHTML = generateEmailHTML(data)
@@ -218,13 +256,34 @@ export async function onRequestPost(context: any) {
 
     return new Response(JSON.stringify({ success: true, message: 'Form submitted successfully' }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Form submission error:', error)
-    return new Response(JSON.stringify({ error: 'Failed to submit form' }), {
+    return new Response(JSON.stringify({
+      error: 'Failed to submit form. Please try again or contact us directly.',
+      details: error.message || 'Unknown error'
+    }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
     })
   }
+}
+
+// Handle OPTIONS request for CORS
+export async function onRequestOptions() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  })
 }

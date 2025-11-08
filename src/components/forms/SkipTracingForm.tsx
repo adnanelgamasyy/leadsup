@@ -33,7 +33,10 @@ export default function SkipTracingForm() {
     })
 
     if (!response.ok) {
-      throw new Error('Failed to submit form')
+      const errorData = await response.json()
+      const error = new Error(errorData.error || 'Failed to submit form')
+      ;(error as any).response = { json: async () => errorData }
+      throw error
     }
   }
 

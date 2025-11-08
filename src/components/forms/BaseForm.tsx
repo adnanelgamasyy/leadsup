@@ -23,6 +23,7 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
   const [turnstileToken, setTurnstileToken] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
 
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    setErrorMessage('')
 
     try {
       await onSubmit(formData, turnstileToken)
@@ -46,8 +48,10 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
       // Reset form
       setFormData(initialData)
       setTurnstileToken('')
-    } catch (error) {
+    } catch (error: any) {
       setSubmitStatus('error')
+      const errorData = error.response ? await error.response.json() : null
+      setErrorMessage(errorData?.details || errorData?.error || 'An error occurred. Please try again.')
       console.error('Form submission error:', error)
     } finally {
       setIsSubmitting(false)
@@ -159,7 +163,8 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
           animate={{ opacity: 1, y: 0 }}
           className="p-4 rounded-xl bg-energetic-pink/20 border border-energetic-pink text-energetic-pink text-center font-medium"
         >
-          ✗ Something went wrong. Please try again or call us at +1-551-358-4982
+          <div className="font-semibold mb-1">✗ Submission Failed</div>
+          <div className="text-sm">{errorMessage || 'Something went wrong. Please try again or call us at +1-551-358-4982'}</div>
         </motion.div>
       )}
     </form>
