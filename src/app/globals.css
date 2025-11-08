@@ -446,6 +446,9 @@ button[class*="bg-primary"]:hover {
   max-width: 750px;
   margin-left: auto;
   margin-right: auto;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Blog content typography - ensure all HTML elements are visible */
@@ -455,6 +458,8 @@ button[class*="bg-primary"]:hover {
   color: rgba(226, 232, 240, 0.8);
   line-height: 1.75;
   margin-bottom: 1.5rem;
+  display: block !important;
+  visibility: visible !important;
 }
 
 .blog-content h2 {
@@ -465,6 +470,8 @@ button[class*="bg-primary"]:hover {
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   scroll-margin-top: 6rem;
+  display: block !important;
+  visibility: visible !important;
 }
 
 .blog-content h3 {
@@ -475,6 +482,8 @@ button[class*="bg-primary"]:hover {
   margin-top: 2rem;
   margin-bottom: 1rem;
   scroll-margin-top: 6rem;
+  display: block !important;
+  visibility: visible !important;
 }
 
 .blog-content h4 {
@@ -484,6 +493,8 @@ button[class*="bg-primary"]:hover {
   color: #F8FAFC;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
+  display: block !important;
+  visibility: visible !important;
 }
 
 .blog-content ul {
@@ -491,6 +502,8 @@ button[class*="bg-primary"]:hover {
   margin-bottom: 1.5rem;
   margin-left: 1.5rem;
   list-style-type: none;
+  display: block !important;
+  visibility: visible !important;
 }
 
 .blog-content ul li {
@@ -501,6 +514,8 @@ button[class*="bg-primary"]:hover {
   padding-left: 0.5rem;
   position: relative;
   margin-bottom: 0.75rem;
+  display: list-item !important;
+  visibility: visible !important;
 }
 
 .blog-content ul li::before {

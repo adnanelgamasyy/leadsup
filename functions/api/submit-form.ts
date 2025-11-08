@@ -222,18 +222,35 @@ export async function onRequestPost(context: any) {
     // Send email via Resend
     const emailHTML = generateEmailHTML(data)
 
-    await resendClient.emails.send({
-      from: 'LeadsUp Forms <forms@theleadsup.com>',
-      to: ['submissions@leadsupcallcenter.com', 'adnanelgamasy@gmail.com'],
-      subject: `New ${data.formType.replace(/-/g, ' ').toUpperCase()} Form Submission - ${data.fullName}`,
-      html: emailHTML,
-      replyTo: data.email,
-    })
+    try {
+      const emailResponse = await resendClient.emails.send({
+        from: 'LeadsUp Forms <forms@leadsupcallcenter.com>',
+        to: ['submissions@leadsupcallcenter.com', 'adnanelgamasy@gmail.com'],
+        subject: `New ${data.formType.replace(/-/g, ' ').toUpperCase()} Form Submission - ${data.fullName}`,
+        html: emailHTML,
+        replyTo: data.email,
+      })
 
-    return new Response(JSON.stringify({ success: true, message: 'Form submitted successfully' }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    })
+      console.log('Email sent successfully:', emailResponse)
+
+      return new Response(JSON.stringify({ success: true, message: 'Form submitted successfully' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    } catch (emailError: any) {
+      console.error('Resend email error:', emailError)
+      console.error('Error details:', JSON.stringify(emailError, null, 2))
+
+      // Return error with details for debugging
+      return new Response(JSON.stringify({
+        error: 'Failed to send email',
+        details: emailError.message || 'Unknown error',
+        hint: 'Check if your sending domain is verified in Resend'
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
   } catch (error) {
     console.error('Form submission error:', error)
     return new Response(JSON.stringify({ error: 'Failed to submit form' }), {
