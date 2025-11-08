@@ -2,24 +2,21 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { motion } from 'framer-motion'
 import { buttonHover, fadeInUp, viewportOnce } from '@/lib/motion'
+import CustomPackageForm from './forms/CustomPackageForm'
 
 const callerOptions = ['1', '2', '3', '4', '5+']
 const managerOptions = ['0', '1', '2', '3+']
 
-const schedulerUrl = 'https://cal.com/leadsup/strategy-call'
-
 export default function CustomizationSection() {
   const [callers, setCallers] = useState(callerOptions[0])
   const [managers, setManagers] = useState(managerOptions[0])
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  const handleSchedule = () => {
-    const details = `Interested in: ${callers} callers, ${managers} acquisition managers.`
-    const url = `${schedulerUrl}?notes=${encodeURIComponent(details)}`
-    if (typeof window !== 'undefined') {
-      window.open(url, '_blank')
-    }
+  const handleOpenForm = () => {
+    setIsDialogOpen(true)
   }
 
   return (
@@ -90,18 +87,33 @@ export default function CustomizationSection() {
             <motion.div whileHover={buttonHover}>
               <Button
                 size="lg"
-                onClick={handleSchedule}
+                onClick={handleOpenForm}
                 className="flex items-center justify-center gap-3 rounded-2xl bg-action-blue px-8 py-5 font-inter text-base font-semibold text-white shadow-[0_30px_90px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
               >
-                Talk to a scaling specialist
+                Launch my outbound engine
               </Button>
             </motion.div>
             <p className="mt-3 font-inter text-xs text-slate-200/60">
-              Your selections will pre-fill the scheduler so we can prepare a custom recommendation before the call.
+              Your selections will pre-fill the form. Submit to get a custom recommendation within 24 hours.
             </p>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Custom Package Form Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900 border-white/20">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-plus-jakarta-sans font-bold text-slate-50">
+              Custom Enterprise Package
+            </DialogTitle>
+            <DialogDescription className="text-slate-200/80 font-inter">
+              Complete the form below to get a custom quote for your enterprise needs. Your selections have been pre-filled.
+            </DialogDescription>
+          </DialogHeader>
+          <CustomPackageForm callers={callers} managers={managers} />
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

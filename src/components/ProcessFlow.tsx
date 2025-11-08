@@ -109,6 +109,7 @@ export default function ProcessFlow() {
           className="mt-16 flex flex-col items-center gap-4 text-center"
         >
           <motion.button
+            onClick={() => window.location.href = '/contact'}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             className="group relative overflow-hidden flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_20px_60px_rgba(61,130,247,0.45)] hover:shadow-[0_25px_70px_rgba(61,130,247,0.6)] transition-all duration-300"
