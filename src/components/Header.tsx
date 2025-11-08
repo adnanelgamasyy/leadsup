@@ -38,7 +38,7 @@ export default function Header() {
             <img
               src="/leadsup-logo.png"
               alt="The Leads Up Logo"
-              className="h-14 w-auto group-hover:scale-105 transition-transform"
+              className="h-20 w-auto group-hover:scale-105 transition-transform"
             />
           </a>
 

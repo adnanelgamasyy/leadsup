@@ -110,8 +110,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-inter text-xs uppercase tracking-[0.2em] text-slate-200/70">Email</p>
-                      <a href="mailto:info@theleadsup.com" className="font-inter text-sm font-semibold text-slate-50 hover:text-action-blue transition">
-                        info@theleadsup.com
+                      <a href="mailto:info@leadsupcallcenter.com" className="font-inter text-sm font-semibold text-slate-50 hover:text-action-blue transition">
+                        info@leadsupcallcenter.com
                       </a>
                     </div>
                   </div>

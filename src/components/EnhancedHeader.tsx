@@ -72,7 +72,7 @@ export default function EnhancedHeader() {
             <img
               src="/leadsup-logo.png"
               alt="The Leads Up Logo"
-              className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-20 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -144,13 +144,13 @@ export default function EnhancedHeader() {
               <span className="absolute -bottom-2 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-action-blue via-energetic-pink to-vibrant-green transition-all duration-300 group-hover:w-full" />
             </Link>
 
-            <button
-              onClick={() => scrollToSection('pricing')}
+            <Link
+              to="/pricing"
               className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
             >
               Pricing
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
-            </button>
+            </Link>
 
             <Link
               to="/blog"
@@ -232,12 +232,13 @@ export default function EnhancedHeader() {
               About Us
             </Link>
 
-            <button
-              onClick={() => scrollToSection('pricing')}
-              className="block w-full rounded-xl px-4 py-3 text-left font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+            <Link
+              to="/pricing"
+              className="block rounded-xl px-4 py-3 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Pricing
-            </button>
+            </Link>
 
             <Link
               to="/blog"

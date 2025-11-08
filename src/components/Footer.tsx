@@ -34,7 +34,7 @@ export default function Footer() {
                 <img
                   src="/leadsup-logo.png"
                   alt="The Leads Up Logo"
-                  className="h-16 w-auto"
+                  className="h-24 w-auto"
                 />
               </a>
               <p className="text-[0.75rem] uppercase tracking-[0.3em] text-slate-300/60 font-semibold">
@@ -116,8 +116,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-vibrant-green" />
-                <a className="transition hover:text-action-blue" href="mailto:info@theleadsup.com">
-                  info@theleadsup.com
+                <a className="transition hover:text-action-blue" href="mailto:info@leadsupcallcenter.com">
+                  info@leadsupcallcenter.com
                 </a>
               </li>
             </ul>
