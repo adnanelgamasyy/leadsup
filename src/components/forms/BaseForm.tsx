@@ -12,7 +12,7 @@ export interface BaseFormData {
 }
 
 interface BaseFormProps {
-  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact' | 'custom-package'
+  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact' | 'custom-package' | 'market-strategy'
   children: React.ReactNode
   onSubmit: (data: BaseFormData, turnstileToken: string) => Promise<void>
   initialData: BaseFormData
@@ -24,6 +24,7 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [isMounted, setIsMounted] = useState(false)
+  const [consentGiven, setConsentGiven] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -37,6 +38,11 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
       return
     }
 
+    if (!consentGiven) {
+      alert('Please agree to receive communications from Leads Up')
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
@@ -46,6 +52,7 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
       // Reset form
       setFormData(initialData)
       setTurnstileToken('')
+      setConsentGiven(false)
     } catch (error) {
       setSubmitStatus('error')
       console.error('Form submission error:', error)
@@ -118,6 +125,20 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
         {typeof children === 'function' ? children({ formData, setFormData }) : children}
       </div>
 
+      {/* Consent Checkbox */}
+      <div className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+        <input
+          type="checkbox"
+          id="consent"
+          checked={consentGiven}
+          onChange={(e) => setConsentGiven(e.target.checked)}
+          className="mt-1 h-5 w-5 rounded border-white/20 bg-white/10 text-action-blue focus:ring-2 focus:ring-action-blue/50 cursor-pointer"
+        />
+        <label htmlFor="consent" className="text-sm text-slate-200/80 leading-relaxed cursor-pointer">
+          I consent to receive marketing text messages and emails, such as Lead Generation, from Leads Up at the phone number and email I provided, including messages sent via auto dialer. <span className="text-energetic-pink">*</span>
+        </label>
+      </div>
+
       {/* Turnstile */}
       <div className="flex justify-center py-4">
         {isMounted ? (
@@ -135,9 +156,9 @@ export default function BaseForm({ formType, children, onSubmit, initialData }: 
       {/* Submit Button */}
       <motion.button
         type="submit"
-        disabled={isSubmitting || !turnstileToken}
-        whileHover={{ scale: isSubmitting || !turnstileToken ? 1 : 1.02 }}
-        whileTap={{ scale: isSubmitting || !turnstileToken ? 1 : 0.98 }}
+        disabled={isSubmitting || !turnstileToken || !consentGiven}
+        whileHover={{ scale: isSubmitting || !turnstileToken || !consentGiven ? 1 : 1.02 }}
+        whileTap={{ scale: isSubmitting || !turnstileToken || !consentGiven ? 1 : 0.98 }}
         className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-action-blue to-energetic-pink text-white font-semibold text-lg shadow-[0_20px_60px_rgba(61,130,247,0.5)] hover:shadow-[0_25px_70px_rgba(61,130,247,0.6)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Submitting...' : 'Submit Request'}

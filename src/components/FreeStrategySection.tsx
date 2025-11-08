@@ -1,10 +1,15 @@
 "use client"
 
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { motion } from 'framer-motion'
 import { buttonHover, fadeInUp, viewportOnce } from '@/lib/motion'
+import MarketStrategyForm from '@/components/forms/MarketStrategyForm'
 
 export default function FreeStrategySection() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#060b1f] via-[#0a1533] to-[#050817] py-28">
       <div className="absolute inset-0">
@@ -61,10 +66,8 @@ export default function FreeStrategySection() {
           </div>
 
           <motion.div className="mt-10" variants={fadeInUp}>
-            <motion.a
-              href="https://cal.com/leadsup/strategy-report"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              onClick={() => setIsDialogOpen(true)}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               className="group relative overflow-hidden flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-vibrant-green to-action-blue px-10 py-5 font-inter text-base font-semibold text-white shadow-[0_30px_90px_rgba(61,130,247,0.5)] hover:shadow-[0_35px_100px_rgba(61,130,247,0.6)] transition-all duration-300 sm:w-auto"
@@ -72,9 +75,24 @@ export default function FreeStrategySection() {
               {/* Shimmer effect */}
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               <span className="relative z-10">Get my free market strategy</span>
-            </motion.a>
+            </motion.button>
           </motion.div>
         </motion.div>
+
+        {/* Market Strategy Form Dialog */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-deep-purple via-[#101633] to-slate-900 border-white/20">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-plus-jakarta-sans font-bold text-slate-50">
+                Get Your Free Market Strategy Report
+              </DialogTitle>
+              <DialogDescription className="text-slate-200/80 font-inter">
+                Tell us about your investment goals and we'll create a customized market analysis showing you exactly where to focus your efforts for maximum ROI.
+              </DialogDescription>
+            </DialogHeader>
+            <MarketStrategyForm />
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   )

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Layers, Sparkles, Target, Filter, TrendingUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
@@ -294,9 +295,9 @@ export default function AboutPage() {
                   size="lg"
                   className="rounded-2xl bg-action-blue px-12 py-5 font-inter text-base font-semibold text-white shadow-[0_35px_110px_rgba(61,130,247,0.65)] transition hover:bg-action-blue/90"
                 >
-                  <a href="https://cal.com/leadsup/strategy-call" target="_blank" rel="noopener noreferrer">
+                  <Link to="/contact">
                     Book Your Free Strategy Call
-                  </a>
+                  </Link>
                 </Button>
               </motion.div>
             </motion.div>

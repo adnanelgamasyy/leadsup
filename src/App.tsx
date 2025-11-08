@@ -14,6 +14,8 @@ const IndustriesPage = lazy(() => import('./pages/IndustriesPage'));
 const PricingPage = lazy(() => import('./pages/PricingPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const EnhancedBlogPostPage = lazy(() => import('./pages/EnhancedBlogPostPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 
 // Service pages
 const ColdCallingPage = lazy(() => import('./pages/services/ColdCallingPage'));
@@ -85,6 +87,8 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<EnhancedBlogPostPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms-of-service" element={<TermsOfServicePage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
             </Routes>
           </Suspense>
