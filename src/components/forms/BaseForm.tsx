@@ -12,7 +12,7 @@ export interface BaseFormData {
 }
 
 interface BaseFormProps {
-  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact'
+  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact' | 'custom-package'
   children: React.ReactNode
   onSubmit: (data: BaseFormData, turnstileToken: string) => Promise<void>
   initialData: BaseFormData

@@ -9,7 +9,7 @@ import { Resend } from 'resend'
 
 // Form type definitions
 export interface FormSubmission {
-  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact'
+  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact' | 'custom-package'
   fullName: string
   phone: string
   email: string
@@ -26,6 +26,8 @@ export interface FormSubmission {
   consistentPipeline?: string
   leadsPerMonth?: string
   message?: string
+  coldCallers?: string
+  acquisitionManagers?: string
   turnstileToken: string
 }
 
@@ -156,6 +158,18 @@ function generateEmailHTML(data: FormSubmission): string {
           </table>
         </div>
         ` : ''}
+      `
+      break
+
+    case 'custom-package':
+      formSpecificFields = `
+        <div style="margin-bottom: 20px;">
+          <h2 style="color: #333; font-size: 18px; border-bottom: 2px solid #3D82F7; padding-bottom: 10px;">Custom Package Requirements</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            ${data.coldCallers ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Number of Cold Callers:</strong></td><td style="padding: 10px;">${data.coldCallers}</td></tr>` : ''}
+            ${data.acquisitionManagers ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Number of Acquisition Managers:</strong></td><td style="padding: 10px;">${data.acquisitionManagers}</td></tr>` : ''}
+          </table>
+        </div>
       `
       break
   }
