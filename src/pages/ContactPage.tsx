@@ -8,15 +8,17 @@ import { useEffect } from 'react'
 
 export default function ContactPage() {
   useEffect(() => {
-    // Load Calendly script
+    // Load Calendly script with defer for better performance
     const script = document.createElement('script')
     script.src = 'https://assets.calendly.com/assets/external/widget.js'
-    script.async = true
+    script.defer = true
     document.body.appendChild(script)
 
     return () => {
       // Cleanup script on unmount
-      document.body.removeChild(script)
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
     }
   }, [])
 
@@ -79,10 +81,10 @@ export default function ContactPage() {
               </div>
 
               {/* Calendly Embed */}
-              <div className="overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl">
+              <div className="calendly-embed-container overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-[0_40px_120px_rgba(15,23,42,0.35)] backdrop-blur-2xl">
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/deeahmed-leadsupcallcenter?background_color=1a1a1a&text_color=0069ff&primary_color=cc5d37"
+                  data-url="https://calendly.com/deeahmed-leadsupcallcenter/15min?hide_event_type_details=1"
                   style={{ minWidth: '320px', height: '700px' }}
                 />
               </div>
