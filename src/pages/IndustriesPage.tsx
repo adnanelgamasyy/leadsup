@@ -36,7 +36,7 @@ const realEstateNiches = [
   },
   {
     icon: Building2,
-    title: 'Real Estate Investors (PPL Program)',
+    title: 'Real estate investors (PPL)',
     description: 'Pay-per-lead program for verified, qualified prospects.',
     image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=600',
     path: '/industries/real-estate'

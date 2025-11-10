@@ -18,7 +18,6 @@ const CustomizationSection = lazy(() => import('@/components/CustomizationSectio
 const Testimonials = lazy(() => import('@/components/Testimonials'))
 const FreeStrategySection = lazy(() => import('@/components/FreeStrategySection'))
 const FAQSection = lazy(() => import('@/components/FAQSection'))
-const MarketResearchSection = lazy(() => import('@/components/MarketResearchSection'))
 const BlogSection = lazy(() => import('@/components/BlogSection'))
 const ContactCTA = lazy(() => import('@/components/ContactCTA'))
 const Footer = lazy(() => import('@/components/Footer'))
@@ -99,10 +98,6 @@ export default function HomePage() {
 
           <Suspense fallback={<SectionSkeleton />}>
             <FAQSection />
-          </Suspense>
-
-          <Suspense fallback={<SectionSkeleton />}>
-            <MarketResearchSection />
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton />}>

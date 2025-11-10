@@ -2,6 +2,7 @@ import { Calendar, CheckCircle2, Phone, Zap, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
+import AppointmentSettingForm from '@/components/forms/AppointmentSettingForm'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInStagger, hoverLift, viewportOnce, buttonHover, iconHover } from '@/lib/motion'
 
@@ -182,6 +183,49 @@ export default function AppointmentSettingPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-deep-purple via-[#0a1533] to-[#050817] py-28">
+        <div className="absolute inset-0">
+          <div className="absolute left-[12%] top-[-6rem] h-[24rem] w-[24rem] rounded-full bg-bright-amber/18 blur-[170px]" />
+          <div className="absolute right-[12%] top-[30%] h-[24rem] w-[24rem] rounded-full bg-action-blue/18 blur-[160px]" />
+        </div>
+
+        <div className="page-shell relative mx-auto max-w-[1100px]">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mb-12 text-center"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.3em] text-slate-100">
+              Get Started Today
+            </span>
+            <h2 className="mt-6 font-plus-jakarta-sans text-4xl lg:text-5xl font-bold text-slate-50">
+              Request Your Appointment Setting Service
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto font-inter text-lg text-slate-200/80">
+              Fill out the form below and let us help you book more qualified appointments that show up and convert.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            className="mx-auto max-w-4xl rounded-3xl border border-white/15 bg-gradient-to-br from-white/10 via-white/5 to-white/5 p-8 lg:p-12 shadow-[0_35px_110px_rgba(5,8,20,0.65)] backdrop-blur-3xl relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-bright-amber/5 via-transparent to-action-blue/5 pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bright-amber/40 to-transparent" />
+
+            <div className="relative z-10">
+              <AppointmentSettingForm />
             </div>
           </motion.div>
         </div>
