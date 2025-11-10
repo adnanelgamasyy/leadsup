@@ -20,7 +20,7 @@ export default function Testimonials() {
       author: 'Jennifer L.',
       role: 'Real estate investor, FL',
       rating: 5,
-      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100'
+      avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=100'
     },
     {
       quote:
@@ -28,7 +28,7 @@ export default function Testimonials() {
       author: 'David R.',
       role: 'Fix & flip investor, CA',
       rating: 5,
-      avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100'
+      avatar: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=100'
     }
   ]
 
