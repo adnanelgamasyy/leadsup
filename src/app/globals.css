@@ -55,7 +55,7 @@
     font-weight: 400;
     line-height: 1.6;
     color: var(--body);
-    word-spacing: 0.05em;
+    word-spacing: 0.12em;
     letter-spacing: 0.01em;
   }
 
@@ -68,7 +68,7 @@
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     color: var(--headline);
     letter-spacing: -0.02em;
-    word-spacing: 0.03em;
+    word-spacing: 0.08em;
   }
 
   h1 {

@@ -8,6 +8,8 @@ export default function EnhancedHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
+  const [isMobileServicesExpanded, setIsMobileServicesExpanded] = useState(false)
+  const [isMobileIndustriesExpanded, setIsMobileIndustriesExpanded] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export default function EnhancedHeader() {
     { name: 'Fix & Flip Investors', href: '/industries/fix-flip-investors' },
     { name: 'Buy & Hold Investors', href: '/industries/buy-hold-investors' },
     { name: 'Real Estate Agents', href: '/industries/real-estate-agents' },
-    { name: 'Real Estate', href: '/industries/real-estate' },
+    { name: 'Real estate investors (PPL)', href: '/industries/real-estate' },
     { name: 'Roofing', href: '/industries/roofing' },
     { name: 'Solar', href: '/industries/solar' },
     { name: 'Medical Insurance', href: '/industries/medical-insurance' },
@@ -65,30 +67,30 @@ export default function EnhancedHeader() {
           : 'border-b border-transparent bg-transparent'
       }`}
     >
-      <div className="mx-auto w-full px-6 sm:px-10 lg:px-16">
-        <div className="flex h-16 items-center justify-between">
+      <div className="mx-auto w-full px-4 sm:px-6 lg:px-12 xl:px-16">
+        <div className="flex h-14 lg:h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="relative z-10 flex items-center group">
+          <Link to="/" className="relative z-10 flex items-center group flex-shrink-0">
             <img
               src="/leadsup-logo.png"
               alt="The Leads Up Logo"
-              className="h-20 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-16 lg:h-20 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="relative z-10 hidden items-center gap-8 md:flex">
+          <nav className="relative z-10 hidden items-center gap-3 lg:gap-6 xl:gap-8 md:flex">
             {/* Services Dropdown */}
-            <div 
+            <div
               className="relative group"
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button
-                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+                className="flex items-center gap-1 font-inter text-xs lg:text-sm font-semibold uppercase tracking-[0.2em] lg:tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white whitespace-nowrap"
               >
                 Services
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {/* Dropdown Menu */}
@@ -114,10 +116,10 @@ export default function EnhancedHeader() {
               onMouseLeave={() => setIsIndustriesOpen(false)}
             >
               <button
-                className="flex items-center gap-1 font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+                className="flex items-center gap-1 font-inter text-xs lg:text-sm font-semibold uppercase tracking-[0.2em] lg:tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white whitespace-nowrap"
               >
                 Industries
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isIndustriesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-200 ${isIndustriesOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {/* Dropdown Menu */}
@@ -138,15 +140,15 @@ export default function EnhancedHeader() {
 
             <Link
               to="/about"
-              className="group relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              className="group relative font-inter text-xs lg:text-sm font-semibold uppercase tracking-[0.2em] lg:tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white whitespace-nowrap"
             >
-              About Us
+              About
               <span className="absolute -bottom-2 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-action-blue via-energetic-pink to-vibrant-green transition-all duration-300 group-hover:w-full" />
             </Link>
 
             <Link
               to="/pricing"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              className="relative font-inter text-xs lg:text-sm font-semibold uppercase tracking-[0.2em] lg:tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white whitespace-nowrap"
             >
               Pricing
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
@@ -154,7 +156,7 @@ export default function EnhancedHeader() {
 
             <Link
               to="/blog"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              className="relative font-inter text-xs lg:text-sm font-semibold uppercase tracking-[0.2em] lg:tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white whitespace-nowrap"
             >
               Blog
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
@@ -162,7 +164,7 @@ export default function EnhancedHeader() {
 
             <Link
               to="/contact"
-              className="relative font-inter text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white"
+              className="relative font-inter text-xs lg:text-sm font-semibold uppercase tracking-[0.2em] lg:tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:text-white whitespace-nowrap"
             >
               Contact
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-action-blue transition-all duration-300 group-hover:w-full" />
@@ -170,13 +172,14 @@ export default function EnhancedHeader() {
           </nav>
 
           {/* Primary CTA Button */}
-          <div className="relative z-10 hidden md:block">
-            <Button
-              onClick={() => scrollToSection('contact')}
-              className="rounded-2xl bg-action-blue px-5 py-2 font-inter text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
-            >
-              Get Started
-            </Button>
+          <div className="relative z-10 hidden md:block flex-shrink-0">
+            <Link to="/contact">
+              <Button
+                className="rounded-2xl bg-action-blue px-3 lg:px-5 py-1.5 lg:py-2 font-inter text-xs lg:text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90 whitespace-nowrap"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -194,34 +197,54 @@ export default function EnhancedHeader() {
       {isMobileMenuOpen && (
         <div className="border-t border-white/10 bg-[#0d1532]/95 backdrop-blur-2xl shadow-[0_25px_60px_rgba(5,8,20,0.65)] md:hidden">
           <div className="space-y-4 px-6 py-6">
-            {/* Services Mobile */}
+            {/* Services Mobile - Expandable */}
             <div className="space-y-2">
-              <div className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70">Services</div>
-              {services.map((service) => (
-                <Link
-                  key={service.name}
-                  to={service.href}
-                  className="block rounded-xl px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {service.name}
-                </Link>
-              ))}
+              <button
+                onClick={() => setIsMobileServicesExpanded(!isMobileServicesExpanded)}
+                className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              >
+                Services
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobileServicesExpanded ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileServicesExpanded && (
+                <div className="space-y-1 pl-2">
+                  {services.map((service) => (
+                    <Link
+                      key={service.name}
+                      to={service.href}
+                      className="block rounded-xl px-4 py-2 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* Industries Mobile */}
+            {/* Industries Mobile - Expandable */}
             <div className="space-y-2">
-              <div className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70">Industries</div>
-              {industries.map((industry) => (
-                <Link
-                  key={industry.name}
-                  to={industry.href}
-                  className="block rounded-xl px-4 py-3 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {industry.name}
-                </Link>
-              ))}
+              <button
+                onClick={() => setIsMobileIndustriesExpanded(!isMobileIndustriesExpanded)}
+                className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-slate-200/70 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+              >
+                Industries
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isMobileIndustriesExpanded ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileIndustriesExpanded && (
+                <div className="space-y-1 pl-2">
+                  {industries.map((industry) => (
+                    <Link
+                      key={industry.name}
+                      to={industry.href}
+                      className="block rounded-xl px-4 py-2 font-inter text-sm text-slate-200/80 transition-colors duration-200 hover:bg-white/10 hover:text-white"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {industry.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             <Link
@@ -256,15 +279,14 @@ export default function EnhancedHeader() {
               Contact
             </Link>
 
-            <Button
-              onClick={() => {
-                scrollToSection('contact')
-                setIsMobileMenuOpen(false)
-              }}
-              className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
-            >
-              Book My Free Call
-            </Button>
+            <Link to="/contact">
+              <Button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
       )}

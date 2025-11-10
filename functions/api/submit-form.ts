@@ -9,7 +9,7 @@ import { Resend } from 'resend'
 
 // Form type definitions
 export interface FormSubmission {
-  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact' | 'custom-package' | 'market-strategy'
+  formType: 'market-research' | 'cold-calling' | 'data-generation' | 'skip-tracing' | 'acquisitions-dispositions' | 'contact' | 'custom-package' | 'market-strategy' | 'appointment-setting'
   fullName: string
   phone: string
   email: string
@@ -28,6 +28,8 @@ export interface FormSubmission {
   message?: string
   coldCallers?: string
   acquisitionManagers?: string
+  appointmentsPerMonth?: string
+  additionalInfo?: string
   turnstileToken: string
 }
 
@@ -180,6 +182,21 @@ function generateEmailHTML(data: FormSubmission): string {
           <table style="width: 100%; border-collapse: collapse;">
             ${data.desiredAreas ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Desired Areas/Zip Codes:</strong></td><td style="padding: 10px;">${data.desiredAreas}</td></tr>` : ''}
             ${data.investingStrategy ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Investing Strategy:</strong></td><td style="padding: 10px;">${data.investingStrategy}</td></tr>` : ''}
+          </table>
+        </div>
+      `
+      break
+
+    case 'appointment-setting':
+      formSpecificFields = `
+        <div style="margin-bottom: 20px;">
+          <h2 style="color: #333; font-size: 18px; border-bottom: 2px solid #3D82F7; padding-bottom: 10px;">Appointment Setting Requirements</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            ${data.desiredAreas ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Desired Areas:</strong></td><td style="padding: 10px;">${data.desiredAreas}</td></tr>` : ''}
+            ${data.investingStrategy ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Investing Strategy:</strong></td><td style="padding: 10px;">${data.investingStrategy}</td></tr>` : ''}
+            ${data.appointmentsPerMonth ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Desired Appointments Per Month:</strong></td><td style="padding: 10px;">${data.appointmentsPerMonth}</td></tr>` : ''}
+            ${data.howDidYouHear ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>How Did You Hear About Us:</strong></td><td style="padding: 10px;">${data.howDidYouHear}</td></tr>` : ''}
+            ${data.additionalInfo ? `<tr><td style="padding: 10px; background-color: #f9f9f9;"><strong>Additional Information:</strong></td><td style="padding: 10px;">${data.additionalInfo.replace(/\n/g, '<br>')}</td></tr>` : ''}
           </table>
         </div>
       `
