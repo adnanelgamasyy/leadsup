@@ -8,6 +8,7 @@ import AudioSamples from '@/components/AudioSamples'
 import Pricing from '@/components/Pricing'
 import Testimonials from '@/components/Testimonials'
 import ContactCTA from '@/components/ContactCTA'
+import FAQSection from '@/components/FAQSection'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <Pricing />
       <Testimonials />
       <ContactCTA />
+      <FAQSection />
       <Footer />
     </div>
   );
