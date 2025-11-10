@@ -21,7 +21,7 @@ const pricingPlans = [
     gradient: 'from-action-blue to-energetic-pink',
     highlight: false,
     features: [
-      '1 elite cold caller embedded into your brand voice',
+      '1 elite cold caller embedded into your brand voice (4 hours/day part-time)',
       'Dedicated Client Success Manager + weekly huddles',
       'Handpick your caller before launch',
       'Quality control on every conversation',
@@ -64,7 +64,7 @@ const pricingPlans = [
     highlight: false,
     features: [
       'Everything in Momentum',
-      '2 elite cold callers assigned with multi-seat coverage',
+      '2 elite cold callers assigned with multi-seat coverage (4 hours/day part-time each)',
       '30K data pulling records + 30K skip tracing records monthly',
       'Advanced buyer matchmaking & dispo coordination',
       'Multi-market scripting with compliance reviews',
