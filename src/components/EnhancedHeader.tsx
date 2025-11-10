@@ -38,6 +38,36 @@ export default function EnhancedHeader() {
     setIsMobileMenuOpen(false)
   }
 
+  const handleGetStartedClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsMobileMenuOpen(false)
+
+    // Check if we're on a service page and if there's a form section
+    const isServicePage = location.pathname.startsWith('/services/')
+
+    if (isServicePage) {
+      // Try to find a form section on the page
+      const formSections = [
+        'cold-calling-form',
+        'skip-tracing-form',
+        'data-generation-form',
+        'market-research-form',
+        'acquisitions-dispositions-form'
+      ]
+
+      for (const formId of formSections) {
+        const formSection = document.getElementById(formId)
+        if (formSection) {
+          formSection.scrollIntoView({ behavior: 'smooth' })
+          return
+        }
+      }
+    }
+
+    // Default to contact page
+    window.location.href = '/contact'
+  }
+
   const services = [
     { name: 'Cold Calling', href: '/services/cold-calling' },
     { name: 'Data Generation', href: '/services/data-generation' },
@@ -173,13 +203,12 @@ export default function EnhancedHeader() {
 
           {/* Primary CTA Button */}
           <div className="relative z-10 hidden md:block flex-shrink-0">
-            <Link to="/contact">
-              <Button
-                className="rounded-2xl bg-action-blue px-3 lg:px-5 py-1.5 lg:py-2 font-inter text-xs lg:text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90 whitespace-nowrap"
-              >
-                Get Started
-              </Button>
-            </Link>
+            <Button
+              onClick={handleGetStartedClick}
+              className="rounded-2xl bg-action-blue px-3 lg:px-5 py-1.5 lg:py-2 font-inter text-xs lg:text-sm font-semibold text-white shadow-[0_18px_45px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90 whitespace-nowrap"
+            >
+              Get Started
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -279,14 +308,12 @@ export default function EnhancedHeader() {
               Contact
             </Link>
 
-            <Link to="/contact">
-              <Button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
-              >
-                Get Started
-              </Button>
-            </Link>
+            <Button
+              onClick={handleGetStartedClick}
+              className="mt-4 w-full rounded-xl bg-action-blue py-3 font-inter text-sm font-semibold text-white shadow-[0_20px_55px_rgba(61,130,247,0.5)] transition hover:bg-action-blue/90"
+            >
+              Get Started
+            </Button>
           </div>
         </div>
       )}

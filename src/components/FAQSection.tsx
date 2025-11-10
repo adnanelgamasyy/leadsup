@@ -76,10 +76,10 @@ export default function FAQSection() {
                 value={`faq-${index}`}
                 className="rounded-2xl border border-white/10 bg-white/5 px-4"
               >
-                <AccordionTrigger className="text-left text-slate-50 hover:no-underline">
+                <AccordionTrigger className="text-left text-slate-50 hover:no-underline [word-spacing:0.15em]">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-200/80">
+                <AccordionContent className="text-slate-200/80 [word-spacing:0.12em] leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

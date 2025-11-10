@@ -1,10 +1,13 @@
-import BaseForm, { FormField, FormSelect, BaseFormData } from './BaseForm'
+import BaseForm, { FormTextarea, FormSelect, BaseFormData } from './BaseForm'
 
-const investingStrategyOptions = [
-  { value: 'Wholesaling', label: 'Wholesaling' },
-  { value: 'Fix & Flip', label: 'Fix & Flip' },
-  { value: 'Buy & Hold', label: 'Buy & Hold' },
-  { value: 'Real Estate Agent', label: 'Real Estate Agent' },
+const targetMarketOptions = [
+  { value: 'Real Estate - Wholesaling', label: 'Real Estate - Wholesaling' },
+  { value: 'Real Estate - Fix & Flip', label: 'Real Estate - Fix & Flip' },
+  { value: 'Real Estate - Buy & Hold', label: 'Real Estate - Buy & Hold' },
+  { value: 'Solar', label: 'Solar' },
+  { value: 'Roofing', label: 'Roofing' },
+  { value: 'Medical Insurance', label: 'Medical Insurance' },
+  { value: 'Automotive', label: 'Automotive' },
   { value: 'Other', label: 'Other' },
 ]
 
@@ -24,8 +27,8 @@ const initialData: BaseFormData = {
   phone: '',
   email: '',
   companyName: '',
-  desiredAreas: '',
-  investingStrategy: '',
+  message: '',
+  targetMarket: '',
   howDidYouHear: '',
 }
 
@@ -54,20 +57,22 @@ export default function MarketResearchForm() {
     >
       {({ formData, setFormData }: { formData: BaseFormData; setFormData: (data: BaseFormData) => void }) => (
         <>
-          <FormField
-            label="Desired Areas"
-            name="desiredAreas"
-            value={formData.desiredAreas || ''}
-            onChange={(value) => setFormData({ ...formData, desiredAreas: value })}
-            placeholder="e.g., Tampa Bay, FL"
+          <FormSelect
+            label="Target Market / Industry"
+            name="targetMarket"
+            value={formData.targetMarket || ''}
+            onChange={(value) => setFormData({ ...formData, targetMarket: value })}
+            options={targetMarketOptions}
+            required
           />
 
-          <FormSelect
-            label="Investing Strategy"
-            name="investingStrategy"
-            value={formData.investingStrategy || ''}
-            onChange={(value) => setFormData({ ...formData, investingStrategy: value })}
-            options={investingStrategyOptions}
+          <FormTextarea
+            label="Tell us about your target market and business goals"
+            name="message"
+            value={formData.message || ''}
+            onChange={(value) => setFormData({ ...formData, message: value })}
+            placeholder="What areas are you targeting? What are your investment or business goals? Any specific challenges you're facing?"
+            rows={5}
           />
 
           <FormSelect
