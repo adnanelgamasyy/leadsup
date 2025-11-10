@@ -16,6 +16,7 @@ const AudioSamples = lazy(() => import('@/components/AudioSamples'))
 const Pricing = lazy(() => import('@/components/Pricing'))
 const CustomizationSection = lazy(() => import('@/components/CustomizationSection'))
 const Testimonials = lazy(() => import('@/components/Testimonials'))
+const VideoTestimonialsSection = lazy(() => import('@/components/VideoTestimonialsSection'))
 const FreeStrategySection = lazy(() => import('@/components/FreeStrategySection'))
 const FAQSection = lazy(() => import('@/components/FAQSection'))
 const BlogSection = lazy(() => import('@/components/BlogSection'))
@@ -80,6 +81,10 @@ export default function HomePage() {
 
           <Suspense fallback={<SectionSkeleton />}>
             <Testimonials />
+          </Suspense>
+
+          <Suspense fallback={<SectionSkeleton />}>
+            <VideoTestimonialsSection />
           </Suspense>
 
           <Suspense fallback={<SectionSkeleton />}>
