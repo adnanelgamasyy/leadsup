@@ -28,6 +28,7 @@ export const organizationSchema = {
   sameAs: [
     'https://www.facebook.com/profile.php?id=61583539406813',
     'https://www.instagram.com/leadsupcallcenter',
+    'https://www.linkedin.com/company/leadsup-call-center/',
     'https://www.youtube.com/@leadsupcallcenter'
   ]
 }
