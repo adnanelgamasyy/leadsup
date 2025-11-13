@@ -63,7 +63,7 @@ export default function AcquisitionsDispositionsPage() {
               <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-2 shadow-[0_40px_120px_rgba(240,55,104,0.25)] backdrop-blur-2xl">
                 <img
                   src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Acquisitions and dispositions team"
+                  alt="Real estate acquisitions and dispositions team managing deal flow for investors"
                   className="w-full rounded-2xl object-cover"
                 />
               </div>

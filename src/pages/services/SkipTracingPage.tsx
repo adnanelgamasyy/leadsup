@@ -90,7 +90,7 @@ export default function SkipTracingPage() {
               <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-2 shadow-[0_40px_120px_rgba(152,201,60,0.25)] backdrop-blur-2xl">
                 <img
                   src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Skip tracing verification"
+                  alt="High-accuracy skip tracing service for real estate investor contact verification"
                   className="w-full rounded-2xl object-cover"
                 />
               </div>

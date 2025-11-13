@@ -117,7 +117,7 @@ export default function ColdCallingPage() {
               <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-2 shadow-[0_40px_120px_rgba(61,130,247,0.25)] backdrop-blur-2xl">
                 <img
                   src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Professional cold calling"
+                  alt="Professional cold calling services for real estate lead generation and motivated seller outreach"
                   className="w-full rounded-2xl object-cover"
                 />
               </div>

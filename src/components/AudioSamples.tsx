@@ -333,7 +333,7 @@ export default function AudioSamples() {
                   <div className="relative">
                     <img
                       src={featureSample.avatar}
-                      alt={featureSample.caller}
+                      alt={`${featureSample.caller} - LeadsUp professional ${featureSample.role}`}
                       className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border-2 border-white/30 object-cover shadow-lg"
                     />
                     <span className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 bg-vibrant-green border-2 border-[#0c1533] rounded-full flex items-center justify-center">
@@ -413,7 +413,7 @@ export default function AudioSamples() {
                     <div className="relative">
                       <img
                         src={sample.avatar}
-                        alt={sample.caller}
+                        alt={`${sample.caller} - LeadsUp professional ${sample.role}`}
                         className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border-2 border-white/30 object-cover shadow-lg"
                       />
                       <span className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 bg-vibrant-green border-2 border-[#0c1533] rounded-full flex items-center justify-center">

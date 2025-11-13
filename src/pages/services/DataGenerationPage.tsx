@@ -105,7 +105,7 @@ export default function DataGenerationPage() {
               <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-2 shadow-[0_40px_120px_rgba(240,55,104,0.25)] backdrop-blur-2xl">
                 <img
                   src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Data generation and analytics"
+                  alt="Precision data generation analytics for real estate lead targeting and market research"
                   className="w-full rounded-2xl object-cover"
                 />
               </div>

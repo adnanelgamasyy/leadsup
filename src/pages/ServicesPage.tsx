@@ -124,7 +124,7 @@ export default function ServicesPage() {
                   <div className="relative h-56 overflow-hidden">
                     <img
                       src={service.image}
-                      alt={service.title}
+                      alt={`${service.title} - ${service.headline} for real estate professionals`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/50 to-transparent" />

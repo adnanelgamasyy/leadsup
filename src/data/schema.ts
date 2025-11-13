@@ -10,7 +10,7 @@ export const organizationSchema = {
   logo: 'https://theleadsup.com/leadsup-logo.png',
   description: 'Elite cold calling and lead generation services for real estate investors. Professional cold callers, skip tracing, and data generation to build predictable deal pipelines.',
   foundingDate: '2020',
-  email: 'hello@theleadsup.com',
+  email: 'info@leadsupcallcenter.com',
   telephone: '+1-551-358-4982',
   address: {
     '@type': 'PostalAddress',
@@ -21,16 +21,14 @@ export const organizationSchema = {
     '@type': 'ContactPoint',
     telephone: '+1-551-358-4982',
     contactType: 'Customer Service',
-    email: 'hello@theleadsup.com',
+    email: 'info@leadsupcallcenter.com',
     areaServed: 'US',
     availableLanguage: ['English']
   },
   sameAs: [
-    // Add your actual social media URLs here
-    'https://facebook.com/theleadsup',
-    'https://twitter.com/theleadsup',
-    'https://linkedin.com/company/theleadsup',
-    'https://instagram.com/theleadsup'
+    'https://www.facebook.com/profile.php?id=61583539406813',
+    'https://www.instagram.com/leadsupcallcenter',
+    'https://www.youtube.com/@leadsupcallcenter'
   ]
 }
 
@@ -195,7 +193,7 @@ export const localBusinessSchema = {
   '@id': 'https://theleadsup.com',
   url: 'https://theleadsup.com',
   telephone: '+1-551-358-4982',
-  email: 'hello@theleadsup.com',
+  email: 'info@leadsupcallcenter.com',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',

@@ -172,7 +172,7 @@ export default function RealEstateWholesalersPage() {
             >
               <img
                 src="https://images.pexels.com/photos/1546168/pexels-photo-1546168.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Real Estate Wholesaling"
+                alt="Real estate wholesaling business with property keys and contracts for quick cash deals"
                 className="rounded-3xl shadow-[0_40px_120px_rgba(15,23,42,0.5)]"
               />
             </motion.div>
