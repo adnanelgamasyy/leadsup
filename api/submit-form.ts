@@ -211,7 +211,7 @@ export async function POST(request: Request) {
 
     await resend.emails.send({
       from: 'LeadsUp Forms <forms@theleadsup.com>',
-      to: ['submissions@leadsupcallcenter.com', 'adnanelgamasy@gmail.com'],
+      to: ['submissions@leadsupcallcenter.com', 'adnanelgamasyy@gmail.com'],
       subject: `New ${data.formType.replace(/-/g, ' ').toUpperCase()} Form Submission - ${data.fullName}`,
       html: emailHTML,
       replyTo: data.email,
