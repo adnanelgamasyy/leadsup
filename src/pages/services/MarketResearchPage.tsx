@@ -69,8 +69,8 @@ export default function MarketResearchPage() {
               <div className="absolute -inset-4 rounded-[32px] bg-gradient-to-br from-white/10 via-white/5 to-transparent blur-2xl" />
               <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-2 shadow-[0_40px_120px_rgba(61,130,247,0.25)] backdrop-blur-2xl">
                 <img
-                  src="https://images.pexels.com/photos/7567565/pexels-photo-7567565.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Market research and analysis"
+                  src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Market research and data analysis with charts and graphs"
                   className="w-full rounded-2xl object-cover"
                 />
               </div>
