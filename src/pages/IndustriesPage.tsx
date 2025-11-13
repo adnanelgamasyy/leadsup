@@ -154,7 +154,7 @@ export default function IndustriesPage() {
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={niche.image}
-                      alt={niche.title}
+                      alt={`${niche.title} - ${niche.description}`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/70 to-transparent" />
@@ -236,7 +236,7 @@ export default function IndustriesPage() {
                   <div className="relative h-56 overflow-hidden">
                     <img
                       src={service.image}
-                      alt={service.title}
+                      alt={`${service.title} - ${service.description}`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/70 to-transparent" />
@@ -318,7 +318,7 @@ export default function IndustriesPage() {
                   <div className="relative h-56 overflow-hidden">
                     <img
                       src={service.image}
-                      alt={service.title}
+                      alt={`${service.title} - ${service.description}`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#101633] via-[#101633]/70 to-transparent" />

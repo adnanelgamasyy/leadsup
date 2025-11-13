@@ -118,7 +118,7 @@ export default function ProblemSolution() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_55%)]" />
             <img
               src="https://images.pexels.com/photos/3184436/pexels-photo-3184436.jpeg?auto=compress&cs=tinysrgb&w=1400"
-              alt="Collaborative team working"
+              alt="LeadsUp call center team collaborating on real estate acquisitions and lead generation strategy"
               className="relative h-full w-full object-cover opacity-95"
             />
             <div className="absolute bottom-6 left-1/2 flex w-[80%] -translate-x-1/2 gap-4 rounded-2xl border border-white/20 bg-[#0d1533cc] p-4 shadow-[0_25px_60px_rgba(12,18,40,0.45)] backdrop-blur-xl">
@@ -201,7 +201,7 @@ export default function ProblemSolution() {
                     <img
                       key={id}
                       src={`https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=120`}
-                      alt="Client avatar"
+                      alt="LeadsUp satisfied real estate investor client"
                       className="h-9 w-9 rounded-full border-2 border-white/20 object-cover shadow-[0_10px_30px_rgba(9,12,32,0.45)]"
                     />
                   ))}

@@ -85,7 +85,7 @@ export default function AppointmentSettingPage() {
               <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-2 shadow-[0_40px_120px_rgba(249,168,37,0.25)] backdrop-blur-2xl">
                 <img
                   src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Appointment setting and calendar management"
+                  alt="Professional appointment setting service with calendar scheduling for real estate leads"
                   className="w-full rounded-2xl object-cover"
                 />
               </div>
