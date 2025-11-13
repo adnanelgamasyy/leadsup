@@ -1,10 +1,17 @@
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
 import EnhancedHeader from '@/components/EnhancedHeader'
 import Footer from '@/components/Footer'
 import { motion } from 'framer-motion'
 import { fadeInUp, fadeInStagger, viewportOnce } from '@/lib/motion'
 import ContactForm from '@/components/forms/ContactForm'
 import { useEffect } from 'react'
+
+const socialLinks = [
+  { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61583539406813', label: 'Facebook' },
+  { Icon: Instagram, href: 'https://www.instagram.com/leadsupcallcenter', label: 'Instagram' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/company/leadsup-call-center/', label: 'LinkedIn' },
+  { Icon: Youtube, href: 'https://www.youtube.com/@leadsupcallcenter', label: 'YouTube' }
+]
 
 export default function ContactPage() {
   useEffect(() => {
@@ -142,6 +149,25 @@ export default function ContactPage() {
                         Operating nationwide
                       </p>
                     </div>
+                  </div>
+                </div>
+
+                {/* Social Media Links */}
+                <div className="mt-6">
+                  <p className="font-inter text-xs uppercase tracking-[0.2em] text-slate-200/70 mb-3">Follow Us</p>
+                  <div className="flex flex-wrap gap-3">
+                    {socialLinks.map((social) => (
+                      <a
+                        key={social.label}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 transition hover:border-action-blue hover:text-action-blue"
+                      >
+                        <social.Icon className="h-5 w-5" />
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>

@@ -20,6 +20,7 @@ const quickLinks = {
 const socialLinks = [
   { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61583539406813', label: 'Facebook' },
   { Icon: Instagram, href: 'https://www.instagram.com/leadsupcallcenter', label: 'Instagram' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/company/leadsup-call-center/', label: 'LinkedIn' },
   { Icon: Youtube, href: 'https://www.youtube.com/@leadsupcallcenter', label: 'YouTube' }
 ]
 
