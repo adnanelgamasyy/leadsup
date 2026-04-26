@@ -36,7 +36,7 @@ export default defineConfig({
     react(),
     // Generate sitemap automatically during build
     sitemap({
-      hostname: 'https://theleadsup.com',
+      hostname: 'https://leadsupcallcenter.com',
       dynamicRoutes: routes,
       changefreq: 'weekly',
       priority: 0.7,

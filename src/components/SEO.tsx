@@ -17,7 +17,7 @@ export default function SEO({
   title,
   description,
   keywords,
-  ogImage = 'https://theleadsup.com/leadsup-og.png',
+  ogImage = 'https://leadsupcallcenter.com/leadsup-og.png',
   ogType = 'website',
   canonical,
   schemaMarkup,
@@ -26,10 +26,10 @@ export default function SEO({
   modifiedDate
 }: SEOProps) {
   const fullTitle = `${title} | The Leads Up`
-  const pageUrl = canonical || (typeof window !== 'undefined' ? window.location.href : 'https://theleadsup.com')
+  const pageUrl = canonical || (typeof window !== 'undefined' ? window.location.href : 'https://leadsupcallcenter.com')
 
   // Ensure ogImage is a full URL
-  const fullOgImage = ogImage.startsWith('http') ? ogImage : `https://theleadsup.com${ogImage}`
+  const fullOgImage = ogImage.startsWith('http') ? ogImage : `https://leadsupcallcenter.com${ogImage}`
 
   return (
     <Helmet>

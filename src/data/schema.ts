@@ -6,8 +6,8 @@ export const organizationSchema = {
   '@type': 'Organization',
   name: 'The Leads Up',
   alternateName: 'LeadsUp',
-  url: 'https://theleadsup.com',
-  logo: 'https://theleadsup.com/leadsup-logo.png',
+  url: 'https://leadsupcallcenter.com',
+  logo: 'https://leadsupcallcenter.com/leadsup-logo.png',
   description: 'Elite cold calling and lead generation services for real estate investors. Professional cold callers, skip tracing, and data generation to build predictable deal pipelines.',
   foundingDate: '2020',
   email: 'info@leadsupcallcenter.com',
@@ -42,7 +42,7 @@ export const createServiceSchema = (serviceName: string, description: string, ur
   provider: {
     '@type': 'Organization',
     name: 'The Leads Up',
-    url: 'https://theleadsup.com'
+    url: 'https://leadsupcallcenter.com'
   },
   serviceType: 'Lead Generation',
   areaServed: {
@@ -61,42 +61,42 @@ export const createServiceSchema = (serviceName: string, description: string, ur
 export const coldCallingServiceSchema = createServiceSchema(
   'Professional Cold Calling Services',
   'Elite cold calling services for real estate investors. Our trained cold callers help you find motivated sellers and close more deals.',
-  'https://theleadsup.com/services/cold-calling'
+  'https://leadsupcallcenter.com/services/cold-calling'
 )
 
 // Skip Tracing Service
 export const skipTracingServiceSchema = createServiceSchema(
   'Skip Tracing Services',
   'Professional skip tracing to find accurate contact information for property owners and motivated sellers.',
-  'https://theleadsup.com/services/skip-tracing'
+  'https://leadsupcallcenter.com/services/skip-tracing'
 )
 
 // Data Generation Service
 export const dataGenerationServiceSchema = createServiceSchema(
   'Lead Data Generation',
   'High-quality lead lists and data generation services for real estate investors targeting motivated sellers.',
-  'https://theleadsup.com/services/data-generation'
+  'https://leadsupcallcenter.com/services/data-generation'
 )
 
 // Market Research Service
 export const marketResearchServiceSchema = createServiceSchema(
   'Real Estate Market Research',
   'Comprehensive market research and analysis to identify the best opportunities in your target markets.',
-  'https://theleadsup.com/services/market-research'
+  'https://leadsupcallcenter.com/services/market-research'
 )
 
 // Acquisitions & Dispositions Service
 export const acquisitionsDispositionsServiceSchema = createServiceSchema(
   'Acquisitions & Dispositions',
   'Expert acquisition and disposition services to help you buy and sell properties efficiently.',
-  'https://theleadsup.com/services/acquisitions-dispositions'
+  'https://leadsupcallcenter.com/services/acquisitions-dispositions'
 )
 
 // Appointment Setting Service
 export const appointmentSettingServiceSchema = createServiceSchema(
   'Appointment Setting Services',
   'Professional appointment setting to fill your calendar with qualified leads and motivated sellers.',
-  'https://theleadsup.com/services/appointment-setting'
+  'https://leadsupcallcenter.com/services/appointment-setting'
 )
 
 // FAQ schema generator
@@ -157,14 +157,14 @@ export const createArticleSchema = (
   author: {
     '@type': 'Organization',
     name: authorName,
-    url: 'https://theleadsup.com'
+    url: 'https://leadsupcallcenter.com'
   },
   publisher: {
     '@type': 'Organization',
     name: 'The Leads Up',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://theleadsup.com/leadsup-logo.png'
+      url: 'https://leadsupcallcenter.com/leadsup-logo.png'
     }
   },
   mainEntityOfPage: {
@@ -190,9 +190,9 @@ export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'The Leads Up',
-  image: 'https://theleadsup.com/leadsup-logo.png',
-  '@id': 'https://theleadsup.com',
-  url: 'https://theleadsup.com',
+  image: 'https://leadsupcallcenter.com/leadsup-logo.png',
+  '@id': 'https://leadsupcallcenter.com',
+  url: 'https://leadsupcallcenter.com',
   telephone: '+1-551-358-4982',
   email: 'info@leadsupcallcenter.com',
   priceRange: '$$',
@@ -214,12 +214,12 @@ export const websiteSchema = {
   '@type': 'WebSite',
   name: 'The Leads Up',
   alternateName: 'LeadsUp',
-  url: 'https://theleadsup.com',
+  url: 'https://leadsupcallcenter.com',
   potentialAction: {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://theleadsup.com/search?q={search_term_string}'
+      urlTemplate: 'https://leadsupcallcenter.com/search?q={search_term_string}'
     },
     'query-input': 'required name=search_term_string'
   }

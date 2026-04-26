@@ -48,9 +48,9 @@ const benefits = [
 
 export default function ColdCallingPage() {
   const breadcrumbs = createBreadcrumbSchema([
-    { name: 'Home', url: 'https://theleadsup.com' },
-    { name: 'Services', url: 'https://theleadsup.com/services' },
-    { name: 'Cold Calling', url: 'https://theleadsup.com/services/cold-calling' }
+    { name: 'Home', url: 'https://leadsupcallcenter.com' },
+    { name: 'Services', url: 'https://leadsupcallcenter.com/services' },
+    { name: 'Cold Calling', url: 'https://leadsupcallcenter.com/services/cold-calling' }
   ])
 
   return (
@@ -59,7 +59,7 @@ export default function ColdCallingPage() {
         title="Professional Cold Calling Services | Real Estate Lead Generation"
         description="Elite cold calling services for real estate investors. Our trained cold callers help you find motivated sellers, book appointments, and close more deals. 40% higher conversion rates."
         keywords="cold calling services, real estate cold calling, professional cold callers, lead generation, appointment setting, motivated sellers"
-        canonical="https://theleadsup.com/services/cold-calling"
+        canonical="https://leadsupcallcenter.com/services/cold-calling"
         schemaMarkup={[coldCallingServiceSchema, organizationSchema, breadcrumbs]}
       />
       <EnhancedHeader />

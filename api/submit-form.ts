@@ -210,7 +210,7 @@ export async function POST(request: Request) {
     const emailHTML = generateEmailHTML(data)
 
     await resend.emails.send({
-      from: 'LeadsUp Forms <forms@theleadsup.com>',
+      from: 'LeadsUp Forms <forms@leadsupcallcenter.com>',
       to: ['submissions@leadsupcallcenter.com', 'adnanelgamasyy@gmail.com'],
       subject: `New ${data.formType.replace(/-/g, ' ').toUpperCase()} Form Submission - ${data.fullName}`,
       html: emailHTML,

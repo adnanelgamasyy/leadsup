@@ -23,7 +23,7 @@ export default function TestimonialsPage() {
         title="Client Testimonials & Success Stories | LeadsUp"
         description="Hear directly from real estate investors and operators who are closing more deals and scaling their business with LeadsUp's elite callers and precision data."
         keywords="client testimonials, success stories, real estate investor reviews, LeadsUp reviews, cold calling testimonials, lead generation success"
-        canonical="https://theleadsup.com/testimonials"
+        canonical="https://leadsupcallcenter.com/testimonials"
       />
 
       <div className="min-h-screen bg-background">

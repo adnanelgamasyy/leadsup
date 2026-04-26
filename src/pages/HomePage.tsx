@@ -47,7 +47,7 @@ export default function HomePage() {
         title="Real Estate Lead Generation & Cold Calling Services"
         description="Dominate your market with elite cold calling and data services. Built for investors, by investors—we build predictable deal pipelines. Get motivated seller leads that convert."
         keywords="real estate lead generation, cold calling services, skip tracing, motivated sellers, real estate wholesaling, investor leads, property leads, cold calling VAs"
-        canonical="https://theleadsup.com"
+        canonical="https://leadsupcallcenter.com"
         schemaMarkup={[organizationSchema, websiteSchema, createFAQSchema(commonFAQs)]}
       />
 
